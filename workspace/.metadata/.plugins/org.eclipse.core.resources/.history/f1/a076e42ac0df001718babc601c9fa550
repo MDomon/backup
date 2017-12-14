@@ -1,0 +1,135 @@
+package sample1;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class A {
+
+	public static void main(String[] args) throws IOException
+	{	/*
+		System.out.println("何番目の処理を飛ばしますか？(1～10)");
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		String str = br.readLine();
+		int res = Integer.parseInt(str);
+
+		for(int i=1; i<=10; i++){
+			if(i == res)
+				continue;
+			System.out.println(i + "何番目の処理です。");
+			｝
+		*/
+
+
+		/*
+		System.out.println("科目1～5の点数を入力してください。");
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		String str1 = br.readLine();
+		String str2 = br.readLine();
+		String str3 = br.readLine();
+		String str4 = br.readLine();
+		String str5 = br.readLine();
+
+		int num1 = Integer.parseInt(str1);
+		int num2 = Integer.parseInt(str2);
+		int num3 = Integer.parseInt(str3);
+		int num4 = Integer.parseInt(str4);
+		int num5 = Integer.parseInt(str5);
+
+
+		System.out.println("5教科の合計点は"+ (num1 + num2 + num3 + num4 + num5) +"です。");
+		System.out.println("5教科の平均点は"+ ((num1 + num2 + num3 + num4 + num5) / (double)5) +"です。");
+		*/
+
+
+		/*
+		System.out.println("2つの整数を入力してください。");
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		String str1 = br.readLine();
+		String str2 = br.readLine();
+
+		int num1 = Integer.parseInt(str1);
+		int num2 = Integer.parseInt(str2);
+
+		if(num1 == num2){
+			System.out.println("2つの整数は同じ値です。");
+		}else if(num1 > num2){
+			System.out.println((num2) + "より" + (num1) + "のほうが大きいです。");
+		}else{
+			System.out.println((num1) + "より" + (num2) + "のほうが大きいです。");
+		}
+		*/
+
+
+		/*
+		System.out.println("成績を入力してください。");
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		String str1 = br.readLine();
+
+		int num1 = Integer.parseInt(str1);
+
+		switch(num1){
+			case 1:
+				System.out.println("もっとがんばりましょう。");
+				break;
+			case 2:
+				System.out.println("もう少しがんばりましょう。");
+				break;
+			case 3:
+				System.out.println("さらに上を目指しましょう");
+				break;
+			case 4:
+				System.out.println("たいへんよくできました。");
+				break;
+			case 5:
+				System.out.println("たいへん優秀です。");
+				break;
+		}
+		*/
+
+		/*
+		System.out.println("1～10までの偶数を出力します。");
+
+		for(int i = 1; i <= 10; i++){
+			if(i % 2 ==0){
+				System.out.println(i);
+			}
+		}
+		*/
+
+		System.out.println("テストの点数を入力してください。(0で終了)");
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+
+		int num = 0;
+		int sum = 0;
+
+		while(num != 0){
+			String i = br.readLine();
+			num = Integer.parseInt(i);
+			if(i != "0"){
+				sum = sum + num;
+			}else{
+				System.out.println("テストの合計点は"+ (sum) +"です。");
+				break;
+			}
+		}
+
+
+
+
+
+
+
+	}
+
+}
