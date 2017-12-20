@@ -1,0 +1,38 @@
+
+public class MyPoint {
+	int x;
+	int y;
+	
+	int getX(){
+		System.out.println("X座標を得ました。");
+		return x;
+	}
+	
+	int getY(){
+		System.out.println("Y座標を得ました。");
+		return y;
+	}
+	
+	void setX(int px){
+		x = px;
+		
+	}
+	
+	void setY(int py){
+		y = py;
+	}
+}
+
+class MyPoint1{
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+		MyPoint p1;
+		p1 = new MyPoint();
+		
+		
+		
+		
+		
+		
+	}
+}

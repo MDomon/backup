@@ -11,6 +11,7 @@ class Car{
 	}
 
 	void showCar(){
+		
 		System.out.println("これから車の情報を表示します。");
 		show();
 	}
