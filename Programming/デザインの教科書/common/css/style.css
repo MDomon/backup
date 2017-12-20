@@ -3,6 +3,19 @@ body{
     font-family:sans-serif;
 }
 
+/*リンク*/
+a{
+    color:#999966;
+}
+
+a:hover{
+    color: #996600;
+}
+
+a:visited{
+    color:#666666;
+}
+
 /*ページ*/
 #page{
     width:980px;
