@@ -1,0 +1,4 @@
+
+public interface MP3Player {
+
+}

@@ -1,0 +1,12 @@
+package iPhone;
+
+public class iPhone {
+	public static void main(String[] args){
+		MP3Player iPhone = new MP3Player();
+		iPhone.play();
+		iPhone.stop();
+		iPhone.next();
+		iPhone.back();
+
+	}
+}
