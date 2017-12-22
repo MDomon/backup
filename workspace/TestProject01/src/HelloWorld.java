@@ -64,20 +64,7 @@ public class HelloWorld {
 		}
 
 		System.out.println("\n");
-
-
-
-
-
-
-
-
-
-
-
-
 	}
-
 }
 
 import java.io.BufferedReader;

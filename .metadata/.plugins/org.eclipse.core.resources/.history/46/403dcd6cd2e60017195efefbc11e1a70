@@ -1,0 +1,16 @@
+
+public class Cleric {
+
+	String name;
+	int hp = 50;
+	final int maxHp = 50;
+	int mp = 10;
+	final int maxMp = 10;
+
+	public void selfAid(){
+		System.out.println(this.name + "は、セルフエイドを唱えた！");
+		this.mp -= 10;
+		this.hp = maxHp;
+		System.out.println("HPが最大値まで回復した！");
+	}
+}
