@@ -6,20 +6,20 @@ public class Main {
 
 		//1.勇者を生成
 		Hero h1 = new Hero();
-		System.out.println(h1.name);
+		System.out.println(h1.getName());
 
 		//2.フィールドに初期値をセット
-		h1.name = "ミナト";
-		h1.hp = 100;
-		System.out.println("勇者" + h1.name + "を生み出しました。");
+		h1.setName("ミナト");
+		h1.setHp(100);
+		System.out.println("勇者" + h1.getName() + "を生み出しました。");
 
 		Hero h2 = new Hero();
-		h2.name = "アサカ";
-		h2.hp = 100;
+		h2.setName("アサカ");
+		h2.setHp(100);
 
 		Wizard w = new Wizard();
-		w.name = "スガワラ";
-		w.hp = 50;
+		w.setName("スガワラ");
+		w.setHp(50);
 
 		//3.勇者メソッドを呼び出してゆく
 		h1.sit(5);
@@ -28,13 +28,11 @@ public class Main {
 		h1.run();
 System.out.print("\n");
 
-		Matango m1 = new Matango();
-		m1.hp = 50;
-		m1.suffix = 'A';
+		Matango m1 = new Matango('A');
+		m1.setHp(50);
 
-		Matango m2 = new Matango();
-		m2.hp = 48;
-		m2.suffix = 'B';
+		Matango m2 = new Matango('B');
+		m2.setHp(48);
 
 		//冒険の始まり
 		h1.slip();
@@ -52,10 +50,34 @@ System.out.print("\n");
 		System.out.println(c.mp);
 System.out.print("\n");
 
-		w.heal(h1);
-		w.heal(h2);
-		w.heal(h2);
+
+
+		Wand wa = new Wand();
+		wa.setName("firewand");
+		wa.setPower(50);
+
+
+
+		PoisonMatango pm1 = new PoisonMatango('A');
+		Hero h = new Hero("loto");
+
+		pm1.attack(h);
+		System.out.println(h.getHp());
+		pm1.attack(h);
+		System.out.println(h.getHp());
+		pm1.attack(h);
+		System.out.println(h.getHp());
+		pm1.attack(h);
+		System.out.println(h.getHp());
+		pm1.attack(h);
+		System.out.println(h.getHp());
+		pm1.attack(h);
+		System.out.println(h.getHp());
+		pm1.attack(h);
+		System.out.println(h.getHp());
 
 	}
 
 }
+
+

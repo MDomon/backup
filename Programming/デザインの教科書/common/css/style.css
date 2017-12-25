@@ -4,17 +4,24 @@ body{
 }
 
 /*リンク*/
-a{
+a:link{
     color:#999966;
+}
+
+a:visited{
+    color:#666666;
 }
 
 a:hover{
     color: #996600;
 }
 
-a:visited{
-    color:#666666;
+a:active { 
+    color: #ff8000;
 }
+
+
+
 
 /*ページ*/
 #page{
@@ -35,6 +42,51 @@ a:visited{
     line-height:1.5;
     margin-top:5px;
 }
+
+/* グローバルナビ */
+#pageHead .globalNavi{
+    border:solid #cccccc;
+    border-width:1px 0;
+    padding:10px 0;
+}
+
+#pageHead .globalNavi ul{
+    margin:0;
+    padding:0;
+}
+
+#pageHead .globalNavi ul:after{
+    content:"";
+    clear:both;
+    display:block;
+}
+
+#pageHead .globalNavi ul li{
+    list-style:none;
+    width:245px;
+    float:left;
+    border-left:solid 1px #cccccc;
+    padding:0 10px;
+    box-sizing:border-box;
+    text-align:center;
+    font-size:14px;
+    line-height:1.429;
+}
+
+#pageHead .globalNavi ul li:first-child{
+    border-left:none;
+}
+
+
+#pageHead .globalNavi ul li a{
+    color:inherit;
+    text-decoration:none;
+}
+
+#pageHead .globalNavi ul li a:hover{
+    background-color:#f2f2e5;
+}
+
 
 /*ページフッター*/
 #pageFoot{
@@ -94,6 +146,22 @@ a:visited{
 #pageBodySub newsList ul li time{
     font-weight: bold;
     display:block;
+}
+
+/* ローカルナビ */
+#pageBodySub .localNavi ul{
+    margin:0 0 30px;
+    padding-left:0;
+}
+#pageBodySub .localNavi ul li{
+    font-size:14px;
+    line-height:1.429;
+    margin-bottom:12px;
+    list-style-type:none;
+    background-image:url("../images/ico_arrow.png");
+    background-repeat:no-repeat;
+    background-position:0 8px;
+    padding-left:10px;
 }
 
 /* ----- メインカラム内の装飾 ----- */

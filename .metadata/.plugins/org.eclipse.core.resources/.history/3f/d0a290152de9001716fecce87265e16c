@@ -1,0 +1,6 @@
+
+public class PoisonMatango extends Matango {
+	public PoisonMatango(){
+
+	}
+}

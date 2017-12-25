@@ -1,0 +1,26 @@
+
+public class PoisonMatango extends Matango {
+	private int poisonCount = 5;
+
+	public PoisonMatango(char suffix){
+		super(suffix);
+	}
+
+	public int getPoisonCount(){
+		return this.poisonCount;
+	}
+	public void setPoisonCount(int poisonCount){
+		this.poisonCount = poisonCount;
+	}
+
+	public void attack(Hero h){
+		super.attack(h);
+		if(this.poisonCount != 0){
+			System.out.println("さらに毒の胞子をばらまいた。");
+			h.setHp(h.getHp() - (h.getHp() / 5));
+			System.out.println(h.getHp() - (h.getHp() / 5) + "のダメージを与えた！");
+			setPoisonCount(this.poisonCount - 1);
+		}
+	}
+
+}
