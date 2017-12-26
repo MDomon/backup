@@ -1,0 +1,16 @@
+
+public class Computer extends TangibleAsset{
+	//フィールド
+	private String marketName;
+
+	//コンストラクタ
+	public Computer(String name,int price,String color,String marketName,double weight){
+		super(name,price,color,weight);
+		this.marketName = marketName;
+	}
+
+	//ゲッター
+	public String marketName(){
+		return this.marketName;
+	}
+}

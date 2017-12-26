@@ -1,0 +1,8 @@
+
+public interface Thing {
+	private double weight;
+
+	public double getWeight(){
+		return this.weight;
+	}
+}
