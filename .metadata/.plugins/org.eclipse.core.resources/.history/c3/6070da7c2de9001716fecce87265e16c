@@ -1,6 +1,0 @@
-
-public class PoisonMatango extends Matango {
-	public PoisonMatango(char suffix){
-		this.suffix = suffix;
-	}
-}

@@ -1,8 +1,0 @@
-
-public class PoisonMatango extends Matango {
-	private int poisonCount = 5;
-
-	public PoisonMatango(char suffix){
-		super(suffix);
-	}
-}
