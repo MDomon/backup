@@ -1,0 +1,5 @@
+package com.internous.template.action;
+
+public class LogoutAction {
+
+}

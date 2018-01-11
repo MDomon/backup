@@ -1,0 +1,5 @@
+package com.internous.template.dao;
+
+public class LoginDAO {
+
+}

@@ -1,0 +1,5 @@
+package com.internous.template.dto;
+
+public class LoginDTO {
+
+}
