@@ -4673,7 +4673,11 @@ org.eclipse.recommenders.utils.Logs$LogTraceException
 
 !ENTRY org.eclipse.wst.server.discovery 1 0 2018-01-16 14:27:17.046
 !MESSAGE cacheFile=file:/C:/pleiades/eclipse/configuration/org.eclipse.wst.server.discovery/serverAdapterSitesDetails.xml
+<<<<<<< HEAD
 !SESSION 2018-01-16 20:09:37.204 -----------------------------------------------
+=======
+!SESSION 2018-01-17 10:04:12.915 -----------------------------------------------
+>>>>>>> 48da3d7661beb3a03a1f4ee1a4ff1c17ff181100
 eclipse.buildId=4.5.2.M20160212-1500
 java.version=1.8.0_74
 java.vendor=Oracle Corporation
@@ -4681,6 +4685,7 @@ BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ja_JP
 Framework arguments:  -product org.eclipse.epp.package.jee.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.jface 2 0 2018-01-16 20:10:55.874
 !MESSAGE キーバインドの競合が発生しました。 通常のアクセラレーター操作を妨げる可能性があります。
 !SUBENTRY 1 org.eclipse.jface 2 0 2018-01-16 20:10:55.874
@@ -4830,10 +4835,25 @@ Caused by: java.lang.NoSuchMethodError: org.eclipse.ui.internal.registry.FileEdi
 !MESSAGE キーバインドの競合が発生しました。 通常のアクセラレーター操作を妨げる可能性があります。
 !SUBENTRY 1 org.eclipse.jface 2 0 2018-01-16 20:34:07.418
 !MESSAGE ALT+CTRL+SPACE の競合が発生しました:
+=======
+!ENTRY org.eclipse.jface 2 0 2018-01-17 10:05:35.609
+!MESSAGE キーバインドの競合が発生しました。 通常のアクセラレーター操作を妨げる可能性があります。
+!SUBENTRY 1 org.eclipse.jface 2 0 2018-01-17 10:05:35.609
+!MESSAGE ALT+CTRL+SPACE の競合が発生しました:
+Binding(ALT+CTRL+SPACE,
+	ParameterizedCommand(Command(AnyEdit.CnvrtTabToSpaces.command,タブをスペースに,
+		,
+		Category(AnyEdit.category,AnyEdit ツール,AnyEdit ツール・キー・バインド,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7db644d5,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.textEditorScope,,,system)
+>>>>>>> 48da3d7661beb3a03a1f4ee1a4ff1c17ff181100
 Binding(ALT+CTRL+SPACE,
 	ParameterizedCommand(Command(org.eclipse.recommenders.snipmatch.rcp.commands.completion,Snipmatch スニペット・コンプリート,
 		Open a dialog to search for and insert code snippets,
 		Category(org.eclipse.jdt.ui.category.source,ソース,Java ソース・アクション,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3ea95c22,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
@@ -4843,10 +4863,14 @@ Binding(ALT+CTRL+SPACE,
 		,
 		Category(AnyEdit.category,AnyEdit ツール,AnyEdit ツール・キー・バインド,true),
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3ccc5fa2,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6ddab96c,
+>>>>>>> 48da3d7661beb3a03a1f4ee1a4ff1c17ff181100
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.textEditorScope,,,system)
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.core.resources 4 568 2018-01-16 20:37:12.726
 !MESSAGE '/RemoteSystemsTempFiles' のメタデータを書き込みできませんでした。
 !STACK 0
@@ -4956,6 +4980,9 @@ Framework arguments:  -product org.eclipse.epp.package.jee.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
 
 !ENTRY org.eclipse.ui 4 0 2018-01-17 10:22:39.386
+=======
+!ENTRY org.eclipse.ui 4 0 2018-01-17 10:05:49.619
+>>>>>>> 48da3d7661beb3a03a1f4ee1a4ff1c17ff181100
 !MESSAGE 未処理のイベント・ループ例外
 !STACK 0
 org.eclipse.swt.SWTException: Failed to execute runnable (java.lang.NoSuchMethodError: org.eclipse.ui.internal.registry.FileEditorMapping.setDefaultEditor(Lorg/eclipse/ui/internal/registry/EditorDescriptor;)V)
@@ -4992,6 +5019,7 @@ Caused by: java.lang.NoSuchMethodError: org.eclipse.ui.internal.registry.FileEdi
 	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
 	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
 	... 23 more
+<<<<<<< HEAD
 
 !ENTRY org.eclipse.ui 2 2 2018-01-17 10:22:42.270
 !MESSAGE Invalid preference category path: org.nodeclipse.enide.gradle.preferences.GradlePreferencePage (bundle: org.nodeclipse.enide.editors.gradle, page: org.nodeclipse.enide.editors.gradle.preferences.GradleEditorPreferencePage)
@@ -6501,3 +6529,5 @@ java.io.FileNotFoundException: C:\Users\Owner\Desktop\WorkPlace\backup\.metadata
 	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2270)
 	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor$4.run(IDEWorkbenchAdvisor.java:453)
 	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+=======
+>>>>>>> 48da3d7661beb3a03a1f4ee1a4ff1c17ff181100
