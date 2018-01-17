@@ -1,4 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="リソース &apos;a&apos; を削除" deleteContents="false" description="リソース &apos;a&apos; を削除" element1="/a" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1516005456175"/>
+<session version="1.0">&#x0A;<refactoring comment="リソース &apos;a&apos; を削除" deleteContents="false" description="リソース &apos;a&apos; を削除" element1="/a" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1516005456175"/>&#x0A;<refactoring comment="リソース &apos;コピー - テンプレート&apos; を削除" deleteContents="false" description="リソース &apos;コピー - テンプレート&apos; を削除" element1="/コピー - テンプレート" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1516154851995"/>
 </session>
