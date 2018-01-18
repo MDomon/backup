@@ -289,3 +289,7 @@
 0:0:0:0:0:0:0:1 - - [17/Jan/2018:14:35:31 +0900] "GET /Warasibe/MoveProfileAction.action HTTP/1.1" 200 1754
 0:0:0:0:0:0:0:1 - - [17/Jan/2018:14:35:35 +0900] "GET /Warasibe/MyPageAction.action HTTP/1.1" 200 1885
 >>>>>>> 48da3d7661beb3a03a1f4ee1a4ff1c17ff181100
+127.0.0.1 - - [17/Jan/2018:16:59:29 +0900] "GET / HTTP/1.1" 404 1019
+0:0:0:0:0:0:0:1 - - [17/Jan/2018:16:59:35 +0900] "GET /template/ HTTP/1.1" 200 1672
+0:0:0:0:0:0:0:1 - - [17/Jan/2018:17:00:48 +0900] "POST /template/HomeAction.action;jsessionid=62C8823E0C3F147DF246D45CCE205D8C HTTP/1.1" 200 2182
+0:0:0:0:0:0:0:1 - - [17/Jan/2018:17:01:26 +0900] "POST /template/LoginAction.action HTTP/1.1" 200 1628
