@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <servers>
+<<<<<<< HEAD
+  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/ローカル・ホスト の Tomcat8 (Java8)-config" deployDir="wtpwebapps" hostname="localhost" id="ローカル・ホスト の Tomcat8 (Java8)" name="ローカル・ホスト の Tomcat8 (Java8)" runtime-id="Tomcat8 (Java8)" server-type="org.eclipse.jst.server.tomcat.80" server-type-id="org.eclipse.jst.server.tomcat.80" start-timeout="45" stop-timeout="15" testEnvironment="true" timestamp="3">
+    <list key="modules" value0="BMI::org.eclipse.jst.jee.server:BMI::jst.web::3.1" value1="HelloServlet::org.eclipse.jst.jee.server:HelloServlet::jst.web::3.1" value2="docoTsubu::org.eclipse.jst.jee.server:docoTsubu::jst.web::3.1" value3="LikeDislike::org.eclipse.jst.jee.server:LikeDislike::jst.web::3.1" value4="Register::org.eclipse.jst.jee.server:Register::jst.web::3.1" value5="solare-master::org.eclipse.jst.jee.server:solare-master::jst.web::3.1" value6="template::org.eclipse.jst.jee.server:template::jst.web::3.1" value7="Warasibe::org.eclipse.jst.jee.server:Warasibe::jst.web::3.1" value8="login::org.eclipse.jst.jee.server:login::jst.web::3.1"/>
+=======
   <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/ローカル・ホスト の Tomcat8 (Java8)-config" deployDir="wtpwebapps" hostname="localhost" id="ローカル・ホスト の Tomcat8 (Java8)" name="ローカル・ホスト の Tomcat8 (Java8)" runtime-id="Tomcat8 (Java8)" server-type="org.eclipse.jst.server.tomcat.80" server-type-id="org.eclipse.jst.server.tomcat.80" start-timeout="45" stop-timeout="15" testEnvironment="true" timestamp="4">
     <list key="modules" value0="login::org.eclipse.jst.jee.server:login::jst.web::3.1" value1="template::org.eclipse.jst.jee.server:template::jst.web::3.1" value2="solare-master::org.eclipse.jst.jee.server:solare-master::jst.web::3.1" value3="Warasibe::org.eclipse.jst.jee.server:Warasibe::jst.web::3.1"/>
+>>>>>>> cf506329e449ed4b0293f1bdd88a3d317065a3b7
   </server>
 </servers>

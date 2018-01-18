@@ -1,0 +1,5 @@
+package com.cashicari.util;
+
+public class DBConnector {
+
+}
