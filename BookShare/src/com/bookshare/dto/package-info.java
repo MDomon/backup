@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author Owner
+ * @author internous
  *
  */
 package com.bookshare.dto;

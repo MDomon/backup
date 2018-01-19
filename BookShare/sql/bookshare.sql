@@ -1,79 +1,43 @@
 drop database if exists bookshare;
-create database bookshare;
 
+create database if not exists bookshare;
 use bookshare;
 
-DROP TABLE if exists commodity;
-CREATE TABLE commodity(
+drop table if exists login_user_transaction;
+
+create table login_user_transaction(
 id int not null primary key auto_increment,
-name varchar(20),
-detail varchar(255),
-category_id int,
-color varchar(20),
-age float,
-height float,
-width float,
-depth float,
-size_unit enum("mm","cm","m"),
-close_trade boolean default false,
-postdate date,
-selldate date,
-sell_user_id int,
-buy_user_id int
+login_id varchar(16) unique,
+login_pass varchar(16),
+user_name varchar(50),
+insert_date datetime,
+updated_date datetime
 );
 
-DROP TABLE if exists account;
-CREATE TABLE account(
+drop table if exists item_info_transaction;
+
+create table item_info_transaction(
 id int not null primary key auto_increment,
-login_id varchar(20),
-login_password varchar(20),
-nickname varchar(20),
-introduce varchar(255),
-mail varchar(255),
-evaluation float DEFAULT 0.0,
-trade_count int default 0
+item_name varchar(30),
+item_price int,
+item_stock int,
+insert_date datetime,
+update_date datetime
 );
 
-DROP TABLE if exists category;
-CREATE TABLE category(
+drop table if exists user_buy_item_transaction;
+
+create table user_buy_item_transaction(
 id int not null primary key auto_increment,
-name varchar(255)
+item_transaction_id int,
+total_price int,
+total_count int,
+user_master_id varchar(16),
+pay varchar(30),
+insert_date datetime,
+delete_date datetime
 );
 
-DROP TABLE if exists wish_info;
-CREATE TABLE wish_info(
-id int not null primary key auto_increment,
-applied_user_id int,
-have_commodity_id int,
-have_user_id int,
-applied_commodity_id int,
-agreement boolean default false
-);
 
-DROP TABLE if exists trade_status;
-CREATE TABLE trade_status(
-id int not null primary key auto_increment,
-wish_info_id int,
-trade_start_date datetime,
-progress enum("交換開始","片方が荷物の到着完了","両方が荷物の到着完了","片方が評価完了","両方が評価完了") default "交換開始",
-FOREIGN KEY (wish_info_id) REFERENCES wish_info(id)
-ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-DROP TABLE if exists arrived;
-CREATE TABLE arrived(
-id int not null primary key auto_increment,
-trade_status_id int,
-arrived_user_id int,
-FOREIGN KEY (trade_status_id) REFERENCES trade_status(id)
-ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-DROP TABLE if exists reviewed;
-CREATE TABLE reviewed(
-id int not null primary key auto_increment,
-trade_status_id int,
-reviewed_user_id int,
-FOREIGN KEY (trade_status_id) REFERENCES trade_status(id)
-ON UPDATE CASCADE ON DELETE CASCADE
-);
+INSERT INTO item_info_transaction(item_name, item_price, item_stock) VALUES("NoteBook", 100, 50);
+INSERT INTO login_user_transaction(login_id, login_pass, user_name) VALUES("internous", "internous01", "test");
