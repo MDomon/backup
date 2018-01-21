@@ -1,0 +1,32 @@
+#catchcopy{
+	float:left;
+	padding-right:30px;
+}
+
+#main{
+	float:left;
+    text-align: center;
+    background-color: #f2f2e5;
+    width:80%;
+    margin:0 auto;
+
+}
+
+#main #top{
+    font-size:30px;
+    padding-top:5px;
+}
+
+#main #top p{
+
+}
+
+table{
+    text-align: center;
+    margin: 0 auto;
+    border-collapse:collapse;
+}
+
+#com{
+     padding:10px;
+}

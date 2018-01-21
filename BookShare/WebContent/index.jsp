@@ -8,7 +8,7 @@
 		<meta charset="utf-8">
 		<meta name="description" content="本の交換フリーマーケットサイトです。" />
 		<meta name="keywords" content="本,古本,中古本,フリマ,フリーマーケット" />
-		<title>BookShareHome</title>
+		<title>ホームページ</title>
 		<link rel="stylesheet" href="./css/normalize.css" >
 		<link rel="stylesheet" href="./css/style.css" >
 	</head>
@@ -27,10 +27,12 @@
 		        </div>
                 <nav class="globalNavi">
                     <ul>
-                        <li class="current"><a href="./index.jsp">ホーム</a></li>
-                        <li class="current"><a href="">マイページ</a></li>
-                        <li class="current"><a href="">ログイン</a></li>
-                        <li class="current"><a href="../contact/index.html">新規会員登録</a></li>
+                        <li class="current"><a href='<s:url action="GoHomeAction" />'>ホーム</a></li>
+                        <li class="current"><a href='<s:url action="MyPageAction" />'>マイページ</a></li>
+                        <li class="current">
+                        	<s:if test="#session.id != null"><a href='<s:url action="LogoutAction" />'>ログアウト</a></s:if>
+							<s:if test="#session.id == null"><a href='<s:url action="GoLoginAction" />'>ログイン</a></s:if></li>
+                        <li class="current"><a href='<s:url action="UserCreateAction" />'>新規会員登録</a></li>
                     </ul>
                 </nav>
             </header>
@@ -59,16 +61,6 @@
 
                             <p>ああ</p>
                         </header>
-
-
-                        <div id="text-center">
-							<s:form action="HomeAction">
-								<s:submit value="商品購入"/>
-							</s:form>
-							<s:if test="#session.id != null">
-								<p>ログアウトする場合は<a href='<s:url action="LogoutAction" />'>こちら</a></p>
-							</s:if>
-						</div>
                     </article>
                 </div>
                 <div id="pageBodySub">

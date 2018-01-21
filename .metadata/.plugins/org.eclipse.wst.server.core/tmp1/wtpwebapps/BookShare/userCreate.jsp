@@ -3,112 +3,76 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="Content-Style-Type" content="text/css" />
-	<meta http-equiv="Content-Script-Type" content="text/javascript" />
-	<meta http-equiv="imagetoolbar" content="no" />
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-	<meta charset="utf-8">
-	<title>UserCreate画面</title>
-	<style type="text/css">
-		/* ========TAG LAYOUT======== */
-		body {
-		   margin:0;
-		   padding:0;
-		   line-height:1.6;
-		   letter-spacing:1px;
-		   font-family:Verdana, Helvetica, sans-serif;
-		   font-size:12px;
-		   color:#333;
-		   background:#fff;
-		}
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="本の交換フリーマーケットサイトです。" />
+		<meta name="keywords" content="本,古本,中古本,フリマ,フリーマーケット" />
+		<title>新規会員登録ページ</title>
+		<link rel="stylesheet" href="./css/normalize.css" >
+		<link rel="stylesheet" href="./css/style.css" >
+        <link rel="stylesheet" href="./css/form.css" >
+	</head>
+    <body>
+        <div id="page">
+            <header id="pageHead">
+                <h1 id="siteTitle">
+                    <img src="images/iconBook.png" alt="" width="90" height="90">BookShare
+                </h1>
+                <p id="catchcopy">本の交換フリーマーケットサイト</p>
+                <br>
+                <div class=border></div>
+            </header>
 
-		table {
-			text-align:center;
-			margin:0 auto;
-		}
 
-		/* ========ID LAYOUT======== */
-		#top {
-		   width:780px;
-		   margin:30px auto;
-		   border:1px solid #333;
-		}
+            <div id="main">
+                <div id="top">
+                    <p>新規会員登録</p>
+                </div>
+                <div>
+                    <s:if test="errorMassage != ''">
+                        <s:property value="errorMassage" escape="false" />
+                    </s:if>
+                    <table>
+                    <s:form action="UserCreateConfirmAction">
+                        <tr>
+                            <td>
+                                <label>ログインID:</label>
+                            </td>
+                            <td>
+                                <input type="text" name="loginUserId" value="" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>ログインPASS:</label>
+                            </td>
+                            <td>
+                                <input type="text" name="loginPassword" value="" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>ユーザー名:</label>
+                            </td>
+                            <td>
+                                <input type="text" name="userName" value="" />
+                            </td>
+                        </tr>
+                        <s:submit value="登録"/>
+                    </s:form>
+                    </table>
+                    <div id="com">
+                        <p>ログインは<a href='<s:url action="GoLoginAction" />'>こちら</a></p>
+						<p>ホームページへ戻る場合は<a href='<s:url action="GoHomeAction" />'>こちら</a></p>
+                    </div>
+                </div>
+            </div>
 
-		#header {
-		   width: 100%;
-		   height: 80px;
-		   background-color: black;
-		}
 
-		#main {
-		   width: 100%;
-		   height: 500px;
-		   text-align: center;
-		}
-
-		#footer {
-			width: 100%;
-			height: 80px;
-			background-color: black;
-			clear:both;
-		}
-	</style>
-</head>
-<body>
-	<div id="header">
-	 	<div id="pr">
-		</div>
-	</div>
-	<div id="main">
-		<div id="top">
-			<p>UserCreate</p>
-		</div>
-		<div>
-			<s:if test="errorMassage != ''">
-				<s:property value="errorMassage" escape="false" />
-			</s:if>
-			<table>
-			<s:form action="UserCreateConfirmAction">
-				<tr>
-					<td>
-						<label>ログインID:</label>
-					</td>
-					<td>
-						<input type="text" name="loginUserId" value="" />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>ログインPASS:</label>
-					</td>
-					<td>
-						<input type="text" name="loginPassword" value="" />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>ユーザー名:</label>
-					</td>
-					<td>
-						<input type="text" name="userName" value="" />
-					</td>
-				</tr>
-				<s:submit value="登録"/>
-			</s:form>
-			</table>
-			<div>
-				<span>前画面に戻る場合は</span><a href='<s:url action="HomeAction" />'>こちら</a>
-			</div>
-		</div>
-	</div>
-		<div id="footer">
-	 	<div id="pr">
-		</div>
-	</div>
-</body>
+            <footer id="pageFoot">
+                <p id="copyright"><small>Copyright&copy; 2018 @BookShare All Rights Reserved.</small></p>
+            </footer>
+        </div>
+	</body>
 </html>
