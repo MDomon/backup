@@ -16,7 +16,8 @@
         <div id="page">
             <header id="pageHead">
                 <h1 id="siteTitle">
-                    <img src="images/iconBook.png" alt="" width="90" height="90">BookShare
+                    <a href='<s:url action="GoHomeAction" />'><img src="images/iconBook.png" alt="" width="90" height="90"></a>
+                    BookShare
                 </h1>
                 <p id="catchcopy">本の交換フリーマーケットサイト</p>
                 <div class="searchContainer">
@@ -25,6 +26,8 @@
                         <s:submit value="検索" class="textSearchSubmit"/>
                     </s:form>
 		        </div>
+		        <br>
+		        <br>
                 <nav class="globalNavi">
                     <ul>
                         <li class="current"><a href='<s:url action="GoHomeAction" />'>ホーム</a></li>
@@ -42,17 +45,12 @@
                     <article class="articleDetail">
                         <div id="main">
                             <section class="articleDetailBody">
-                                <h2 class="heading-typeA">○○さんのマイページ！</h2>
-                                <p>ああ</p>
-                                <p>ああ</p>
-                                <p>ああ</p>
+                                <h2 class="heading-typeA"><s:property value="MyPageDTO.getUserName()"/>さんのマイページ！</h2>
+                                
                             </section>
                         </div>
 
                         <div id="main">
-							<div id="top">
-								<p>MyPage</p>
-							</div>
 							<div>
 							<s:if test="myPageList == null">
 								<h3>ご購入情報はありません。</h3>
@@ -106,13 +104,25 @@
                 </div>
                 <div id="pageBodySub">
                     <section class="newList">
+                    <p><a href='<s:url action="MyPageAction" />'>更新</a></p>
+						<s:form action="TweetAction">
+						<input type="text" name="text">
+						<s:submit value="つぶやく" method="excute"/>
+						</s:form>
+
                         <h2>つぶやき</h2>
-                        <ul>
-                            <li><time datetime="2013-10-01">2013.10.01</time>
-                            ああ</li>
-                            <li><time datetime="2013-10-01">2013.10.01</time>
-                            ああ</li>
-                        </ul>
+                        <div class="mainRightContainer">
+
+							<ul class="list">
+								<s:iterator value="tweetList" status="list">
+									<li class="tweet">
+										<p class="userName"><s:property value="TweetDTO.getTweet_user_name()" /></p>
+										<p class="tweetText"><s:property value="TweetDTO.getTweet()" /></p>
+										<p class="tweetDate"><s:property value="TweetDTO.getTweet_date()" /></p>
+									</li>
+								</s:iterator>
+							</ul>
+						</div>
                     </section>
                 </div>
             </div>

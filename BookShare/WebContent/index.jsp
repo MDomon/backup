@@ -16,7 +16,8 @@
         <div id="page">
             <header id="pageHead">
                 <h1 id="siteTitle">
-                    <img src="images/iconBook.png" alt="" width="90" height="90">BookShare
+                    <a href='<s:url action="GoHomeAction" />'><img src="images/iconBook.png" alt="" width="90" height="90"></a>
+                	BookShare
                 </h1>
                 <p id="catchcopy">本の交換フリーマーケットサイト</p>
                 <div class="searchContainer">
@@ -25,6 +26,8 @@
                         <s:submit value="検索" class="textSearchSubmit"/>
                     </s:form>
 		        </div>
+		        <br>
+		        <br>
                 <nav class="globalNavi">
                     <ul>
                         <li class="current"><a href='<s:url action="GoHomeAction" />'>ホーム</a></li>
@@ -35,9 +38,9 @@
                         <li class="current"><a href='<s:url action="UserCreateAction" />'>新規会員登録</a></li>
                     </ul>
                 </nav>
+                <br>
             </header>
-            <p class="topicPath"><a href="../index.html">ホーム</a> &gt; <a href="index.html">ログイン</a> &gt; ああ</p>
-            <img src="images/library1.jpg" alt="" width="100%" height="390">
+            <div class="image"><img src="images/library1.jpg" alt="" width="100%" height="390"></div>
             <div id="pageBody">
                 <div id="pageBodyMain">
                     <article class="articleDetail">

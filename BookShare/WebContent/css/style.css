@@ -61,8 +61,8 @@ a:active {
 }
 .searchContainer{
     float:right;
-    margin-bottom:20;
 }
+
 
 
 /* グローバルナビ */
@@ -112,6 +112,7 @@ a:active {
 #pageHead .globalNavi ul li.current a{
     background-color:#f2f2e5;
 }
+
 
 
 /*ページフッター*/

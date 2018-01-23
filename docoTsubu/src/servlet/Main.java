@@ -32,6 +32,7 @@ public class Main extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//つぶやきリストをアプリケーションスコープから取得
 		ServletContext application = this.getServletContext();
+		@SuppressWarnings("unchecked")
 		List<Mutter> mutterList = (List<Mutter>) application.getAttribute("mutterList");
 
 		//取得できなかった場合は、つぶやきリストを新規作成して
@@ -68,6 +69,7 @@ public class Main extends HttpServlet {
 		if(text != null && text.length() != 0){
 			//アプリケーションスコープに保存されたつぶやきリストを取得
 			ServletContext application = this.getServletContext();
+			@SuppressWarnings("unchecked")
 			List<Mutter> mutterList = (List<Mutter>) application.getAttribute("mutterList");
 
 			//セッションスコープに保存されたユーザー情報を取得

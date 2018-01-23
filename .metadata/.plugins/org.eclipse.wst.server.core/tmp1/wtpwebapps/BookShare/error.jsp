@@ -16,7 +16,8 @@
         <div id="page">
             <header id="pageHead">
                 <h1 id="siteTitle">
-                    <img src="images/iconBook.png" alt="" width="90" height="90">BookShare
+                    <a href='<s:url action="GoHomeAction" />'><img src="images/iconBook.png" alt="" width="90" height="90"></a>
+                    BookShare
                 </h1>
                 <p id="catchcopy">本の交換フリーマーケットサイト</p>
                 <br>

@@ -4,115 +4,76 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="Content-Style-Type" content="text/css" />
-	<meta http-equiv="Content-Script-Type" content="text/javascript" />
-	<meta http-equiv="imagetoolbar" content="no" />
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-	<meta charset="utf-8">
-	<title>UserCreateConfirm画面</title>
-	<style type="text/css">
-		/* ========TAG LAYOUT======== */
-		body {
-		   margin:0;
-		   padding:0;
-		   line-height:1.6;
-		   letter-spacing:1px;
-		   font-family:Verdana, Helvetica, sans-serif;
-		   font-size:12px;
-		   color:#333;
-		   background:#fff;
-		}
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="本の交換フリーマーケットサイトです。" />
+		<meta name="keywords" content="本,古本,中古本,フリマ,フリーマーケット" />
+		<title>新規会員登録確認ページ</title>
+		<link rel="stylesheet" href="./css/normalize.css" >
+		<link rel="stylesheet" href="./css/style.css" >
+        <link rel="stylesheet" href="./css/form.css" >
+	</head>
+    <body>
+        <div id="page">
+            <header id="pageHead">
+                <h1 id="siteTitle">
+                    <a href='<s:url action="GoHomeAction" />'><img src="images/iconBook.png" alt="" width="90" height="90"></a>
+                    BookShare
+                </h1>
+                <p id="catchcopy">本の交換フリーマーケットサイト</p>
+                <br>
+                <div class=border></div>
+            </header>
 
-		table {
-			text-align:center;
-			margin:0 auto;
-		}
+			<div id="main">
+				<div id="top">
+					<p>登録する内容は以下でよろしいですか。</p>
+				</div>
+				<div>
+					<table>
+						<s:form action="UserCreateCompleteAction">
+							<tr id="box">
+								<td>
+									<label>ログインID:</label>
+								</td>
+								<td>
+									<s:property value="loginUserId" escape="false" />
+								</td>
+							</tr>
+							<tr id="box">
+								<td>
+									<label>ログインPASS:</label>
+								</td>
+								<td>
+									<s:property value="loginPassword" escape="false" />
+								</td>
+							</tr>
+							<tr id="box">
+								<td>
+									<label>ユーザー名:</label>
+								</td>
+								<td>
+									<s:property value="userName" escape="false" />
+								</td>
+							</tr>
+							<tr>
 
-		/* ========ID LAYOUT======== */
-		#top {
-		   width:780px;
-		   margin:30px auto;
-		   border:1px solid #333;
-		}
+									<s:submit value="完了" />
 
-		#header {
-		   width: 100%;
-		   height: 80px;
-		   background-color: black;
-		}
+							</tr>
+						</s:form>
+					</table>
+				</div>
+			</div>
 
-		#main {
-		   width: 100%;
-		   height: 500px;
-		   text-align: center;
-		}
 
-		#box {
-			border: 1px solid #000000;
-		}
-
-		#footer {
-			width: 100%;
-			height: 80px;
-			background-color: black;
-			clear:both;
-		}
-	</style>
-</head>
-<body>
-	<div id="header">
-	 	<div id="pr">
-		</div>
-	</div>
-	<div id="main">
-		<div id="top">
-			<p>UserCreateConfirm</p>
-		</div>
-		<div>
-			<h3>登録する内容は以下でよろしいですか。</h3>
-			<table>
-				<s:form action="UserCreateCompleteAction">
-					<tr id="box">
-						<td>
-							<label>ログインID:</label>
-						</td>
-						<td>
-							<s:property value="loginUserId" escape="false" />
-						</td>
-					</tr>
-					<tr id="box">
-						<td>
-							<label>ログインPASS:</label>
-						</td>
-						<td>
-							<s:property value="loginPassword" escape="false" />
-						</td>
-					</tr>
-					<tr id="box">
-						<td>
-							<label>ユーザー名:</label>
-						</td>
-						<td>
-							<s:property value="userName" escape="false" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<s:submit value="完了" />
-						</td>
-					</tr>
-				</s:form>
-			</table>
-		</div>
-	</div>
-	<div id="footer">
-	 	<div id="pr">
-		</div>
-	</div>
-</body>
+			<footer id="pageFoot">
+                <p id="copyright"><small>Copyright&copy; 2018 @BookShare All Rights Reserved.</small></p>
+            </footer>
+        </div>
+	</body>
 </html>
+
+
+
