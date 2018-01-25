@@ -3,6 +3,8 @@ drop database if exists bookshare;
 create database if not exists bookshare;
 use bookshare;
 
+
+
 drop table if exists user_transaction;
 
 create table user_transaction(
@@ -10,9 +12,38 @@ id int not null primary key auto_increment,
 user_id varchar(16) unique,
 user_pass varchar(16),
 user_name varchar(50),
+user_bookcoin int default 5,
 insert_date datetime,
 updated_date datetime
 );
+
+
+drop table if exists books_transaction;
+
+create table books_transaction(
+id int not null primary key auto_increment,
+books_name varchar(50),
+books_author_name varchar(50),
+books_infomation varchar(255),
+books_master_id varchar(16),
+insert_date datetime,
+updated_date datetime
+);
+
+
+drop table if exists tweet_transaction;
+
+create table tweet_transaction(
+id int not null primary key auto_increment,
+tweet_user_name varchar(50),
+tweet_message varchar(255),
+tweet_master_id varchar(16),
+tweet_date datetime,
+delete_date datetime
+);
+
+
+
 
 drop table if exists item_info_transaction;
 
@@ -38,16 +69,7 @@ insert_date datetime,
 delete_date datetime
 );
 
-drop table if exists tweet_transaction;
 
-create table tweet_transaction(
-id int not null primary key auto_increment,
-tweet_user_id varchar(16),
-tweet_user_name varchar(50),
-tweet varchar(255),
-tweet_date datetime,
-delete_date datetime
-);
 
 
 INSERT INTO item_info_transaction(item_name, item_price, item_stock) VALUES("NoteBook", 100, 50);

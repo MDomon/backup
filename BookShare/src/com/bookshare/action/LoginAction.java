@@ -33,6 +33,9 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	 */
 	private String loginPassword;
 
+
+	private String userName;
+
 	/**
 	 * ログイン情報を格納
 	 */
@@ -98,8 +101,22 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		this.loginPassword = loginPassword;
 	}
 
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	public LoginDTO getLoginDTO(){
+		return loginDTO;
 	}
 }

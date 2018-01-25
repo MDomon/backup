@@ -76,6 +76,11 @@
 			<result name="success">myPage.jsp</result>
 		</action>
 
+		<!-- TweetAction2 -->
+		<action name="TweetAction2" class="com.bookshare.action.TweetAction2" method="execute">
+			<result name="success">myPage.jsp</result>
+		</action>
+
 
 	</package>
 </struts>

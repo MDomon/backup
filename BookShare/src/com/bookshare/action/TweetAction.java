@@ -17,18 +17,20 @@ public class TweetAction extends ActionSupport implements SessionAware {
 
 	private TweetDAO dao = new TweetDAO();
 
-	private String tweet_user_id;
+	private int id;
+	private String tweet_master_id;
 	private String tweet_user_name;
-	private String tweet;
+	private String tweet_message;
 	private Date tweet_date;
 
 
 	public String execute(){
 
 		TweetDTO dto = new TweetDTO();
-		dto.setTweet_user_id(tweet_user_id);
+		dto.setId(id);
+		dto.setTweet_master_id(tweet_master_id);
 		dto.setTweet_user_name(tweet_user_name);
-		dto.setTweet(tweet);
+		dto.setTweet(tweet_message);
 		dto.setTweet_date(new Date());
 
 		try {
@@ -41,12 +43,20 @@ public class TweetAction extends ActionSupport implements SessionAware {
 		return ERROR;
 	}
 
-	public String getTweet_user_id() {
-		return tweet_user_id;
+	public int getId(){
+		return id;
 	}
 
-	public void setTweet_user_id(String tweet_user_id) {
-		this.tweet_user_id = tweet_user_id;
+	public void setId(int id){
+		this.id = id;
+	}
+
+	public String getTweet_master_id() {
+		return tweet_master_id;
+	}
+
+	public void setTweet_master_id(String tweet_master_id) {
+		this.tweet_master_id = tweet_master_id;
 	}
 
 	public String getTweet_user_name() {
@@ -57,12 +67,12 @@ public class TweetAction extends ActionSupport implements SessionAware {
 		this.tweet_user_name = tweet_user_name;
 	}
 
-	public String getTweet() {
-		return tweet;
+	public String getTweet_message() {
+		return tweet_message;
 	}
 
-	public void setTweet(String tweet) {
-		this.tweet = tweet;
+	public void setTweet_message(String tweet_message) {
+		this.tweet_message = tweet_message;
 	}
 
 	public Date getTweet_date() {

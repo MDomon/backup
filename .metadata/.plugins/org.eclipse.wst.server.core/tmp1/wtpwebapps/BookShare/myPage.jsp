@@ -45,8 +45,8 @@
                     <article class="articleDetail">
                         <div id="main">
                             <section class="articleDetailBody">
-                                <h2 class="heading-typeA"><s:property value="MyPageDTO.getUserName()"/>さんのマイページ！</h2>
-                                
+                                <h2 class="heading-typeA"><s:property value="getLoginDTO().getUserName()"/>さんのマイページ！</h2>
+
                             </section>
                         </div>
 
@@ -114,13 +114,15 @@
                         <div class="mainRightContainer">
 
 							<ul class="list">
-								<s:iterator value="tweetList" status="list">
+								<s:action name="TweetAction2">
+								<s:iterator  value="tweetList" status="list">
 									<li class="tweet">
 										<p class="userName"><s:property value="TweetDTO.getTweet_user_name()" /></p>
 										<p class="tweetText"><s:property value="TweetDTO.getTweet()" /></p>
 										<p class="tweetDate"><s:property value="TweetDTO.getTweet_date()" /></p>
 									</li>
 								</s:iterator>
+								</s:action>
 							</ul>
 						</div>
                     </section>
