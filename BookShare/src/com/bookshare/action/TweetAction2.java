@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.bookshare.dao.TweetDAO;
+import com.bookshare.dao.TweetCreateCompleteDAO;
 import com.bookshare.dto.TweetDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -21,7 +21,7 @@ public class TweetAction2  extends ActionSupport implements SessionAware{
 	/**
 	 * つぶやき情報取得DAO
 	 */
-	private TweetDAO tweetDAO = new TweetDAO();
+	private TweetCreateCompleteDAO TweetCreateCompleteDAO = new TweetCreateCompleteDAO();
 
 	/**
 	 * つぶやき情報格納DTO
@@ -50,7 +50,7 @@ public class TweetAction2  extends ActionSupport implements SessionAware{
 		if(deleteFlg == null) {
 			String tweet_master_id = session.get("tweet_master_id").toString();
 
-			tweetList = tweetDAO.getTweetInfo(tweet_master_id);
+			tweetList = TweetCreateCompleteDAO.getTweetInfo(tweet_master_id);
 
 			Iterator<TweetDTO> iterator = tweetList.iterator();
 			if (!(iterator.hasNext())) {
@@ -74,7 +74,7 @@ public class TweetAction2  extends ActionSupport implements SessionAware{
 
 		int id = (int) session.get("id");
 
-		int res = tweetDAO.removeTweet(id);
+		int res = TweetCreateCompleteDAO.removeTweet(id);
 
 		if(res > 0) {
 			tweetList = null;

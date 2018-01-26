@@ -1,0 +1,52 @@
+package com.bookshare.dao;
+
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.bookshare.dto.TweetDTO;
+import com.bookshare.util.DBConnector;
+import com.bookshare.util.DateUtil;
+
+public class TweetCreateCompleteDAO {
+
+	private DBConnector dbConnector = new DBConnector();
+	private Connection connection = dbConnector.getConnection();
+
+	private String sql = "INSERT INTO tweet_transaction(tweet_master_id,tweet_user_name,tweet_message,tweet_date) VALUES(?, ?, ?, ?)";
+
+	public void createTweet(String loginUserId, String loginUserPassword, String userName) throws SQLException {
+
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, loginUserId);
+			preparedStatement.setString(2, loginUserPassword);
+			preparedStatement.setString(3, userName);
+			preparedStatement.setString(4, dateUtil.getDate());
+
+			preparedStatement.execute();
+
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			connection.close();
+		}
+	}
+
+	public void createTweet(String tweet_master_id, String tweet_user_name, String tweet_message, Date tweet_date) throws SQLException{
+		String sql = "INSERT INTO tweet_transaction(tweet_master_id,tweet_user_name,tweet_message,tweet_date) VALUES(?, ?, ?, ?)";
+
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setString(1, dto.getTweet_master_id());
+		statement.setString(2, dto.getTweet_user_name());
+		statement.setString(3, dto.getTweet_message());
+		statement.setDate(4, new java.sql.Date(dto.getTweet_date().getTime()));
+
+		statement.executeUpdate();
+	}
+
+
+
+
+}

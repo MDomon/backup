@@ -45,7 +45,7 @@
                     <article class="articleDetail">
                         <div id="main">
                             <section class="articleDetailBody">
-                                <h2 class="heading-typeA"><s:property value="getLoginDTO().getUserName()"/>さんのマイページ！</h2>
+                                <h2 class="heading-typeA"><s:property value="#session.userName"/>さんのマイページ！</h2>
 
                             </section>
                         </div>
@@ -105,8 +105,8 @@
                 <div id="pageBodySub">
                     <section class="newList">
                     <p><a href='<s:url action="MyPageAction" />'>更新</a></p>
-						<s:form action="TweetAction">
-						<input type="text" name="text">
+						<s:form action="TweetCreateAction">
+						<input type="text" name="tweet_message" value="">
 						<s:submit value="つぶやく" method="excute"/>
 						</s:form>
 
@@ -118,7 +118,7 @@
 								<s:iterator  value="tweetList" status="list">
 									<li class="tweet">
 										<p class="userName"><s:property value="TweetDTO.getTweet_user_name()" /></p>
-										<p class="tweetText"><s:property value="TweetDTO.getTweet()" /></p>
+										<p class="tweetMessage"><s:property value="TweetDTO.getTweet_message()" /></p>
 										<p class="tweetDate"><s:property value="TweetDTO.getTweet_date()" /></p>
 									</li>
 								</s:iterator>

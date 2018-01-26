@@ -13,6 +13,20 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class MyPageAction extends ActionSupport implements SessionAware{
 
+
+	/**
+	 * ログインID
+	 */
+	private String loginUserId;
+
+	/**
+	 * ログインパスワード
+	 */
+	private String loginPassword;
+
+
+	private String userName;
+
 	/**
 	 * ログイン情報を格納
 	 */
@@ -86,6 +100,31 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 		}
 	}
 
+
+	public String getLoginUserId() {
+		return loginUserId;
+	}
+
+	public void setLoginUserId(String loginUserId) {
+		this.loginUserId = loginUserId;
+	}
+
+	public String getLoginPassword() {
+		return loginPassword;
+	}
+
+	public void setLoginPassword(String loginPassword) {
+		this.loginPassword = loginPassword;
+	}
+
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
 
 	public String getDeleteFlg() {
