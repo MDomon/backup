@@ -11,7 +11,7 @@ create table user_transaction(
 id int not null primary key auto_increment,
 user_id varchar(16) unique,
 user_pass varchar(16),
-user_name varchar(50)unique,
+user_name varchar(50),
 user_bookcoin int default 5,
 insert_date datetime,
 updated_date datetime

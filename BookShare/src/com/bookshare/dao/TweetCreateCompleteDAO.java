@@ -29,7 +29,7 @@ public class TweetCreateCompleteDAO {
 
 			preparedStatement.execute();
 
-		} catch(Exception e) {
+		} catch(Exception e){
 			e.printStackTrace();
 		} finally {
 			connection.close();

@@ -24,8 +24,11 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	 */
 	private String loginPassword;
 
-
+	/*ユーザー名*/
 	private String userName;
+
+	/*コイン数*/
+	private int bookcoin;
 
 	/**
 	 * ログイン情報を格納
@@ -54,7 +57,7 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	 *
 	 * @author internous
 	 */
-	public String execute() throws SQLException {
+	public String executeA() throws SQLException {
 
 		if (!session.containsKey("id")) {
 			return ERROR;
@@ -101,6 +104,16 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	}
 
 
+
+
+
+
+
+
+
+
+
+
 	public String getLoginUserId() {
 		return loginUserId;
 	}
@@ -124,6 +137,14 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public int getBookcoin() {
+		return bookcoin;
+	}
+
+	public void setBookcoin(int bookcoin) {
+		this.bookcoin = bookcoin;
 	}
 
 

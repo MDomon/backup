@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.bookshare.dao.UserCreateConfirmDAO;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -28,9 +29,20 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 		String result = SUCCESS;
 
 		if(!(loginUserId.equals("")) && !(loginPassword.equals("")) && !(userName.equals(""))) {
-			session.put("loginUserId", loginUserId);
-			session.put("loginPassword", loginPassword);
-			session.put("userName", userName);
+
+			UserCreateConfirmDAO userCreateConfirmDAO = new UserCreateConfirmDAO();
+			boolean checkId = userCreateConfirmDAO.getUserInfo(loginUserId);
+
+			if(checkId){
+				session.put("loginUserId", loginUserId);
+				session.put("loginPassword", loginPassword);
+				session.put("userName", userName);
+			}else{
+				setErrorMassage("このIDは既に登録されています。");
+				result = ERROR;
+			}
+
+
 		} else {
 
 			setErrorMassage("未入力の項目があります。");

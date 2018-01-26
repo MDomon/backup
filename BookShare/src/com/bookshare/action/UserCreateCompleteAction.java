@@ -16,6 +16,8 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 
 	private String userName;
 
+	private int bookcoin;
+
 	public Map<String,Object> session;
 
 	private UserCreateCompleteDAO userCreateCompleteDAO = new UserCreateCompleteDAO();
@@ -53,6 +55,14 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public int getBookcoin(){
+		return bookcoin;
+	}
+
+	public void setBookcoin(int bookcoin){
+		this.bookcoin = bookcoin;
 	}
 
 	@Override
