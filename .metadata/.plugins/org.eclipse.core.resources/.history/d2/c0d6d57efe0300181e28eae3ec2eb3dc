@@ -1,0 +1,102 @@
+package com.bookshare.action;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.bookshare.dao.HomePageDAO;
+import com.bookshare.dto.BuyItemDTO;
+import com.bookshare.dto.TweetDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class GoHomeAction extends ActionSupport implements SessionAware {
+
+
+
+	/**
+	 * ログイン情報を格納
+	 */
+	public Map<String, Object> session;
+
+
+	private List<BuyItemDTO> buyItemDTOList;
+
+
+	/**
+	 * 商品履歴取得メソッド
+	 *
+	 * @author internous
+	 */
+
+	public String execute() throws SQLException {
+		@SuppressWarnings("unchecked")
+		List<BuyItemDTO> buyItemDTOList=(List<BuyItemDTO>) session.get("list");
+		if (!session.containsKey("id")) {
+			return ERROR;
+		}
+
+		// 商品履歴を削除しない場合
+		if(deleteFlg == null) {
+
+			if(buyItemDTOList != null){
+			for(int i=0; i<buyItemDTOList.size(); i++){
+
+			String user_master_id = session.get("login_user_id").toString();
+
+			MyPageDAO myPageDAO = new MyPageDAO();
+
+
+			myPageList= myPageDAO.getMyPageUserInfo(user_master_id);
+
+			}
+
+
+			}else{
+				String user_master_id = session.get("login_user_id").toString();
+				MyPageDAO myPageDAO = new MyPageDAO();
+				myPageList = myPageDAO.getMyPageUserInfo(user_master_id);
+			}
+
+
+
+			Iterator<MyPageDTO> iterator = myPageList.iterator();
+			if (!(iterator.hasNext())) {
+				myPageList = null;
+			}
+		// 商品履歴を削除する場合
+		} else{
+			delete();
+		}
+
+		String result = SUCCESS;
+		return result;
+	}
+
+
+
+
+
+
+	public List<BuyItemDTO> getBuyItemDTOList(){
+		return buyItemDTOList;
+	}
+	public void setBuyItemDTOList(List<BuyItemDTO> buyItemDTOList){
+		this.buyItemDTOList=buyItemDTOList;
+	}
+
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
+
+}
+
+
+
+
+

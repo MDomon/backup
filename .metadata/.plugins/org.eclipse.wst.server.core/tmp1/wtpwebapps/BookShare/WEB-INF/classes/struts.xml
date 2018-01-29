@@ -68,16 +68,11 @@
 
 		<!-- LogoutAction -->
 		<action name="LogoutAction" class="com.bookshare.action.LogoutAction" method="execute">
-			<result name="success">index.jsp</result>
+			<result name="success">logout.jsp</result>
 		</action>
 
 		<!-- TweetAction -->
 		<action name="TweetCreateAction" class="com.bookshare.action.TweetCreateAction" method="execute">
-			<result name="success">myPage.jsp</result>
-		</action>
-
-		<!-- TweetAction2 -->
-		<action name="TweetAction2" class="com.bookshare.action.TweetAction2" method="execute">
 			<result name="success">myPage.jsp</result>
 		</action>
 

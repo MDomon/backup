@@ -36,6 +36,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 
 	private String userName;
 
+
 	/**
 	 * ログイン情報を格納
 	 */
@@ -68,7 +69,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 
 		session.put("loginUser", loginDTO);
 		session.put("userName", loginDTO.getUserName());
-		session.put("loginId",loginDTO.getLoginId());
+		session.put("masterId",loginDTO.getId());
 
 		// ログイン情報を比較
 		if(((LoginDTO) session.get("loginUser")).getLoginFlg()) {
@@ -94,6 +95,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	public void setLoginUserId(String loginUserId) {
 		this.loginUserId = loginUserId;
 	}
+
 
 	public String getLoginPassword() {
 		return loginPassword;

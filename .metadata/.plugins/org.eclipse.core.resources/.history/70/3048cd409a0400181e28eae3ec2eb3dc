@@ -1,0 +1,105 @@
+package com.bookshare.action;
+
+
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.bookshare.dao.TweetCreateCompleteDAO;
+import com.bookshare.dto.TweetDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class TweetCreateAction extends ActionSupport implements SessionAware {
+
+	public Map<String, Object> session;
+
+	private TweetCreateCompleteDAO dao = new TweetCreateCompleteDAO();
+
+	private int id;
+	private int tweet_master_id;
+	private String tweet_user_name;
+	private String tweet_message;
+	private Date tweet_date;
+
+
+	public String execute(){
+
+
+		TweetDTO dto = new TweetDTO();
+		dto.setTweet_master_id((int) session.get("masterId"));
+		dto.setTweet_user_name(session.get("userName").toString());
+		dto.setTweet(tweet_message);
+		dto.setTweet_date(new Date());
+
+		session.put("tweet_id", dto.getId());
+		session.put("tweet_user_name", dto.getTweet_user_name());
+		session.put("tweet_message",dto.getTweet_message());
+		session.put("tweet_date",dto.getTweet_date());
+
+
+		try {
+			dao.createTweet(dto);
+			return SUCCESS;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return ERROR;
+	}
+
+
+
+	public int getId(){
+		return id;
+	}
+
+	public void setId(int id){
+		this.id = id;
+	}
+
+	public int getTweet_master_id() {
+		return tweet_master_id;
+	}
+
+	public void setTweet_master_id(int tweet_master_id) {
+		this.tweet_master_id = tweet_master_id;
+	}
+
+	public String getTweet_user_name() {
+		return tweet_user_name;
+	}
+
+	public void setTweet_user_name(String tweet_user_name) {
+		this.tweet_user_name = tweet_user_name;
+	}
+
+	public String getTweet_message() {
+		return tweet_message;
+	}
+
+	public void setTweet_message(String tweet_message) {
+		this.tweet_message = tweet_message;
+	}
+
+	public Date getTweet_date() {
+		return tweet_date;
+	}
+
+	public void setTweet_date(Date tweet_date) {
+		this.tweet_date = tweet_date;
+	}
+
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+
+}
+

@@ -30,6 +30,8 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	 */
 	public ArrayList<MyPageDTO> myPageList = new ArrayList<MyPageDTO>();
 
+
+
 	/**
 	 * 削除フラグ
 	 */

@@ -34,6 +34,7 @@ public class LoginDAO {
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 			if(resultSet.next()) {
+				loginDTO.setId(resultSet.getInt("id"));
 				loginDTO.setLoginId(resultSet.getString("user_id"));
 				loginDTO.setLoginPassword(resultSet.getString("user_pass"));
 				loginDTO.setUserName(resultSet.getString("user_name"));

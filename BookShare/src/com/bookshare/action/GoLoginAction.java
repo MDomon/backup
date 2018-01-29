@@ -4,8 +4,6 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.bookshare.dao.BuyItemDAO;
-import com.bookshare.dto.BuyItemDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class GoLoginAction extends ActionSupport implements SessionAware {
@@ -21,17 +19,11 @@ public class GoLoginAction extends ActionSupport implements SessionAware {
 	public String execute() {
 		String result = "login";
 		if (session.containsKey("id")) {
-			// アイテム情報を取得
-			BuyItemDAO buyItemDAO = new BuyItemDAO();
-			BuyItemDTO buyItemDTO = buyItemDAO.getBuyItemInfo();
-			session.put("id", buyItemDTO.getId());
-			session.put("buyItem_name", buyItemDTO.getItemName());
-			session.put("buyItem_price", buyItemDTO.getItemPrice());
-
 			result = SUCCESS;
 		}
 		return result;
 	}
+
 
 	@Override
 	public void setSession(Map<String, Object> session){

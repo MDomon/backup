@@ -111,20 +111,26 @@
 						</s:form>
 
                         <h2>つぶやき</h2>
-                        <div class="mainRightContainer">
-
-							<ul class="list">
-								<s:action name="TweetAction2">
-								<s:iterator  value="tweetList" status="list">
-									<li class="tweet">
-										<p class="userName"><s:property value="TweetDTO.getTweet_user_name()" /></p>
-										<p class="tweetMessage"><s:property value="TweetDTO.getTweet_message()" /></p>
-										<p class="tweetDate"><s:property value="TweetDTO.getTweet_date()" /></p>
-									</li>
+                        <s:if test="tweetList == null">
+							</s:if>
+							<s:elseif test="message == null">
+								<table border="1">
+								<tr>
+									<th>NO.</th>
+									<th>ユーザー名</th>
+									<th>テキスト</th>
+									<th>投稿日</th>
+								</tr>
+								<s:iterator value="tweetList">
+									<tr>
+										<td><s:property value="tweet_id" /></td>
+										<td><s:property value="tweet_user_name" /></td>
+										<td><s:property value="tweet_message" /></td>
+										<td><s:property value="tweet_date" /></td>
+									</tr>
 								</s:iterator>
-								</s:action>
-							</ul>
-						</div>
+								</table>
+							</s:elseif>
                     </section>
                 </div>
             </div>
