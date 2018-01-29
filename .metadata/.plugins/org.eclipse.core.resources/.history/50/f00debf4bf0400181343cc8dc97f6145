@@ -1,0 +1,237 @@
+package com.bookshare.action;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.bookshare.dao.MyPageDAO;
+import com.bookshare.dto.MyPageDTO;
+import com.bookshare.dto.TweetDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class MyPageAction extends ActionSupport implements SessionAware{
+
+
+	/**
+	 * ログインID
+	 */
+	private String loginUserId;
+
+	/**
+	 * ログインパスワード
+	 */
+	private String loginPassword;
+
+	/*ユーザー名*/
+	private String userName;
+
+	/*コイン数*/
+	private int bookcoin;
+
+	/**
+	 * ログイン情報を格納
+	 */
+	public Map<String, Object> session;
+
+	/**
+	 * マイページ情報取得DAO
+	 */
+	private MyPageDAO myPageDAO = new MyPageDAO();
+
+	/**
+	 * マイページ情報格納DTO
+	 */
+	public ArrayList<MyPageDTO> myPageList = new ArrayList<MyPageDTO>();
+
+
+	//マイツイート情報取得DTO
+	private MyPageDAO myTweetDAO = new MyPageDAO();
+
+	/**
+	 * ツイート情報格納DTO
+	 */
+	public ArrayList<TweetDTO> tweetList = new ArrayList<TweetDTO>();
+
+	/**
+	 * 削除フラグ
+	 */
+	private String deleteFlg;
+
+	private String message;
+
+
+	/**
+	 * 削除フラグ
+	 */
+	private String deleteTweet;
+
+	private String message2;
+
+	/**
+	 * 商品履歴取得メソッド
+	 *
+	 * @author internous
+	 */
+	public String execute() throws SQLException {
+
+		if (!session.containsKey("id")) {
+			return ERROR;
+		}
+
+		// 商品履歴を削除しない場合
+		if(deleteFlg == null) {
+			String item_transaction_id = session.get("id").toString();
+			String user_master_id = session.get("user_id").toString();
+
+			myPageList = myPageDAO.getMyPageUserInfo(item_transaction_id, user_master_id);
+
+			Iterator<MyPageDTO> iterator = myPageList.iterator();
+			if (!(iterator.hasNext())) {
+				myPageList = null;
+			}
+		// 商品履歴を削除する場合
+		} else if(deleteFlg.equals("1")) {
+			delete();
+		}
+
+
+		/**
+		 * ツイート履歴取得メソッド
+		 *
+		 * @author internous
+		 */
+		// 商品履歴を削除しない場合
+			if(deleteTweet == null) {
+				int tweet_master_id = (int)session.get("masterId");
+				tweetList = myTweetDAO.getTweetInfo(tweet_master_id);
+
+				Iterator<TweetDTO> iterator = tweetList.iterator();
+				if (!(iterator.hasNext())) {
+					tweetList = null;
+					}
+
+			// 商品履歴を削除する場合
+			} else if(deleteTweet.equals("1")) {
+				 remove();
+			}
+
+
+		String result = SUCCESS;
+		return result;
+	}
+
+	/**
+	 * 商品履歴削除
+	 *
+	 * @throws SQLException
+	 */
+	public void delete() throws SQLException {
+
+		String item_transaction_id = session.get("id").toString();
+		String user_master_id = session.get("user_id").toString();
+
+		int res = myPageDAO.buyItemHistoryDelete(item_transaction_id, user_master_id);
+
+		if(res > 0) {
+			myPageList = null;
+			setMessage("商品情報を正しく削除しました。");
+		} else if(res == 0) {
+			setMessage("商品情報の削除に失敗しました。");
+		}
+	}
+
+	/**
+	 * ツイート履歴削除
+	 *
+	 * @throws SQLException
+	 */
+	public void remove() throws SQLException {
+
+		int tweet_master_id = (int)session.get("masterId");
+
+		int res2 = myPageDAO.removeTweet(tweet_master_id);
+
+		if(res2 > 0) {
+			tweetList = null;
+			setMessage2("ツイート情報を削除しました。");
+		} else if(res2 == 0) {
+			setMessage2("ツイート情報の削除に失敗しました。");
+		}
+	}
+
+
+	public String getLoginUserId() {
+		return loginUserId;
+	}
+
+	public void setLoginUserId(String loginUserId) {
+		this.loginUserId = loginUserId;
+	}
+
+	public String getLoginPassword() {
+		return loginPassword;
+	}
+
+	public void setLoginPassword(String loginPassword) {
+		this.loginPassword = loginPassword;
+	}
+
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public int getBookcoin() {
+		return bookcoin;
+	}
+
+	public void setBookcoin(int bookcoin) {
+		this.bookcoin = bookcoin;
+	}
+
+
+	public String getDeleteFlg() {
+		return deleteFlg;
+	}
+
+	public void setDeleteFlg(String deleteFlg) {
+		this.deleteFlg = deleteFlg;
+	}
+
+	public String getDeleteTweet() {
+		return deleteTweet;
+	}
+
+	public void setDeleteTweet(String deleteTweet) {
+		this.deleteTweet = deleteTweet;
+	}
+
+
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public String getMessage2() {
+		return message2;
+	}
+
+	public void setMessage2(String message2) {
+		this.message2 = message2;
+	}
+}

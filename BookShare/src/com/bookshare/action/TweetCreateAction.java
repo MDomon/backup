@@ -28,9 +28,10 @@ public class TweetCreateAction extends ActionSupport implements SessionAware {
 
 
 		TweetDTO dto = new TweetDTO();
+		dto.setTweet_id(tweet_id);
 		dto.setTweet_master_id((int) session.get("masterId"));
 		dto.setTweet_user_name(session.get("userName").toString());
-		dto.setTweet(tweet_message);
+		dto.setTweet_message(tweet_message);
 		dto.setTweet_date(new Date());
 
 		session.put("tweet_id", dto.getTweet_id());

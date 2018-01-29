@@ -68,27 +68,21 @@
                 </div>
                 <div id="pageBodySub">
                     <section class="tweetList">
-                        <h2>つぶやき</h2>
-							<s:if test="tweetList == null">
-							</s:if>
-							<s:elseif test="message == null">
+                        <h2>みんなのつぶやき</h2>
 								<table border="1">
 								<tr>
-									<th>NO.</th>
 									<th>ユーザー名</th>
-									<th>テキスト</th>
+									<th>つぶやき</th>
 									<th>投稿日</th>
 								</tr>
 								<s:iterator value="tweetList">
 									<tr>
-										<td><s:property value="tweet_id" /></td>
 										<td><s:property value="tweet_user_name" /></td>
 										<td><s:property value="tweet_message" /></td>
 										<td><s:property value="tweet_date" /></td>
 									</tr>
 								</s:iterator>
 								</table>
-							</s:elseif>
                     </section>
                 </div>
             </div>

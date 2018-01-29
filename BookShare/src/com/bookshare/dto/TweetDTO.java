@@ -39,7 +39,7 @@ public class TweetDTO {
 		return tweet_message;
 	}
 
-	public void setTweet(String tweet_message) {
+	public void setTweet_message(String tweet_message) {
 		this.tweet_message = tweet_message;
 	}
 

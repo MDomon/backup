@@ -1,0 +1,9 @@
+package com.bookshare.dto;
+
+public class MyAccountDTO {
+
+	private String userName;
+	private int bookcoin;
+
+
+}

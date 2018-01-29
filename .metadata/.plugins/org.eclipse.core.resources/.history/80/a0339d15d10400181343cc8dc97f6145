@@ -1,0 +1,32 @@
+package com.bookshare.dto;
+
+public class MyAccountDTO {
+
+	private String userName;
+	private int givebook;
+	private int takebook;
+	private int bookcoin;
+
+	public String getUserName(){
+		return userName;
+	}
+	public void setUserName(String userName){
+		this.userName = userName;
+	}
+
+	public int getGivebook(){
+		return givebook;
+	}
+	public void setGivebook(int givebook){
+		this.givebook = givebook;
+	}
+
+	public int getTakebook(){
+		return takebook;
+	}
+	public void setTakebook(int takebook){
+		this.takebook = takebook;
+	}
+
+
+}

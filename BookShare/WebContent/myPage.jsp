@@ -110,27 +110,28 @@
 						<s:submit value="つぶやく" method="excute"/>
 						</s:form>
 
-                        <h2>つぶやき</h2>
-                        <s:if test="tweetList == null">
-							</s:if>
-							<s:elseif test="message == null">
+                        <h2><s:property value="#session.userName"/>さんのつぶやき</h2>
 								<table border="1">
 								<tr>
-									<th>NO.</th>
-									<th>ユーザー名</th>
-									<th>テキスト</th>
+									<th>つぶやき</th>
 									<th>投稿日</th>
+									<th>削除</th>
 								</tr>
 								<s:iterator value="tweetList">
 									<tr>
-										<td><s:property value="tweet_id" /></td>
-										<td><s:property value="tweet_user_name" /></td>
 										<td><s:property value="tweet_message" /></td>
 										<td><s:property value="tweet_date" /></td>
+										<td><s:form action="MyPageAction">
+											<input type="hidden" name="deleteTweet" value="1">
+											<s:submit value="削除" method="remove" />
+											</s:form></td>
 									</tr>
 								</s:iterator>
+
+							<s:if test="message2 != null">
+								<h3><s:property value="message2"/></h3>
+							</s:if>
 								</table>
-							</s:elseif>
                     </section>
                 </div>
             </div>

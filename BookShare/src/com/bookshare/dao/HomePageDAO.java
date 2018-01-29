@@ -32,7 +32,7 @@ public class HomePageDAO {
 				dto.setTweet_id(resultSet.getInt("id"));
 				dto.setTweet_master_id(resultSet.getInt("tweet_master_id"));
 				dto.setTweet_user_name(resultSet.getString("tweet_user_name"));
-				dto.setTweet(resultSet.getString("tweet_message"));
+				dto.setTweet_message(resultSet.getString("tweet_message"));
 				dto.setTweet_date(resultSet.getDate("tweet_date"));
 
 				tweetList.add(dto);
