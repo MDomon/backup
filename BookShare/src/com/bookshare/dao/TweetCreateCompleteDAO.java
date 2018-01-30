@@ -26,7 +26,7 @@ public class TweetCreateCompleteDAO {
 			preparedStatement.setString(2, dto.getTweet_user_name());
 			preparedStatement.setString(3, dto.getTweet_message());
 			preparedStatement.setString(4, dateUtil.getDate());
-			
+
 
 			preparedStatement.execute();
 

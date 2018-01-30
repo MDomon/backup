@@ -53,7 +53,7 @@
                     </table>
 			<div id="com">
 				<p>新規会員登録は<a href='<s:url action="UserCreateAction" />'>こちら</a></p>
-				<p>ホームページへ戻る場合は<a href='<s:url action="GoHomeAction" />'>こちら</a></p>
+				<p>ホームページは<a href='<s:url action="GoHomeAction" />'>こちら</a></p>
 			</div>
 		</div>
 	</div>

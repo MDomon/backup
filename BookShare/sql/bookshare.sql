@@ -18,15 +18,15 @@ updated_date datetime
 );
 
 
-drop table if exists books_transaction;
+drop table if exists book_transaction;
 
-create table books_transaction(
+create table book_transaction(
 id int not null primary key auto_increment,
-books_name varchar(50),
-books_author_name varchar(50),
-books_infomation varchar(255),
-books_master_id varchar(16),
-insert_date datetime,
+book_name varchar(50),
+book_author_name varchar(50),
+book_infomation varchar(255),
+book_master_id int,
+book_date datetime,
 updated_date datetime
 );
 
@@ -37,7 +37,7 @@ create table tweet_transaction(
 id int not null primary key auto_increment,
 tweet_user_name varchar(50),
 tweet_message varchar(255),
-tweet_master_id varchar(16),
+tweet_master_id int,
 tweet_date datetime,
 delete_date datetime
 );

@@ -86,6 +86,8 @@
 							</div>
 						</div>
 
+						<div><a href='<s:url action="BookCreateAction" />'>Book登録</a></div>
+
 
                         <header class="articleDetailHead">
                             <h1 class="pageTitle">新着一覧</h1>
@@ -105,9 +107,9 @@
                 <div id="pageBodySub">
                     <section class="newList">
                     <p><a href='<s:url action="MyPageAction" />'>更新</a></p>
-						<s:form action="TweetCreateAction">
+						<s:form action="TweetCreateConfirmAction">
 						<input type="text" name="tweet_message" value="">
-						<s:submit value="つぶやく" method="excute"/>
+						<s:submit value="つぶやく"/>
 						</s:form>
 
                         <h2><s:property value="#session.userName"/>さんのつぶやき</h2>

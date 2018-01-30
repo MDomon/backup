@@ -29,14 +29,9 @@
 				<div id="top">
 					<p>ログアウトが完了致しました。</p>
 				</div>
-				<div><br>
-
-					<div>
-						<a href='<s:url action="GoLoginAction" />'>ログインへ</a>
-						<br>
-						<a href='<s:url action="GoHomeAction" />'>ホームへ</a>
-					</div>
-					<br>
+				<div id="com">
+					<p>ログインページは<a href='<s:url action="GoLoginAction" />'>こちら</a></p>
+					<p>ホームページは<a href='<s:url action="GoHomeAction" />'>こちら</a></p>
 				</div>
 			</div>
 

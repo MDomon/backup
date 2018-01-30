@@ -29,11 +29,10 @@
 				<div id="top">
 					<p>ユーザーの登録が完了致しました。</p>
 				</div>
-				<div><br>
-
-					<div>
-						<a href='<s:url action="GoLoginAction" />'>ログインへ</a>
-					</div>
+				<div>
+				<div id="com">
+						<p>ログインは<a href='<s:url action="GoLoginAction" />'>こちら</a></p>
+                    </div>
 					<br>
 				</div>
 			</div>

@@ -71,10 +71,34 @@
 			<result name="success">logout.jsp</result>
 		</action>
 
-		<!-- TweetAction -->
+		<!-- TweetCreateAction -->
 		<action name="TweetCreateAction" class="com.bookshare.action.TweetCreateAction" method="execute">
-			<result name="success">myPage.jsp</result>
+			<result name="success">tweetCreateComplete.jsp</result>
 		</action>
+
+		<!-- TweetCreateConfirmAction -->
+		<action name="TweetCreateConfirmAction" class="com.bookshare.action.TweetCreateConfirmAction" method="execute">
+			<result name="success">tweetCreateConfirm.jsp</result>
+			<result name="error">myPage.jsp</result>
+		</action>
+
+		<!-- BookCreateAction -->
+		<action name="BookCreateAction" class="com.bookshare.action.BookCreateAction" method="execute">
+			<result name="success">bookCreate.jsp</result>
+			<result name="back">myPage.jsp</result>
+		</action>
+
+		<!-- BookCreateConfirmAction -->
+		<action name="BookCreateConfirmAction" class="com.bookshare.action.BookCreateConfirmAction" method="execute">
+			<result name="success">bookCreateConfirm.jsp</result>
+			<result name="error">bookCreate.jsp</result>
+		</action>
+
+		<!-- BookCreateCompleteAction -->
+		<action name="BookCreateCompleteAction" class="com.bookshare.action.BookCreateCompleteAction" method="execute">
+			<result name="success">bookCreateComplete.jsp</result>
+		</action>
+
 
 
 	</package>

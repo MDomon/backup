@@ -31,8 +31,8 @@
                     <p>新規会員登録</p>
                 </div>
                 <div>
-                    <s:if test="errorMassage != ''">
-                        <s:property value="errorMassage" escape="false" />
+                    <s:if test="errorMessage != ''">
+                        <s:property value="errorMessage" escape="false" />
                     </s:if>
                     <table>
                     <s:form action="UserCreateConfirmAction">
@@ -64,8 +64,8 @@
                     </s:form>
                     </table>
                     <div id="com">
-                        <p>ログインは<a href='<s:url action="GoLoginAction" />'>こちら</a></p>
-						<p>ホームページへ戻る場合は<a href='<s:url action="GoHomeAction" />'>こちら</a></p>
+						<p>ログインは<a href='<s:url action="GoLoginAction" />'>こちら</a></p>
+						<p>ホームページは<a href='<s:url action="GoHomeAction" />'>こちら</a></p>
                     </div>
                 </div>
             </div>
