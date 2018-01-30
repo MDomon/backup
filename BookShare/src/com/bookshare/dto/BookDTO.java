@@ -6,6 +6,7 @@ public class BookDTO {
 
 	private int book_id;
 	private int book_master_id;
+	private String book_user_name;
 	private String book_name;
 	private String book_author_name;
 	private String book_infomation;
@@ -30,6 +31,13 @@ public class BookDTO {
 	}
 	public void setBook_name(String book_name){
 		this.book_name = book_name;
+	}
+
+	public String getBook_user_name(){
+		return book_user_name;
+	}
+	public void setBook_user_name(String book_user_name){
+		this.book_user_name = book_user_name;
 	}
 
 	public String getBook_author_name(){

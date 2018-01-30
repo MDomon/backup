@@ -18,6 +18,7 @@ public class BookCreateCompleteAction extends ActionSupport implements SessionAw
 
 	private int book_id;
 	private int book_master_id;
+	private String book_user_name;
 	private String book_name;
 	private String book_author_name;
 	private String book_infomation;
@@ -29,6 +30,7 @@ public class BookCreateCompleteAction extends ActionSupport implements SessionAw
 		BookDTO dto = new BookDTO();
 		dto.setBook_id(book_id);
 		dto.setBook_master_id((int) session.get("masterId"));
+		dto.setBook_user_name(session.get("userName").toString());
 		dto.setBook_name(session.get("book_name").toString());
 		dto.setBook_author_name(session.get("book_author_name").toString());
 		dto.setBook_infomation(session.get("book_infomation").toString());
@@ -69,6 +71,13 @@ public class BookCreateCompleteAction extends ActionSupport implements SessionAw
 	}
 	public void setBook_name(String book_name){
 		this.book_name = book_name;
+	}
+
+	public String getBook_user_name(){
+		return book_user_name;
+	}
+	public void setBook_user_name(String book_user_name){
+		this.book_user_name = book_user_name;
 	}
 
 	public String getBook_author_name(){

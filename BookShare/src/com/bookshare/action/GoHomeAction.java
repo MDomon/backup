@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.bookshare.dao.HomePageDAO;
+import com.bookshare.dto.BookDTO;
 import com.bookshare.dto.TweetDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -33,13 +34,24 @@ public class GoHomeAction extends ActionSupport implements SessionAware {
 
 
 	/**
-	 * ツイート履歴取得メソッド
-	 *
-	 * @author internous
+	 * Book情報取得DAO
 	 */
+	private HomePageDAO homePageDAO2 = new HomePageDAO();
+
+	/**
+	 * Book情報格納DTO
+	 */
+	public ArrayList<BookDTO> bookList = new ArrayList<BookDTO>();
+
+
 	public String execute() throws SQLException {
 
 
+		/**
+		 * ツイート履歴取得メソッド
+		 *
+		 * @author internous
+		 */
 			tweetList = homePageDAO.getTweetInfo();
 
 			Iterator<TweetDTO> iterator = tweetList.iterator();
@@ -47,15 +59,28 @@ public class GoHomeAction extends ActionSupport implements SessionAware {
 				tweetList = null;
 				}
 
+		/**
+		 * Book履歴取得メソッド
+		 *			 * @author internous
+		 */
+			bookList = homePageDAO2.getBookInfo();
+
+			Iterator<BookDTO> iterator2 = bookList.iterator();
+			if (!(iterator2.hasNext())) {
+				bookList = null;
+				}
+
+
 		String result = SUCCESS;
 		return result;
 	}
+
+
 
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-
 
 
 }

@@ -22,6 +22,7 @@ drop table if exists book_transaction;
 
 create table book_transaction(
 id int not null primary key auto_increment,
+book_user_name varchar(50),
 book_name varchar(50),
 book_author_name varchar(50),
 book_infomation varchar(255),

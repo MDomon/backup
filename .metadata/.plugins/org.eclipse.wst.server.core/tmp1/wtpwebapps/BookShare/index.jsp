@@ -55,8 +55,27 @@
 
                         <header class="articleDetailHead">
                             <h1 class="pageTitle">新着一覧</h1>
-
-                            <p>ああ</p>
+                            <section class="bookList">
+		                        <h1 class="pageTitle">新着一覧</h1>
+										<table border="1">
+										<tr>
+											<th>ユーザー名</th>
+											<th>著書名</th>
+											<th>著者名</th>
+											<th>コメント</th>
+											<th>登録日</th>
+										</tr>
+										<s:iterator value="bookList">
+											<tr>
+												<td><s:property value="book_user_name" /></td>
+												<td><s:property value="book_name" /></td>
+												<td><s:property value="book_author_name" /></td>
+												<td><s:property value="book_infomation" /></td>
+												<td><s:property value="book_date" /></td>
+											</tr>
+										</s:iterator>
+										</table>
+		                    </section>
                         </header>
 
                         <header class="articleDetailHead">
