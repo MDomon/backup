@@ -151,11 +151,11 @@ a:active {
 
 /*Œ©o‚µ*/
 #pageBodySub h2{
-    font-size:16px;
-    line-height: 1.375;
+    font-size:18px;
+    color:#349FA6;
+    border-bottom:solid 1px #349FA6;
     padding:5px;
-    margin-top:0;
-    border-bottom:1px solid #cccccc;
+    line-height:1.333;
 }
 
 /*‚¨‚µ‚ç‚¹*/
@@ -170,7 +170,7 @@ a:active {
     margin:10px 5px;
 }
 
-#pageBodySub newsList ul li time{
+#pageBodySub .newsList ul li time{
     font-weight: bold;
     display:block;
 }
@@ -190,6 +190,7 @@ a:active {
     background-position:0 8px;
     padding-left:10px;
 }
+
 
 /* ----- ƒƒCƒ“ƒJƒ‰ƒ€“à‚Ì‘•ü ----- */
 
@@ -285,15 +286,9 @@ a:active {
     margin:30px 0;
 }
 
-/*B‰eî•ñ*/
-#pageBodyMain .creditUnit{
-    padding:10px;
-    border:solid 1px #cccccc;
+/
+#bookList{
+	border:solid 1px #cccccc;
+	padding:5px 10px;
 }
-
-#pageBodyMain .creditUnit p{
-    font-size:12px;
-    line-height:1.5;
-}
-
 

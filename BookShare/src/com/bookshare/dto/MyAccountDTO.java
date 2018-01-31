@@ -3,8 +3,8 @@ package com.bookshare.dto;
 public class MyAccountDTO {
 
 	private String userName;
-	private int givebook;
-	private int takebook;
+	private int giveBook;
+	private int takeBook;
 	private int bookcoin;
 
 	public String getUserName(){
@@ -14,18 +14,18 @@ public class MyAccountDTO {
 		this.userName = userName;
 	}
 
-	public int getGivebook(){
-		return givebook;
+	public int getGiveBook(){
+		return giveBook;
 	}
-	public void setGivebook(int givebook){
-		this.givebook = givebook;
+	public void setGiveBook(int giveBook){
+		this.giveBook = giveBook;
 	}
 
-	public int getTakebook(){
-		return takebook;
+	public int getTakeBook(){
+		return takeBook;
 	}
-	public void setTakebook(int takebook){
-		this.takebook = takebook;
+	public void setTakeBook(int takeBook){
+		this.takeBook = takeBook;
 	}
 
 	public int getBookcoin(){

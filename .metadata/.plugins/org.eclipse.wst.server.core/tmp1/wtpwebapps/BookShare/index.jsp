@@ -47,41 +47,25 @@
                         <div id="main">
                             <section class="articleDetailBody">
                                 <h2 class="heading-typeA">いますぐはじめられる、本の交換フリマサイト！</h2>
-                                <p>ああ</p>
-                                <p>ああ</p>
-                                <p>ああ</p>
+                                <p>欲しい本を譲り受けたり、読み終わった本を譲り渡せたり、読んだ本の感想をつぶやける</p>
+                                <p>読書家のための本のシェアリングプラットフォームサイトです！</p>
                             </section>
                         </div>
 
                         <header class="articleDetailHead">
-                            <h1 class="pageTitle">新着一覧</h1>
                             <section class="bookList">
 		                        <h1 class="pageTitle">新着一覧</h1>
-										<table border="1">
-										<tr>
-											<th>ユーザー名</th>
-											<th>著書名</th>
-											<th>著者名</th>
-											<th>コメント</th>
-											<th>登録日</th>
-										</tr>
-										<s:iterator value="bookList">
-											<tr>
-												<td><s:property value="book_user_name" /></td>
-												<td><s:property value="book_name" /></td>
-												<td><s:property value="book_author_name" /></td>
-												<td><s:property value="book_infomation" /></td>
-												<td><s:property value="book_date" /></td>
-											</tr>
-										</s:iterator>
-										</table>
+		                        	<s:iterator value="bookList">
+											<div id="bookList">
+												<p><img src="images/iconBook.png" alt="" width="90" height="90"></p>
+												<p>ユーザー名:<s:property value="book_user_name" /></p>
+												<p>著書名:<s:property value="book_name" /></p>
+												<p>著者名:<s:property value="book_author_name" /></p>
+												<p>コメント:<s:property value="book_infomation" /></p>
+												<p>登録日:<s:property value="book_date" /></p>
+											</div>
+									</s:iterator>
 		                    </section>
-                        </header>
-
-                        <header class="articleDetailHead">
-                            <h1 class="pageTitle">ランキング</h1>
-
-                            <p>ああ</p>
                         </header>
                     </article>
                 </div>

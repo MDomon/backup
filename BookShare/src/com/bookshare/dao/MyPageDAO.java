@@ -6,7 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.bookshare.dto.MyPageDTO;
+import com.bookshare.dto.BookDTO;
+import com.bookshare.dto.MyAccountDTO;
 import com.bookshare.dto.TweetDTO;
 import com.bookshare.util.DBConnector;
 
@@ -15,77 +16,7 @@ public class MyPageDAO {
 
 	private Connection connection = dbConnector.getConnection();
 
-	/**
-	 * 商品履歴取得
-	 *
-	 * @param item_transaction_id
-	 * @param user_master_id
-	 * @return
-	 * @throws SQLException
-	 */
-	public ArrayList<MyPageDTO> getMyPageUserInfo(String item_transaction_id, String user_master_id) throws SQLException {
-		ArrayList<MyPageDTO> myPageDTO = new ArrayList<MyPageDTO>();
-
-		String sql = "SELECT ubit.id, iit.item_name, ubit.total_price, ubit.total_count, ubit.pay, ubit.insert_date FROM user_buy_item_transaction ubit LEFT JOIN item_info_transaction iit ON ubit.item_transaction_id = iit.id where ubit.item_transaction_id  = ? AND ubit.user_master_id  = ? ORDER BY insert_date DESC";
-
-		try {
-			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, item_transaction_id);
-			preparedStatement.setString(2, user_master_id);
-
-			ResultSet resultSet = preparedStatement.executeQuery();
-
-			while(resultSet.next()) {
-				MyPageDTO dto = new MyPageDTO();
-				dto.setId(resultSet.getString("id"));
-				dto.setItemName(resultSet.getString("item_name"));
-				dto.setTotalPrice(resultSet.getString("total_price"));
-				dto.setTotalCount(resultSet.getString("total_count"));
-				dto.setPayment(resultSet.getString("pay"));
-				dto.setInsert_date(resultSet.getString("insert_date"));
-				myPageDTO.add(dto);
-			}
-
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			connection.close();
-		}
-
-		return myPageDTO;
-	}
-
-
-
-	/**
-	 * 商品履歴削除
-	 *
-	 * @param item_transaction_id
-	 * @param user_master_id
-	 * @return
-	 * @throws SQLException
-	 */
-	public int buyItemHistoryDelete(String item_transaction_id, String user_master_id) throws SQLException {
-
-		String sql = "DELETE FROM user_buy_item_transaction where item_transaction_id  = ? AND user_master_id  = ?";
-
-		PreparedStatement preparedStatement;
-		int result =0;
-		try {
-			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, item_transaction_id);
-			preparedStatement.setString(2, user_master_id);
-
-			result = preparedStatement.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			connection.close();
-		}
-
-		return result;
-	}
+	private MyAccountDTO myAccountDTO = new MyAccountDTO();
 
 
 	//つぶやき情報の取得
@@ -121,17 +52,16 @@ public class MyPageDAO {
 			}
 
 	//つぶやきを削除
-	public int removeTweet(int tweet_master_id,int tweet_id) throws SQLException{
-		String sql = "DELETE FROM tweet_transaction WHERE tweet_master_id = ? AND id = ?";
+	public int removeTweet(int tweet_id) throws SQLException{
+		String sql2 = "DELETE FROM tweet_transaction WHERE id = ?";
 
-		PreparedStatement statement = connection.prepareStatement(sql);
+		PreparedStatement statement2 = connection.prepareStatement(sql2);
 		int result2 = 0;
 		try {
 
-				statement.setInt(1, tweet_master_id);
-				statement.setInt(2, tweet_id);
+				statement2.setInt(1, tweet_id);
 
-				result2 = statement.executeUpdate();
+				result2 = statement2.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -140,4 +70,90 @@ public class MyPageDAO {
 		}
 			return result2;
 	}
+
+	//Book情報の取得
+	public ArrayList<BookDTO> getBookInfo(int book_master_id) throws SQLException{
+		ArrayList<BookDTO> bookList = new ArrayList<BookDTO>();
+
+		String sql3 = "SELECT * FROM book_transaction JOIN user_transaction ON book_transaction.book_master_id = user_transaction.id WHERE book_transaction.book_master_id =? ORDER BY book_date DESC";
+
+	try {
+		PreparedStatement statement3 = connection.prepareStatement(sql3);
+		statement3.setInt(1, book_master_id);
+
+		ResultSet resultSet3 = statement3.executeQuery();
+
+		while(resultSet3.next()){
+			BookDTO dto = new BookDTO();
+			dto.setBook_id(resultSet3.getInt("id"));
+			dto.setBook_master_id(resultSet3.getInt("book_master_id"));
+			dto.setBook_user_name(resultSet3.getString("book_user_name"));
+			dto.setBook_name(resultSet3.getString("book_name"));
+			dto.setBook_author_name(resultSet3.getString("book_author_name"));
+			dto.setBook_infomation(resultSet3.getString("book_infomation"));
+			dto.setBook_date(resultSet3.getDate("book_date"));
+
+			bookList.add(dto);
+		}
+
+	} catch(Exception e) {
+		e.printStackTrace();
+	} finally {
+		connection.close();
+	}
+
+		return bookList;
+	}
+
+	//Bookを削除
+	public int removeBook(int book_id) throws SQLException{
+	String sql4 = "DELETE FROM book_transaction WHERE id = ?";
+
+	PreparedStatement statement4 = connection.prepareStatement(sql4);
+	int result4 = 0;
+	try {
+
+			statement4.setInt(1, book_id);
+
+			result4 = statement4.executeUpdate();
+
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		connection.close();
+	}
+		return result4;
+	}
+
+	//マイアカウント情報取得
+	public MyAccountDTO getMyAccountInfo(int id) {
+
+		String sql5 = "SELECT * FROM user_transaction where id = ? ";
+
+		try {
+			PreparedStatement preparedStatement5 = connection.prepareStatement(sql5);
+			preparedStatement5.setInt(1, id);
+
+			ResultSet resultSet5 = preparedStatement5.executeQuery();
+
+			if(resultSet5.next()) {
+				myAccountDTO.setGiveBook(resultSet5.getInt("user_give_book"));
+				myAccountDTO.setTakeBook(resultSet5.getInt("user_take_book"));
+				myAccountDTO.setBookcoin(resultSet5.getInt("user_bookcoin"));
+				myAccountDTO.setUserName(resultSet5.getString("user_name"));
+			}
+
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+
+		return myAccountDTO;
+	}
+
+	public MyAccountDTO getMyAccountDTO() {
+		return myAccountDTO;
+	}
+
+
+
 }

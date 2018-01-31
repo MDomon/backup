@@ -8,6 +8,8 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.bookshare.dao.MyPageDAO;
+import com.bookshare.dto.BookDTO;
+import com.bookshare.dto.MyAccountDTO;
 import com.bookshare.dto.MyPageDTO;
 import com.bookshare.dto.TweetDTO;
 import com.opensymphony.xwork2.ActionSupport;
@@ -46,6 +48,12 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	 */
 	public ArrayList<MyPageDTO> myPageList = new ArrayList<MyPageDTO>();
 
+	/**
+	 * マイアカウント情報取得DAO
+	 */
+	private MyPageDAO myAccountDAO = new MyPageDAO();
+
+
 
 	//マイツイート情報取得DTO
 	private MyPageDAO myTweetDAO = new MyPageDAO();
@@ -54,6 +62,14 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	 * ツイート情報格納DTO
 	 */
 	public ArrayList<TweetDTO> tweetList = new ArrayList<TweetDTO>();
+
+	//MyBook情報取得DTO
+		private MyPageDAO myBookDAO = new MyPageDAO();
+
+	/**
+	 * Book情報格納DTO
+	 */
+	public ArrayList<BookDTO> bookList = new ArrayList<BookDTO>();
 
 	/**
 	 * 削除フラグ
@@ -71,6 +87,16 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	private String message2;
 
 	/**
+	 * 削除フラグ
+	 */
+	private String deleteBook;
+
+	private String message4;
+
+	private String tweetId;
+	private String bookId;
+
+	/**
 	 * 商品履歴取得メソッド
 	 *
 	 * @author internous
@@ -81,21 +107,13 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 			return ERROR;
 		}
 
-		// 商品履歴を削除しない場合
-		if(deleteFlg == null) {
-			String item_transaction_id = session.get("id").toString();
-			String user_master_id = session.get("user_id").toString();
 
-			myPageList = myPageDAO.getMyPageUserInfo(item_transaction_id, user_master_id);
-
-			Iterator<MyPageDTO> iterator = myPageList.iterator();
-			if (!(iterator.hasNext())) {
-				myPageList = null;
-			}
-		// 商品履歴を削除する場合
-		} else if(deleteFlg.equals("1")) {
-			delete();
-		}
+		//マイアカウント情報取得メソッド
+			int id = (int)session.get("masterId");
+			MyAccountDTO myAccountDTO = myAccountDAO.getMyAccountInfo(id);
+			session.put("bookcoin", myAccountDTO.getBookcoin());
+			session.put("giveBook", myAccountDTO.getGiveBook());
+			session.put("takeBook", myAccountDTO.getTakeBook());
 
 
 		/**
@@ -115,51 +133,76 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 
 			// 商品履歴を削除する場合
 			} else if(deleteTweet.equals("1")) {
-				 remove();
+				 remove2();
 			}
+
+
+			/**
+			 * Book履歴取得メソッド
+			 *
+			 * @author internous
+			 */
+			// Book履歴を削除しない場合
+				if(deleteBook == null) {
+					int book_master_id = (int)session.get("masterId");
+					bookList = myBookDAO.getBookInfo(book_master_id);
+
+					Iterator<BookDTO> iterator3 = bookList.iterator();
+					if (!(iterator3.hasNext())) {
+						bookList = null;
+						}
+
+				// Book履歴を削除する場合
+				} else if(deleteBook.equals("1")) {
+					 remove4();
+				}
 
 
 		String result = SUCCESS;
 		return result;
 	}
 
-	/**
-	 * 商品履歴削除
-	 *
-	 * @throws SQLException
-	 */
-	public void delete() throws SQLException {
 
-		String item_transaction_id = session.get("id").toString();
-		String user_master_id = session.get("user_id").toString();
-
-		int res = myPageDAO.buyItemHistoryDelete(item_transaction_id, user_master_id);
-
-		if(res > 0) {
-			myPageList = null;
-			setMessage("商品情報を正しく削除しました。");
-		} else if(res == 0) {
-			setMessage("商品情報の削除に失敗しました。");
-		}
-	}
 
 	/**
 	 * ツイート履歴削除
 	 *
 	 * @throws SQLException
 	 */
-	public void remove() throws SQLException {
+	public void remove2() throws SQLException {
 
-		int tweet_master_id = (int)session.get("masterId");
-		int tweet_id = (int)session.get("tweet_id");
+		//int tweet_id = (int)session.get("tweet_id");
+		System.out.println(tweetId);
 
-		int res2 = myPageDAO.removeTweet(tweet_master_id,tweet_id);
+		int res2 = myPageDAO.removeTweet(Integer.parseInt(tweetId));
 
 		if(res2 > 0) {
 			tweetList = null;
 			setMessage2("ツイート情報を削除しました。");
 		} else if(res2 == 0) {
 			setMessage2("ツイート情報の削除に失敗しました。");
+		}
+	}
+
+
+	/**
+	 * Book履歴削除
+	 *
+	 * @throws SQLException
+	 */
+	public void remove4() throws SQLException {
+
+
+		//int book_id = (int)session.get("book_id");
+		System.out.println(bookId);
+
+		int res4 = myPageDAO.removeBook(Integer.parseInt(bookId));
+
+		if(res4 > 0) {
+			bookList = null;
+			setMessage4("Book情報を削除しました。");
+		} else if(res4 == 0) {
+			setMessage4("Book情報の削除に失敗しました。");
 		}
 	}
 
@@ -214,6 +257,14 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 		this.deleteTweet = deleteTweet;
 	}
 
+	public String getDeleteBook() {
+		return deleteBook;
+	}
+
+	public void setDeleteBook(String deleteBook) {
+		this.deleteBook = deleteBook;
+	}
+
 
 	@Override
 	public void setSession(Map<String, Object> session) {
@@ -235,4 +286,32 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	public void setMessage2(String message2) {
 		this.message2 = message2;
 	}
+
+	public String getMessage4() {
+		return message4;
+	}
+
+	public void setMessage4(String message4) {
+		this.message4 = message4;
+	}
+
+
+	public String getTweetId() {
+		return tweetId;
+	}
+
+	public void setTweetId(String tweetId) {
+		this.tweetId = tweetId;
+	}
+
+	public String getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(String bookId) {
+		this.bookId = bookId;
+	}
+
+
+
 }

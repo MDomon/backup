@@ -46,78 +46,66 @@
                         <div id="main">
                             <section class="articleDetailBody">
                                 <h2 class="heading-typeA"><s:property value="#session.userName"/>さんのマイページ！</h2>
-
                             </section>
                         </div>
+						<header class="articleDetailHead">
+                            <h1 class="pageTitle">アカウント情報</h1>
+                            <div>
+                            	<p><img src="images/iconMan.png" alt="" width="90" height="90"></p>
+                            	<ul>
+	                            	<li>ユーザーネーム:<s:property value="#session.userName"/></li>
+	                            	<li>Bookcoin:<s:property value="#session.bookcoin"/>枚</li>
+	                            	<li>譲った本の数:<s:property value="#session.giveBook"/>冊</li>
+	                            	<li>譲り受けた本の数:<s:property value="#session.takeBook"/>冊</li>
+                            	</ul>
+                            </div>
 
-                        <div id="main">
-							<div>
-							<s:if test="myPageList == null">
-								<h3>ご購入情報はありません。</h3>
-							</s:if>
-							<s:elseif test="message == null">
-								<h3>ご購入情報は以下になります。</h3>
-								<table border="1">
-								<tr>
-									<th>商品名</th>
-									<th>値段</th>
-									<th>購入個数</th>
-									<th>支払い方法</th>
-									<th>購入日</th>
-								</tr>
-								<s:iterator value="myPageList">
-									<tr>
-										<td><s:property value="itemName" /></td>
-										<td><s:property value="totalPrice" /><span>円</span></td>
-										<td><s:property value="totalCount" /><span>個</span></td>
-										<td><s:property value="payment" /></td>
-										<td><s:property value="insert_date" /></td>
-									</tr>
-								</s:iterator>
-								</table>
-								<s:form action="MyPageAction">
-									<input type="hidden" name="deleteFlg" value="1">
-									<s:submit value="削除" method="delete" />
-								</s:form>
-							</s:elseif>
-							<s:if test="message != null">
-								<h3><s:property value="message"/></h3>
-							</s:if>
-							</div>
-						</div>
-
-						<div><a href='<s:url action="BookCreateAction" />'>Book登録</a></div>
-
-
-                        <header class="articleDetailHead">
-                            <h1 class="pageTitle">新着一覧</h1>
-
-                            <p>ああ</p>
                         </header>
-
                         <header class="articleDetailHead">
-                            <h1 class="pageTitle">ランキング</h1>
-
-                            <p>ああ</p>
+                            <section class="bookList">
+		                        <h1 class="pageTitle">出品中の本リスト</h1>
+		                        <div><a href='<s:url action="BookCreateAction" />'>本の登録</a></div>
+										<s:iterator value="bookList">
+												<div id="bookList">
+													<p><img src="images/iconBook.png" alt="" width="90" height="90"></p>
+													<p>著書名:<s:property value="book_name" /></p>
+													<p>著者名:<s:property value="book_author_name" /></p>
+													<p>コメント:<s:property value="book_infomation" /></p>
+													<p>登録日:<s:property value="book_date" /></p>
+													<p><s:form action="MyPageAction">
+														<input type="hidden" name="deleteBook" value="1"/>
+														<input type="hidden" value="<s:property value='book_id' />" name="bookId" />
+														<s:submit value="削除" method="remove4" />
+														</s:form></p>
+														<s:if test="message4 != null">
+															<h3><s:property value="message4"/></h3>
+														</s:if>
+												</div>
+										</s:iterator>
+										<s:if test="message4 != null">
+											<h3><s:property value="message4"/></h3>
+										</s:if>
+		                    </section>
                         </header>
-
-
+                        <header class="articleDetailHead">
+                            <h1 class="pageTitle">受け取った本リスト</h1>
+                        </header>
+                        <header class="articleDetailHead">
+                            <h1 class="pageTitle">譲った本リスト</h1>
+                        </header>
                     </article>
                 </div>
                 <div id="pageBodySub">
                     <section class="newList">
-                    <p><a href='<s:url action="MyPageAction" />'>更新</a></p>
-						<s:form action="TweetCreateConfirmAction">
-						<input type="text" name="tweet_message" value="">
-						<s:submit value="つぶやく"/>
-						</s:form>
-
                         <h2><s:property value="#session.userName"/>さんのつぶやき</h2>
+                        <s:form action="TweetCreateConfirmAction">
+							<input type="text" name="tweet_message" value="">
+							<s:submit value="つぶやく"/>
+						</s:form>
 								<table border="1">
 								<tr>
 									<th>つぶやき</th>
 									<th>投稿日</th>
-									<th>削除</th>
 								</tr>
 								<s:iterator value="tweetList">
 									<tr>
@@ -125,14 +113,14 @@
 										<td><s:property value="tweet_date" /></td>
 										<td><s:form action="MyPageAction">
 											<input type="hidden" name="deleteTweet" value="1">
-											<s:submit value="削除" method="remove" />
+											<input type="hidden" value="<s:property value='tweet_id' />" name="tweetId" />
+											<s:submit value="削除" method="remove2" />
 											</s:form></td>
 									</tr>
 								</s:iterator>
-
-							<s:if test="message2 != null">
-								<h3><s:property value="message2"/></h3>
-							</s:if>
+									<s:if test="message2 != null">
+										<h3><s:property value="message2"/></h3>
+									</s:if>
 								</table>
                     </section>
                 </div>

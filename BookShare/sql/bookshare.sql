@@ -13,6 +13,8 @@ user_id varchar(16) unique,
 user_pass varchar(16),
 user_name varchar(50),
 user_bookcoin int default 5,
+user_give_book int default 0,
+user_take_book int default 0,
 insert_date datetime,
 updated_date datetime
 );

@@ -16,7 +16,7 @@ public class TweetCreateCompleteDAO {
 
 	private DateUtil dateUtil = new DateUtil();
 
-	private String sql = "INSERT INTO tweet_transaction(tweet_master_id,tweet_user_name,tweet_message,tweet_date) VALUES(?, ?, ?, ?)";
+	private String sql = "INSERT INTO tweet_transaction(tweet_master_id,tweet_user_name,tweet_message,tweet_date,id) VALUES(?, ?, ?, ?, ?)";
 
 	public void createTweet(TweetDTO dto) throws SQLException {
 
@@ -26,6 +26,7 @@ public class TweetCreateCompleteDAO {
 			preparedStatement.setString(2, dto.getTweet_user_name());
 			preparedStatement.setString(3, dto.getTweet_message());
 			preparedStatement.setString(4, dateUtil.getDate());
+			preparedStatement.setInt(5, dto.getTweet_id());
 
 
 			preparedStatement.execute();
