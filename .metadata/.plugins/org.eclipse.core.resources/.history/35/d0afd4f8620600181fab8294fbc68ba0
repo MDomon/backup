@@ -99,9 +99,6 @@
 							<input type="text" name="tweet_message" value="">
 							<s:submit value="つぶやく"/>
 						</s:form>
-							<s:if test="message2 != null">
-								<h3><s:property value="message2"/></h3>
-							</s:if>
 								<table border="1">
 								<tr>
 									<th>つぶやき</th>
@@ -118,6 +115,9 @@
 											</s:form></td>
 									</tr>
 								</s:iterator>
+									<s:if test="message2 != null">
+										<h3><s:property value="message2"/></h3>
+									</s:if>
 								</table>
                     </section>
                 </div>

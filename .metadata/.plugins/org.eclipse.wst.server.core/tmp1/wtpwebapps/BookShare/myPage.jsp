@@ -65,6 +65,9 @@
                             <section class="bookList">
 		                        <h1 class="pageTitle">出品中の本リスト</h1>
 		                        <div><a href='<s:url action="BookCreateAction" />'>本の登録</a></div>
+		                        		<s:if test="message4 != null">
+											<h3><s:property value="message4"/></h3>
+										</s:if>
 										<s:iterator value="bookList">
 												<div id="bookList">
 													<p><img src="images/iconBook.png" alt="" width="90" height="90"></p>
@@ -77,14 +80,8 @@
 														<input type="hidden" value="<s:property value='book_id' />" name="bookId" />
 														<s:submit value="削除" method="remove4" />
 														</s:form></p>
-														<s:if test="message4 != null">
-															<h3><s:property value="message4"/></h3>
-														</s:if>
 												</div>
 										</s:iterator>
-										<s:if test="message4 != null">
-											<h3><s:property value="message4"/></h3>
-										</s:if>
 		                    </section>
                         </header>
                         <header class="articleDetailHead">
@@ -102,6 +99,9 @@
 							<input type="text" name="tweet_message" value="">
 							<s:submit value="つぶやく"/>
 						</s:form>
+							<s:if test="message2 != null">
+								<h3><s:property value="message2"/></h3>
+							</s:if>
 								<table border="1">
 								<tr>
 									<th>つぶやき</th>
@@ -118,9 +118,6 @@
 											</s:form></td>
 									</tr>
 								</s:iterator>
-									<s:if test="message2 != null">
-										<h3><s:property value="message2"/></h3>
-									</s:if>
 								</table>
                     </section>
                 </div>

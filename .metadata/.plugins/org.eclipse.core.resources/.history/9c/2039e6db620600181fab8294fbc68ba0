@@ -182,14 +182,6 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 		} else if(res2 == 0) {
 			setMessage2("ツイート情報の削除に失敗しました。");
 		}
-
-		int tweet_master_id = (int)session.get("masterId");
-		tweetList = myTweetDAO.getTweetInfo(tweet_master_id);
-
-		Iterator<TweetDTO> iterator = tweetList.iterator();
-		if (!(iterator.hasNext())) {
-			tweetList = null;
-			}
 	}
 
 
