@@ -1,0 +1,275 @@
+@CHARSET "UTF-8";
+
+
+/*
+ * フォーム
+ *
+ */
+
+.form-style {
+	text-align: center;
+    margin:40px auto;
+    padding: 10px 12px 10px 20px;
+
+}
+
+
+.form-style .list {
+    padding: 0;
+    display: block;
+    list-style: none;
+    margin: 10px 0 0 0;
+}
+
+.form-style input[type=text],
+.form-style input[type=password]{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border:1px solid #BEBEBE;
+
+    margin:0px;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+}
+
+.form-style input[type=text]:focus,
+.form-style input[type=password]:focus{
+    -moz-box-shadow: 0 0 8px #88D5E9;
+    -webkit-box-shadow: 0 0 8px #88D5E9;
+    box-shadow: 0 0 8px #88D5E9;
+    border: 1px solid #88D5E9;
+}
+
+.form-style .field-holder{
+    width: 49%;
+}
+
+.form-style input[type=submit]{
+	margin-left: 30px;
+    background: #4B99AD;
+    padding: 8px 15px 8px 15px;
+    border: 1px solid white;
+    color: #fff;
+}
+.form-style input[type=submit]:hover{
+    background: white;
+    color: #4B99AD;
+    box-shadow:none;
+    border: 1px solid #4B99AD;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+}
+
+.sub{
+	text-align: center;
+}
+
+
+.form-style .login{
+	text-decoration: none;
+    background: #4B99AD;
+    padding: 5px 7px 5px 7px;
+    border: none;
+    color: white;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.form-style .login:hover{
+    background: #428191;
+    box-shadow:none;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+}
+
+
+.form-style placeholder {
+	color: lightglay;
+}
+
+
+
+input[type=radio] {
+  display: none;
+}
+
+.radio{
+  box-sizing: border-box;
+  -webkit-transition: background-color 0.2s linear;
+  transition: background-color 0.2s linear;
+  position: relative;
+  display: inline-block;
+  margin: 0 20px 8px 0;
+  padding: 12px 12px 12px 42px;
+  border-radius: 8px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.radio:hover:after {
+  border-color: #777;
+}
+.radio:after {
+  -webkit-transition: border-color 0.2s linear;
+  transition: border-color 0.2s linear;
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  display: block;
+  margin-top: -10px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #bbb;
+  border-radius: 6px;
+  content: '';
+}
+
+.radio:before {
+  -webkit-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  display: block;
+  margin-top: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #4B99AD;
+  content: '';
+  opacity: 0;
+}
+input[type=radio]:checked + .radio:before {
+  opacity: 1;
+}
+
+
+
+/*
+ * マイページtable
+ */
+
+.myPage  {
+	margin: 0 auto;
+    width: 800px;
+
+}
+
+.myPage th {
+    vertical-align: middle;
+    color: #4C5C5D;
+    width: 100px;
+    border-right: solid 1px #727E82;
+    text-align: left;
+    font-weight: bold;
+    background-color: #DAE1DB;
+}
+
+.myPage td {
+    vertical-align: middle;
+}
+
+.myPage th, td{
+	padding: 10px;
+}
+
+.myPage td.bar{
+
+    width: 100%;
+    border-top: solid 1px #34495e;
+}
+
+#page{
+	border-style: none;
+	text-decoration: none;
+	float: left;
+    background: #4B99AD;
+    padding: 8px 15px 8px 15px;
+    border: none;
+    color: #fff;
+    margin-right: 10px;
+}
+#page:hover{
+    background: #428191;
+    box-shadow:none;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+}
+
+.pass {
+	text-align: left;
+	margin: 0 auto;
+}
+
+
+.blank {
+	clear: both;
+	text-align: center;
+	height: 200px;
+	padding: 30px;
+	font-size: 30px;
+	color: #9F295E;
+}
+
+.page1{
+	text-decoration: none;
+	float: right;
+    background:#ff9b9b ;
+    padding: 8px 15px 8px 15px;
+    border: none;
+    color: #fff;
+    margin-right: 10px;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+    box-shadow:none;
+    border: 1px solid #ff9b9b;
+}
+ .page1:hover{
+    background: white;
+    color: #ff9b9b;
+    box-shadow:none;
+    border: 1px solid #ff9b9b;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+}
+
+.submit{
+ border-style: none;
+	margin-bottom: 10px;
+    background: #ff9b9b;
+    padding: 8px 15px 8px 15px;
+    border: 1px solid white;
+    color: #fff;
+}
+ .submit:hover{
+    background: white;
+    color: #ff9b9b;
+    box-shadow:none;
+    border: 1px solid #ff9b9b;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+}
+
+.price{
+	font-size: 30px;
+
+}
+
+.error {
+	font-size: 15px;
+	color:  #f66;
+}
+
+table .pass {
+	margin: 0 auto;
+}
+
+.pass th{
+	text-align: left;
+}
+
+
