@@ -1,0 +1,43 @@
+package com.bookshare.action;
+
+import com.bookshare.dao.BookDetailDAO;
+import com.bookshare.dto.MyAccountDTO;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import org.apache.struts2.interceptor.SessionAware;
+import com.bookshare.dto.BookDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class BookDetailAciton {
+
+	/**
+	 * ログイン情報を格納
+	 */
+	public Map<String, Object> session;
+
+
+	/**
+	 * Book情報取得DAO
+	 */
+	private BookDetailDAO bookDetailDAO = new BookDetailDAO();
+
+
+	//Book情報取得メソッド
+	int book_id = (int)session.get("book_id");
+	BookDTO bookDTO = bookDetailDAO.getBookInfo(book_id);
+	session.put("book_name", bookDTO.getBook_name());
+	session.put("book_author_name", bookDTO.getBook_author_name());
+	session.put("book_infomation", bookDTO.getBook_infomation());
+
+
+
+
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
+}
