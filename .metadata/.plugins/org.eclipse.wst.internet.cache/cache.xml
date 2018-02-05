@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><cache><entry expirationTime="1517634904711" lastModified="1507036093000" location="-277838028.cache" uri="http://struts.apache.org/dtds/struts-2.0.dtd"/><entry expirationTime="1517904203369" lastModified="1507036093000" location="-1926656893.cache" uri="http://struts.apache.org/dtds/struts-2.3.dtd"/></cache>
+=======
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><cache><entry expirationTime="1517732395168" lastModified="1507036093000" location="-277838028.cache" uri="http://struts.apache.org/dtds/struts-2.0.dtd"/><entry expirationTime="1517821506146" lastModified="1507036093000" location="-1926656893.cache" uri="http://struts.apache.org/dtds/struts-2.3.dtd"/></cache>
+>>>>>>> 217f34bd3fe61bcf94638193e013c3767045873d

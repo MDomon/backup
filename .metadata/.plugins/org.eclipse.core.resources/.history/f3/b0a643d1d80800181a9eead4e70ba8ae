@@ -1,0 +1,5 @@
+package com.bookshare.dao;
+
+public class BookDetailDAO {
+
+}

@@ -99,7 +99,10 @@
 			<result name="success">bookCreateComplete.jsp</result>
 		</action>
 
-
+		<!-- BookDetailAction -->
+		<action name="BookDetailAction" class="com.bookshare.action.BookDetailAction" method="execute">
+			<result name="success">bookDetail.jsp</result>
+		</action>
 
 	</package>
 </struts>
