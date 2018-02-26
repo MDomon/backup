@@ -1,5 +1,5 @@
 /* --- リストエリア --- */
-ul.thumbnail {
+h1 .bookList {
 width: 100%; /* リストエリアの幅 */
 min-width: 660px; /* リストエリアの最小幅（不要な場合は削除） */
 margin: 0;
@@ -8,29 +8,29 @@ list-style-type: none;
 }
 
 /* --- リスト項目 --- */
-ul.thumbnail li {
+h1 .bookList li {
 width: 24.9%; /* 項目の幅 */
 float: left;
 }
 
 /* --- 項目内容 --- */
-ul.thumbnail dl {
+h1 .bookList dl {
 width: 142px; /* 内容の幅 */
 margin: 0 auto; /* 内容のセンタリング */
 font-size: 80%;
 }
 
 /* --- 写真エリア --- */
-ul.thumbnail dt {
+h1 .bookList dt {
 /* height: 102px; */ /* 写真エリアの高さ（dt要素の高さを指定する場合） */
 margin-bottom: 5px; /* 写真エリアの下マージン */
 }
-ul.thumbnail dt img {
+h1 .bookList dt img {
 border: 1px #808080 solid; /* 写真の境界線 */
 }
 
 /* --- キャプションエリア --- */
-ul.thumbnail dd {
+.bookList dd {
 margin: 0 0 3px; /* キャプションエリアのマージン（上、左右、下） */
 height: 6.5em; /* キャプションエリアの高さ */
 line-height: 120%;

@@ -65,6 +65,7 @@
 											<s:if test="#session.masterId != #session.book_master_id">
 											<div class="bookButton">
 												<s:form action="BookShareConfirmAction">
+													<s:token/>
 													<s:submit value="購入する" />
 												</s:form>
 											</div>

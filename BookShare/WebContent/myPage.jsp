@@ -52,6 +52,8 @@
 	                            	<li>Bookcoin:<s:property value="#session.bookcoin"/>枚</li>
 	                            	<li>譲った本の数:<s:property value="#session.giveBook"/>冊</li>
 	                            	<li>譲り受けた本の数:<s:property value="#session.takeBook"/>冊</li>
+	                            	<br>
+	                            	<a href='<s:url action="BookCreateAction" />'>本の登録</a>
                             	</ul>
                             </div>
 
@@ -59,23 +61,23 @@
                         <header class="articleDetailHead">
                             <section class="bookList">
 		                        <h1 class="pageTitle">出品中の本リスト</h1>
-		                        <div><a href='<s:url action="BookCreateAction" />'>本の登録</a></div>
 		                        		<s:if test="message4 != null">
 											<h3><s:property value="message4"/></h3>
 										</s:if>
+										<br>
 										<s:iterator value="bookList">
-												<div id="bookList">
+										 	<div class="box">
+												<div class="bList">
 													<p><img src="images/iconBook.png" alt="" width="90" height="90"></p>
 													<p>著書名:<s:property value="book_name" /></p>
 													<p>著者名:<s:property value="book_author_name" /></p>
-													<p>コメント:<s:property value="book_infomation" /></p>
-													<p>登録日:<s:property value="book_date" /></p>
 													<p><s:form action="MyPageAction">
 														<input type="hidden" name="deleteBook" value="1"/>
 														<input type="hidden" value="<s:property value='book_id' />" name="bookId" />
 														<s:submit value="削除" method="remove4" />
 														</s:form></p>
 												</div>
+											</div>
 										</s:iterator>
 		                    </section>
                         </header>
@@ -83,13 +85,13 @@
                             <section class="bookList">
 		                         <h1 class="pageTitle">受け取った本リスト</h1>
 										<s:iterator value="takeBookList">
-												<div id="bookList">
+										<div class="box">
+												<div class="bList">
 													<p><img src="images/iconBook.png" alt="" width="90" height="90"></p>
 													<p>著書名:<s:property value="book_name" /></p>
 													<p>著者名:<s:property value="book_author_name" /></p>
-													<p>コメント:<s:property value="book_infomation" /></p>
-													<p>登録日:<s:property value="book_date" /></p>
 												</div>
+										</div>
 										</s:iterator>
 		                    </section>
                         </header>
@@ -97,12 +99,10 @@
                         	<section class="bookList">
 		                         <h1 class="pageTitle">譲った本リスト</h1>
 										<s:iterator value="giveBookList">
-												<div id="bookList">
+												<div class="bList">
 													<p><img src="images/iconBook.png" alt="" width="90" height="90"></p>
 													<p>著書名:<s:property value="book_name" /></p>
 													<p>著者名:<s:property value="book_author_name" /></p>
-													<p>コメント:<s:property value="book_infomation" /></p>
-													<p>登録日:<s:property value="book_date" /></p>
 												</div>
 										</s:iterator>
 		                    </section>
@@ -111,7 +111,7 @@
                 </div>
                 <div id="pageBodySub">
                     <section class="newList">
-                        <h2><s:property value="#session.userName"/>さんのつぶやき</h2>
+                        <h1><s:property value="#session.userName"/>さんのつぶやき</h1>
                         <s:form action="TweetCreateConfirmAction" theme="simple">
 							<input type="text" name="tweet_message" value="">
 							<s:submit value="つぶやく"/>

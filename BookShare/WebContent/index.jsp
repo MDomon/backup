@@ -54,10 +54,10 @@
                     <article class="articleDetail">
 
                         <header class="articleDetailHead">
-                            <section class="bookList">
+                            <section class="bookList clearFix">
 		                        <h1 class="pageTitle">新着一覧</h1>
 		                        	<s:iterator value="bookList">
-		                        		<a href='<s:url action="BookDetailAciton"><s:param value="%{book_id}" name="book_id" /></s:url>'>
+		                        		<a class="a" href='<s:url action="BookDetailAciton"><s:param value="%{book_id}" name="book_id" /></s:url>'>
 											<div id="bookList">
 												<p><img src="images/iconBook.png" alt="" width="90" height="90"></p>
 												<p>ユーザー名:<s:property value="book_user_name" /></p>
@@ -72,7 +72,7 @@
                 </div>
                 <div id="pageBodySub">
                     <section class="tweetList">
-                        <h2 class="pageTitle">みんなのつぶやき</h2>
+                        <h1 class="pageTitle">みんなのつぶやき</h1>
 								<table border="1">
 								<tr>
 									<th width="120px">ユーザー名</th>
