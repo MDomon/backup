@@ -10,7 +10,6 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.bookshare.dao.MyPageDAO;
 import com.bookshare.dto.BookDTO;
 import com.bookshare.dto.MyAccountDTO;
-import com.bookshare.dto.MyPageDTO;
 import com.bookshare.dto.TweetDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -43,10 +42,6 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	 */
 	private MyPageDAO myPageDAO = new MyPageDAO();
 
-	/**
-	 * マイページ情報格納DTO
-	 */
-	public ArrayList<MyPageDTO> myPageList = new ArrayList<MyPageDTO>();
 
 	/**
 	 * マイアカウント情報取得DAO
@@ -70,6 +65,22 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	 * Book情報格納DTO
 	 */
 	public ArrayList<BookDTO> bookList = new ArrayList<BookDTO>();
+
+	//giveBook情報取得DTO
+			private MyPageDAO giveBookDAO = new MyPageDAO();
+
+		/**
+		 * Book情報格納DTO
+		 */
+		public ArrayList<BookDTO> giveBookList = new ArrayList<BookDTO>();
+
+		//takeBook情報取得DTO
+				private MyPageDAO takeBookDAO = new MyPageDAO();
+
+			/**
+			 * Book情報格納DTO
+			 */
+			public ArrayList<BookDTO> takeBookList = new ArrayList<BookDTO>();
 
 	/**
 	 * 削除フラグ
@@ -103,7 +114,7 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	 */
 	public String execute() throws SQLException {
 
-		if (!session.containsKey("id")) {
+		if (!session.containsKey("user_id")) {
 			return ERROR;
 		}
 
@@ -114,6 +125,20 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 			session.put("bookcoin", myAccountDTO.getBookcoin());
 			session.put("giveBook", myAccountDTO.getGiveBook());
 			session.put("takeBook", myAccountDTO.getTakeBook());
+
+			//GiveBook情報の取得
+			giveBookList = giveBookDAO.getGiveBookInfo(id);
+			Iterator<BookDTO> iterator4 = giveBookList.iterator();
+			if (!(iterator4.hasNext())) {
+				takeBookList = null;
+				}
+
+			//TakeBook情報の取得
+			takeBookList = takeBookDAO.getTakeBookInfo(id);
+			Iterator<BookDTO> iterator5 = takeBookList.iterator();
+			if (!(iterator5.hasNext())) {
+				takeBookList = null;
+				}
 
 
 		/**
@@ -327,7 +352,5 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	public void setBookId(String bookId) {
 		this.bookId = bookId;
 	}
-
-
 
 }

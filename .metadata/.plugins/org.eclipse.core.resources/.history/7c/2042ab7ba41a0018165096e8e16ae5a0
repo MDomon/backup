@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<!-- Strutsの詳細設定 -->
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<!-- 対象のpackageを設定 -->
+	<package name="com.bookshare.action" extends="struts-default">
+
+		<!-- GoHomeAction -->
+		<action name="GoHomeAction" class="com.bookshare.action.GoHomeAction" method="execute">
+			<result name="success">index.jsp</result>
+		</action>
+
+		<!-- GoLoginAction -->
+		<action name="GoLoginAction" class="com.bookshare.action.GoLoginAction" method="execute">
+			<result name="login">login.jsp</result>
+			<result name="success">loginSuccess.jsp</result>
+		</action>
+
+		<!-- LoginAction -->
+		<action name="LoginAction" class="com.bookshare.action.LoginAction" method="execute">
+			<result name="success">loginSuccess.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+
+		<!-- UserCreateAction -->
+		<action name="UserCreateAction" class="com.bookshare.action.UserCreateAction" method="execute">
+			<result name="success">userCreate.jsp</result>
+			<result name="back">login.jsp</result>
+		</action>
+
+		<!-- UserCreateConfirmAction -->
+		<action name="UserCreateConfirmAction" class="com.bookshare.action.UserCreateConfirmAction" method="execute">
+			<result name="success">userCreateConfirm.jsp</result>
+			<result name="error">userCreate.jsp</result>
+		</action>
+
+		<!-- UserCreateCompleteAction -->
+		<action name="UserCreateCompleteAction" class="com.bookshare.action.UserCreateCompleteAction" method="execute">
+			<result name="success">userCreateComplete.jsp</result>
+		</action>
+
+		<!-- BuyItemAction -->
+		<action name="BuyItemAction" class="com.bookshare.action.BuyItemAction" method="execute">
+			<result name="success">buyItemConfirm.jsp</result>
+			<result name="error">buyItem.jsp</result>
+		</action>
+
+		<!-- BuyItemConfirmAction -->
+		<action name="BuyItemConfirmAction" class="com.bookshare.action.BuyItemConfirmAction" method="execute">
+			<result name="success">buyItemComplete.jsp</result>
+			<result name="back">buyItem.jsp</result>
+		</action>
+
+		<!-- BuyItemCompleteAction -->
+		<action name="BuyItemCompleteAction" class="com.bookshare.action.BuyItemCompleteAction" method="execute">
+			<result name="success">index.jsp</result>
+		</action>
+
+		<!-- MyPageAction -->
+		<action name="MyPageAction" class="com.bookshare.action.MyPageAction" method="execute">
+			<result name="success">myPage.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+
+		<!-- LogoutAction -->
+		<action name="LogoutAction" class="com.bookshare.action.LogoutAction" method="execute">
+			<result name="success">logout.jsp</result>
+		</action>
+
+		<!-- TweetCreateAction -->
+		<action name="TweetCreateAction" class="com.bookshare.action.TweetCreateAction" method="execute">
+			<result name="success">tweetCreateComplete.jsp</result>
+		</action>
+
+		<!-- TweetCreateConfirmAction -->
+		<action name="TweetCreateConfirmAction" class="com.bookshare.action.TweetCreateConfirmAction" method="execute">
+			<result name="success">tweetCreateConfirm.jsp</result>
+			<result name="error">myPage.jsp</result>
+		</action>
+
+		<!-- BookCreateAction -->
+		<action name="BookCreateAction" class="com.bookshare.action.BookCreateAction" method="execute">
+			<result name="success">bookCreate.jsp</result>
+			<result name="back">myPage.jsp</result>
+		</action>
+
+		<!-- BookCreateConfirmAction -->
+		<action name="BookCreateConfirmAction" class="com.bookshare.action.BookCreateConfirmAction" method="execute">
+			<result name="success">bookCreateConfirm.jsp</result>
+			<result name="error">bookCreate.jsp</result>
+		</action>
+
+		<!-- BookCreateCompleteAction -->
+		<action name="BookCreateCompleteAction" class="com.bookshare.action.BookCreateCompleteAction" method="execute">
+			<result name="success">bookCreateComplete.jsp</result>
+		</action>
+
+		<!-- BookSearch -->
+		<action name="BookSearchAction" class="com.bookshare.action.BookSearchAction" method="execute">
+			<result name="success">searchHome.jsp</result>
+			<result name="error">searchHome.jsp</result>
+		</action>
+
+		<!-- BookDetailAciton -->
+		<action name="BookDetailAciton" class="com.bookshare.action.BookDetailAciton" method="execute">
+			<result name="success">bookDetail.jsp</result>
+		</action>
+
+	</package>
+</struts>

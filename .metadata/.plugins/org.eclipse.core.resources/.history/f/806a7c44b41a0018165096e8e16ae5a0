@@ -1,0 +1,90 @@
+package com.bookshare.action;
+
+import java.sql.SQLException;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.bookshare.dao.BookShareDAO;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class BookShareCompleteAction extends ActionSupport implements SessionAware {
+
+	public Map<String, Object> session;
+
+
+	private int book_id;
+
+	private int my_id = (int) session.get("my_id");
+	private int you_id = (int) session.get("you_id");
+
+	private String book_user_name = (String) session.get("book_user_name");
+	private String book_name = (String) session.get("book_name");
+	private String book_author_name = (String) session.get("book_author_name");
+	private String book_infomation = (String) session.get("book_infomation");
+
+	private BookShareDAO bookShareDAO = new BookShareDAO();
+
+
+	public String execute()throws SQLException{
+
+		//Book譲り渡し情報挿入
+		bookShareDAO.getGiveBookInfo(you_id,book_user_name,book_name,book_author_name,book_infomation);
+
+		//book譲り受け情報挿入
+		bookShareDAO.getTakeBookInfo(my_id,book_user_name,book_name,book_author_name,book_infomation);
+
+		//Book情報削除
+		bookShareDAO.deleteBookInfo(book_id);
+
+
+		return SUCCESS;
+	}
+
+
+
+	public int getBook_id(){
+		return book_id;
+	}
+	public void setBook_id(int book_id){
+		this.book_id = book_id;
+	}
+
+	public String getBook_name(){
+		return book_name;
+	}
+	public void setBook_name(String book_name){
+		this.book_name = book_name;
+	}
+
+	public String getBook_user_name(){
+		return book_user_name;
+	}
+	public void setBook_user_name(String book_user_name){
+		this.book_user_name = book_user_name;
+	}
+
+	public String getBook_author_name(){
+		return book_author_name;
+	}
+	public void setBook_author_name(String book_author_name){
+		this.book_author_name = book_author_name;
+	}
+
+	public String getBook_infomation(){
+		return book_infomation;
+	}
+	public void setBook_infomation(String book_infomation){
+		this.book_infomation = book_infomation;
+	}
+
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+}

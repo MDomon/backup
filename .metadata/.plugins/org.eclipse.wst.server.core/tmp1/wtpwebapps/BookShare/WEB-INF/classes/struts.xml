@@ -17,12 +17,12 @@
 		<!-- GoLoginAction -->
 		<action name="GoLoginAction" class="com.bookshare.action.GoLoginAction" method="execute">
 			<result name="login">login.jsp</result>
-			<result name="success">myPage.jsp</result>
+			<result name="success">loginSuccess.jsp</result>
 		</action>
 
 		<!-- LoginAction -->
 		<action name="LoginAction" class="com.bookshare.action.LoginAction" method="execute">
-			<result name="success">myPage.jsp</result>
+			<result name="success">loginSuccess.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
 
@@ -41,23 +41,6 @@
 		<!-- UserCreateCompleteAction -->
 		<action name="UserCreateCompleteAction" class="com.bookshare.action.UserCreateCompleteAction" method="execute">
 			<result name="success">userCreateComplete.jsp</result>
-		</action>
-
-		<!-- BuyItemAction -->
-		<action name="BuyItemAction" class="com.bookshare.action.BuyItemAction" method="execute">
-			<result name="success">buyItemConfirm.jsp</result>
-			<result name="error">buyItem.jsp</result>
-		</action>
-
-		<!-- BuyItemConfirmAction -->
-		<action name="BuyItemConfirmAction" class="com.bookshare.action.BuyItemConfirmAction" method="execute">
-			<result name="success">buyItemComplete.jsp</result>
-			<result name="back">buyItem.jsp</result>
-		</action>
-
-		<!-- BuyItemCompleteAction -->
-		<action name="BuyItemCompleteAction" class="com.bookshare.action.BuyItemCompleteAction" method="execute">
-			<result name="success">index.jsp</result>
 		</action>
 
 		<!-- MyPageAction -->
@@ -99,9 +82,32 @@
 			<result name="success">bookCreateComplete.jsp</result>
 		</action>
 
-		<!-- BookDetailAction -->
-		<action name="BookDetailAction" class="com.bookshare.action.BookDetailAction" method="execute">
+		<!-- BookSearch -->
+		<action name="BookSearchAction" class="com.bookshare.action.BookSearchAction" method="execute">
+			<result name="success">searchHome.jsp</result>
+			<result name="error">searchHome.jsp</result>
+		</action>
+
+		<!-- BookDetailAciton -->
+		<action name="BookDetailAciton" class="com.bookshare.action.BookDetailAciton" method="execute">
 			<result name="success">bookDetail.jsp</result>
+		</action>
+
+		<!-- BookShareConfirmAction -->
+		<action name="BookShareConfirmAction" class="com.bookshare.action.BookShareConfirmAction" method="execute">
+			<result name="success">bookShareConfirm.jsp</result>
+			<result name="error">error2.jsp</result>
+		</action>
+
+		<!-- BookShareCompleteAction -->
+		<action name="BookShareCompleteAction" class="com.bookshare.action.BookShareCompleteAction" method="execute">
+			<!-- token使って2重送信を阻止したい -->
+			<!-- デフォルトinterceptor -->
+			<interceptor-ref name="defaultStack" />
+			<!-- tokenのinterceptor -->
+			<interceptor-ref name="token" />
+			<result name="invalid.token">error3.jsp</result>
+			<result name="success">bookShareComplete.jsp</result>
 		</action>
 
 	</package>

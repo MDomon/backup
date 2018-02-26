@@ -21,8 +21,8 @@
                 </h1>
                 <p id="catchcopy">本の交換フリーマーケットサイト</p>
                 <div class="searchContainer">
-                    <s:form action="SearchAction" theme="simple">
-                        <input type="search" name="searchText" class="searchText">
+                    <s:form action="BookSearchAction" theme="simple">
+                        <input type="search" name="searchWord" class="searchText">
                         <s:submit value="検索" class="textSearchSubmit"/>
                     </s:form>
 		        </div>
@@ -33,37 +33,38 @@
                         <li class="current"><a href='<s:url action="GoHomeAction" />'>ホーム</a></li>
                         <li class="current"><a href='<s:url action="MyPageAction" />'>マイページ</a></li>
                         <li class="current">
-                        	<s:if test="#session.id != null"><a href='<s:url action="LogoutAction" />'>ログアウト</a></s:if>
-							<s:if test="#session.id == null"><a href='<s:url action="GoLoginAction" />'>ログイン</a></s:if></li>
+                        	<s:if test="#session.user_id != null"><a href='<s:url action="LogoutAction" />'>ログアウト</a></s:if>
+							<s:if test="#session.user_id == null"><a href='<s:url action="GoLoginAction" />'>ログイン</a></s:if></li>
                         <li class="current"><a href='<s:url action="UserCreateAction" />'>新規会員登録</a></li>
                     </ul>
                 </nav>
                 <br>
             </header>
             <div class="image"><img src="images/library1.jpg" alt="" width="100%" height="390"></div>
-            <div id="pageBody">
-                <div id="pageBodyMain">
-                    <article class="articleDetail">
-                        <div id="main">
-                            <section class="articleDetailBody">
+            <div id="main">
+
                                 <h2 class="heading-typeA">いますぐはじめられる、本の交換フリマサイト！</h2>
                                 <p>欲しい本を譲り受けたり、読み終わった本を譲り渡せたり、読んだ本の感想をつぶやける</p>
                                 <p>読書家のための本のシェアリングプラットフォームサイトです！</p>
-                            </section>
+
                         </div>
+
+            <div id="pageBody">
+                <div id="pageBodyMain">
+                    <article class="articleDetail">
 
                         <header class="articleDetailHead">
                             <section class="bookList">
 		                        <h1 class="pageTitle">新着一覧</h1>
 		                        	<s:iterator value="bookList">
+		                        		<a href='<s:url action="BookDetailAciton"><s:param value="%{book_id}" name="book_id" /></s:url>'>
 											<div id="bookList">
 												<p><img src="images/iconBook.png" alt="" width="90" height="90"></p>
 												<p>ユーザー名:<s:property value="book_user_name" /></p>
 												<p>著書名:<s:property value="book_name" /></p>
 												<p>著者名:<s:property value="book_author_name" /></p>
-												<p>コメント:<s:property value="book_infomation" /></p>
-												<p>登録日:<s:property value="book_date" /></p>
 											</div>
+										</a>
 									</s:iterator>
 		                    </section>
                         </header>
@@ -71,16 +72,16 @@
                 </div>
                 <div id="pageBodySub">
                     <section class="tweetList">
-                        <h2>みんなのつぶやき</h2>
+                        <h2 class="pageTitle">みんなのつぶやき</h2>
 								<table border="1">
 								<tr>
-									<th>ユーザー名</th>
+									<th width="120px">ユーザー名</th>
 									<th>つぶやき</th>
 									<th>投稿日</th>
 								</tr>
 								<s:iterator value="tweetList">
 									<tr>
-										<td><s:property value="tweet_user_name" /></td>
+										<td class="td"><s:property value="tweet_user_name" /></td>
 										<td><s:property value="tweet_message" /></td>
 										<td><s:property value="tweet_date" /></td>
 									</tr>

@@ -1,0 +1,148 @@
+package com.bookshare.action;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.bookshare.dao.BookSearchDAO;
+import com.bookshare.dto.BookDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class BookSearchAction extends ActionSupport implements SessionAware {
+
+
+
+	/**
+	 * 検索ワード
+	 */
+	private String searchWord;
+
+	private String message;
+
+	public Map<String, Object> session;
+
+	/**
+	 * 検索結果格納List
+	 */
+	private List<BookDTO> bookDTOList = new ArrayList<BookDTO>();
+
+	/**
+	 * 検索結果取得
+	 */
+	private BookSearchDAO bookSearchDAO = new BookSearchDAO();
+
+	/**
+	 * 実行メソッド
+	 *
+	 */
+	@SuppressWarnings("unchecked")
+	public String execute(){
+
+		String result = ERROR;
+
+
+		 //ワードを入力した時のみ実行
+		if(searchWord.equals("")){
+
+			result = ERROR;
+			bookDTOList =(List<BookDTO>) session.get("bookDTOList");
+			setMessage("該当する商品が見つかりませんでした。");
+
+		}else{
+
+			bookDTOList = bookSearchDAO.getBookInfo(searchWord);
+
+
+			if(bookDTOList.size() > 0){
+				session.put("buyItemDTOList", bookDTOList);
+				int bookCount = bookDTOList.size();
+				String count = Integer.toString(bookCount);
+				setMessage(count + "件の商品が見つかりました。");
+
+				result = SUCCESS;
+			}else{
+				result = ERROR;
+				bookDTOList =(List<BookDTO>) session.get("bookDTOList");
+				setMessage("該当する商品が見つかりませんでした。");
+			}
+		}
+
+		return result;
+	}
+
+
+
+
+	public String getSearchWord() {
+		return searchWord;
+	}
+
+
+
+
+	public void setSearchWord(String searchWord) {
+		this.searchWord = searchWord;
+	}
+
+
+
+
+	public String getMessage() {
+		return message;
+	}
+
+
+
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+
+
+
+	public List<BookDTO> getBookDTOList() {
+		return bookDTOList;
+	}
+
+
+
+
+	public void setBookDTOList(List<BookDTO> bookDTOList) {
+		this.bookDTOList = bookDTOList;
+	}
+
+
+
+
+	public BookSearchDAO getBookSearchDAO() {
+		return bookSearchDAO;
+	}
+
+
+
+
+	public void setBookSearchDAO(BookSearchDAO bookSearchDAO) {
+		this.bookSearchDAO = bookSearchDAO;
+	}
+
+
+
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+
+
+
+	@Override
+	public void setSession(Map<String, Object> session){
+		this.session=session;
+	}
+
+
+
+}

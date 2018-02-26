@@ -20,12 +20,6 @@
                     BookShare
                 </h1>
                 <p id="catchcopy">本の交換フリーマーケットサイト</p>
-                <div class="searchContainer">
-                    <s:form action="SearchAction" theme="simple">
-                        <input type="search" name="searchText" class="searchText">
-                        <s:submit value="検索" class="textSearchSubmit"/>
-                    </s:form>
-		        </div>
 		        <br>
 		        <br>
                 <nav class="globalNavi">
@@ -33,21 +27,22 @@
                         <li class="current"><a href='<s:url action="GoHomeAction" />'>ホーム</a></li>
                         <li class="current"><a href='<s:url action="MyPageAction" />'>マイページ</a></li>
                         <li class="current">
-                        	<s:if test="#session.id != null"><a href='<s:url action="LogoutAction" />'>ログアウト</a></s:if>
-							<s:if test="#session.id == null"><a href='<s:url action="GoLoginAction" />'>ログイン</a></s:if></li>
+                        	<s:if test="#session.user_id != null"><a href='<s:url action="LogoutAction" />'>ログアウト</a></s:if>
+							<s:if test="#session.user_id == null"><a href='<s:url action="GoLoginAction" />'>ログイン</a></s:if></li>
                         <li class="current"><a href='<s:url action="UserCreateAction" />'>新規会員登録</a></li>
                     </ul>
                 </nav>
             </header>
+            <div id="main">
+
+                                <h2 class="heading-typeA"><s:property value="#session.userName"/>さんのマイページ！</h2>
+
+                        </div>
 
             <div id="pageBody">
                 <div id="pageBodyMain">
                     <article class="articleDetail">
-                        <div id="main">
-                            <section class="articleDetailBody">
-                                <h2 class="heading-typeA"><s:property value="#session.userName"/>さんのマイページ！</h2>
-                            </section>
-                        </div>
+
 						<header class="articleDetailHead">
                             <h1 class="pageTitle">アカウント情報</h1>
                             <div>
@@ -85,20 +80,43 @@
 		                    </section>
                         </header>
                         <header class="articleDetailHead">
-                            <h1 class="pageTitle">受け取った本リスト</h1>
+                            <section class="bookList">
+		                         <h1 class="pageTitle">受け取った本リスト</h1>
+										<s:iterator value="takeBookList">
+												<div id="bookList">
+													<p><img src="images/iconBook.png" alt="" width="90" height="90"></p>
+													<p>著書名:<s:property value="book_name" /></p>
+													<p>著者名:<s:property value="book_author_name" /></p>
+													<p>コメント:<s:property value="book_infomation" /></p>
+													<p>登録日:<s:property value="book_date" /></p>
+												</div>
+										</s:iterator>
+		                    </section>
                         </header>
                         <header class="articleDetailHead">
-                            <h1 class="pageTitle">譲った本リスト</h1>
+                        	<section class="bookList">
+		                         <h1 class="pageTitle">譲った本リスト</h1>
+										<s:iterator value="giveBookList">
+												<div id="bookList">
+													<p><img src="images/iconBook.png" alt="" width="90" height="90"></p>
+													<p>著書名:<s:property value="book_name" /></p>
+													<p>著者名:<s:property value="book_author_name" /></p>
+													<p>コメント:<s:property value="book_infomation" /></p>
+													<p>登録日:<s:property value="book_date" /></p>
+												</div>
+										</s:iterator>
+		                    </section>
                         </header>
                     </article>
                 </div>
                 <div id="pageBodySub">
                     <section class="newList">
                         <h2><s:property value="#session.userName"/>さんのつぶやき</h2>
-                        <s:form action="TweetCreateConfirmAction">
+                        <s:form action="TweetCreateConfirmAction" theme="simple">
 							<input type="text" name="tweet_message" value="">
 							<s:submit value="つぶやく"/>
 						</s:form>
+						<br>
 							<s:if test="message2 != null">
 								<h3><s:property value="message2"/></h3>
 							</s:if>

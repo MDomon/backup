@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="リソース名 &apos;BookShare/WebContent/css/bookDeti.css&apos; を &apos;bookDetail.css&apos; に変更します" description="リソース &apos;bookDeti.css&apos; の名前変更" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebContent/css/bookDeti.css" name="bookDetail.css" stamp="1519050022853" updateReferences="true"/>
+</session>

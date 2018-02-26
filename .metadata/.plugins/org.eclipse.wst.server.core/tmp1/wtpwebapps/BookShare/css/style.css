@@ -138,12 +138,12 @@ a:active {
 }
 
 #pageBodyMain{
-    width:720px;
+    width:470px;
     float:left;
 }
 
 #pageBodySub{
-    width:220px;
+    width:470px;
     float:right;
 }
 
@@ -151,11 +151,11 @@ a:active {
 
 /*å©èoÇµ*/
 #pageBodySub h2{
-    font-size:18px;
-    color:#349FA6;
-    border-bottom:solid 1px #349FA6;
-    padding:5px;
-    line-height:1.333;
+   font-size:26px;
+    background-color:#F2F2E5;
+    padding:5px 15px;
+    line-height:1.231;
+    margin-top:0;
 }
 
 /*Ç®ÇµÇÁÇπ*/
@@ -206,29 +206,6 @@ a:active {
     line-height:1.429;
 }
 
-/*ï\*/
-#pageBodyMain table{
-    font-size:14px;
-    line-height:1.429;
-    border:1px solid #cccccc;
-    border-collapse:collapse;
-    width:100%;
-}
-
-#pageBodyMain table th,td{
-    border:1px solid #cccccc;
-    padding:5px 10px;
-}
-
-#pageBodyMain table th{
-    background-color:#eeeeee;
-    text-align:left;
-}
-
-#pageBodyMain table caption{
-    text-align: left;
-    font-weight:bold;
-}
 
 /*ê}î≈*/
 #pageBodyMain figure{
@@ -249,8 +226,8 @@ a:active {
     margin-top:0;
 }
 
-#pageBodyMain .heading-typeA{
-    font-size:18px;
+#main .heading-typeA{
+    font-size:28px;
     color:#349FA6;
     border-bottom:solid 1px #349FA6;
     padding:5px;
@@ -292,3 +269,26 @@ a:active {
 	padding:5px 10px;
 }
 
+table{
+	text-align:center;
+	border: solid 2px #cccccc;
+	border-collapse:collapse;
+}
+
+table th{
+	padding:10px;
+	background-color:#f2f2e5;
+
+}
+th .th{
+	width:200px;
+}
+
+table td{
+	padding:5px 10px;
+
+}
+
+td .td{
+	width:200px;
+}

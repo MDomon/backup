@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="リソース名 &apos;BookShare/WebContent/SearchHome.jsp&apos; を &apos;searchHome.jsp&apos; に変更します" description="リソース &apos;SearchHome.jsp&apos; の名前変更" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebContent/SearchHome.jsp" name="searchHome.jsp" stamp="1518415460635" updateReferences="true"/>
+</session>

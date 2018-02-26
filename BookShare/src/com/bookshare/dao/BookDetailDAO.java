@@ -29,12 +29,13 @@ public class BookDetailDAO {
 				ResultSet resultSet = preparedStatement.executeQuery();
 
 				if(resultSet.next()) {
-					bookDTO.setBook_id(resultSet.getInt("book_id"));
+					bookDTO.setBook_id(resultSet.getInt("id"));
 					bookDTO.setBook_master_id(resultSet.getInt("book_master_id"));
 					bookDTO.setBook_user_name(resultSet.getString("book_user_name"));
 					bookDTO.setBook_name(resultSet.getString("book_name"));
 					bookDTO.setBook_author_name(resultSet.getString("book_author_name"));
 					bookDTO.setBook_infomation(resultSet.getString("book_infomation"));
+					bookDTO.setBook_date(resultSet.getDate("book_date"));
 
 				}
 

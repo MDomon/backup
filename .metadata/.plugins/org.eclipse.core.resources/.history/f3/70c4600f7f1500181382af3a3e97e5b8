@@ -1,0 +1,55 @@
+package com.bookshare.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import com.bookshare.dto.BookDTO;
+import com.bookshare.util.DBConnector;
+
+public class BookShareDAO {
+	
+	private DBConnector dbConnector = new DBConnector();
+
+	private Connection connection = dbConnector.getConnection();
+	
+	private BookDTO bookDTO = new BookDTO();
+
+	private BookDTO giveBookDTO = new BookDTO();
+	
+	private BookDTO takeBookDTO = new BookDTO();
+	
+	
+	public BookDTO getBookInfo(){
+		try{
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return bookDTO;
+	}
+	
+	
+	public BookDTO getGiveBookInfo(){
+		try{
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+
+		return giveBookDTO;
+	}
+	
+	public BookDTO getTakeBookInfo(){
+		try{
+			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return takeBookDTO;
+	}
+	
+
+}

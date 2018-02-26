@@ -1,0 +1,144 @@
+package com.bookshare.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import com.bookshare.util.DateUtil;
+
+import com.bookshare.dto.BookDTO;
+import com.bookshare.util.DBConnector;
+
+public class BookShareDAO {
+
+
+
+	private BookDTO bookDTO = new BookDTO();
+
+	private BookDTO giveBookDTO = new BookDTO();
+
+	private BookDTO takeBookDTO = new BookDTO();
+
+	private DateUtil dateUtil = new DateUtil();
+
+
+	//売買対象Book情報取得
+	public BookDTO getBookInfo(int book_id)throws SQLException{
+		DBConnector dbConnector = new DBConnector();
+		Connection connection = dbConnector.getConnection();
+
+		String sql ="SELECT * FROM book_transaction WHERE id = ?";
+
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, book_id);
+
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			if(resultSet.next()) {
+				bookDTO.setBook_id(resultSet.getInt("id"));
+				bookDTO.setBook_master_id(resultSet.getInt("book_master_id"));
+				bookDTO.setBook_user_name(resultSet.getString("book_user_name"));
+				bookDTO.setBook_name(resultSet.getString("book_name"));
+				bookDTO.setBook_author_name(resultSet.getString("book_author_name"));
+				bookDTO.setBook_infomation(resultSet.getString("book_infomation"));
+				bookDTO.setBook_date(resultSet.getDate("book_date"));
+			}
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return bookDTO;
+	}
+
+
+
+
+	//Book譲り渡し情報挿入
+	public BookDTO getGiveBookInfo(int book_master_id,String book_user_name,String book_name, String book_author_name,String book_infomation, String book_date){
+		DBConnector dbConnector = new DBConnector();
+		Connection connection = dbConnector.getConnection();
+
+		String sql ="INSERT INTO give_book_transaction(book_master_id,,book_user_name,book_name,book_author_name,book_infomation,book_date) VALUES(?,?,?,?,?,?)";
+
+		try{
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setInt(1, book_master_id);
+			ps.setString(2, book_user_name);
+			ps.setString(3, book_name);
+			ps.setString(4, book_author_name);
+			ps.setString(5, book_infomation);
+			ps.setString(6, dateUtil.getDate());
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+
+		return giveBookDTO;
+	}
+
+	//book譲り受け情報挿入
+	public BookDTO getTakeBookInfo(int book_master_id,String book_user_name,String book_name, String book_author_name,String book_infomation, String book_date){
+		DBConnector dbConnector = new DBConnector();
+		Connection connection = dbConnector.getConnection();
+
+		String sql ="INSERT INTO take_book_transaction(book_master_id,,book_user_name,book_name,book_author_name,book_infomation,book_date) VALUES(?,?,?,?,?,?)";
+
+		try{
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setInt(1, book_master_id);
+			ps.setString(2, book_user_name);
+			ps.setString(3, book_name);
+			ps.setString(4, book_author_name);
+			ps.setString(5, book_infomation);
+			ps.setString(6, dateUtil.getDate());
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+
+		return takeBookDTO;
+	}
+
+
+
+
+
+	public void setBookDTO(BookDTO bookDTO) {
+		this.bookDTO = bookDTO;
+	}
+
+
+
+
+
+	public BookDTO getGiveBookDTO() {
+		return giveBookDTO;
+	}
+
+
+
+
+
+	public void setGiveBookDTO(BookDTO giveBookDTO) {
+		this.giveBookDTO = giveBookDTO;
+	}
+
+
+
+
+
+	public BookDTO getTakeBookDTO() {
+		return takeBookDTO;
+	}
+
+
+
+
+
+	public void setTakeBookDTO(BookDTO takeBookDTO) {
+		this.takeBookDTO = takeBookDTO;
+	}
+
+
+}

@@ -1,0 +1,449 @@
+package com.bookshare.action;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.bookshare.dao.LoginDAO;
+import com.bookshare.dao.MyPageDAO;
+import com.bookshare.dto.BookDTO;
+import com.bookshare.dto.LoginDTO;
+import com.bookshare.dto.MyAccountDTO;
+import com.bookshare.dto.MyPageDTO;
+import com.bookshare.dto.TweetDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+/**
+ * ログイン認証処理
+ * Login.jspからログインID、ログインパスワードを受け取り
+ * DBへ問い合わせを行います。
+ *
+ * @author internous
+ * @param loginUserId
+ * @param loginPassword
+ *
+ * @return result
+ */
+public class LoginAction extends ActionSupport implements SessionAware{
+
+	/**
+	 * ログインID
+	 */
+	private String loginUserId;
+
+	/**
+	 * ログインパスワード
+	 */
+	private String loginPassword;
+
+
+	private String userName;
+
+
+	/**
+	 * ログイン情報を格納
+	 */
+	public Map<String, Object> session;
+
+	/**
+	 * ログイン情報取得DAO
+	 */
+	private LoginDAO loginDAO = new LoginDAO();
+
+	/**
+	 * ログイン情報格納DTO
+	 */
+	private LoginDTO loginDTO = new LoginDTO();
+
+
+
+
+
+	/*コイン数*/
+	private int bookcoin;
+
+
+	/**
+	 * マイページ情報取得DAO
+	 */
+	private MyPageDAO myPageDAO = new MyPageDAO();
+
+	/**
+	 * マイページ情報格納DTO
+	 */
+	public ArrayList<MyPageDTO> myPageList = new ArrayList<MyPageDTO>();
+
+	/**
+	 * マイアカウント情報取得DAO
+	 */
+	private MyPageDAO myAccountDAO = new MyPageDAO();
+
+
+
+	//マイツイート情報取得DTO
+	private MyPageDAO myTweetDAO = new MyPageDAO();
+
+	/**
+	 * ツイート情報格納DTO
+	 */
+	public ArrayList<TweetDTO> tweetList = new ArrayList<TweetDTO>();
+
+	//MyBook情報取得DTO
+		private MyPageDAO myBookDAO = new MyPageDAO();
+
+	/**
+	 * Book情報格納DTO
+	 */
+	public ArrayList<BookDTO> bookList = new ArrayList<BookDTO>();
+
+	/**
+	 * 削除フラグ
+	 */
+	private String deleteFlg;
+
+	private String message;
+
+
+	/**
+	 * 削除フラグ
+	 */
+	private String deleteTweet;
+
+	private String message2;
+
+	/**
+	 * 削除フラグ
+	 */
+	private String deleteBook;
+
+	private String message4;
+
+	private String tweetId;
+	private String bookId;
+
+
+
+	/**
+	 * 実行メソッド
+	 * @throws SQLException
+	 */
+	public String execute() throws SQLException {
+
+		String result = ERROR;
+
+		// ログイン実行
+		loginDTO = loginDAO.getLoginUserInfo(loginUserId, loginPassword);
+
+		session.put("loginUser", loginDTO);
+		session.put("userName", loginDTO.getUserName());
+		session.put("masterId",loginDTO.getId());
+
+		// ログイン情報を比較
+		if(((LoginDTO) session.get("loginUser")).getLoginFlg()) {
+			result = SUCCESS;
+
+			return result;
+		}
+
+		//マイアカウント情報取得メソッド
+		int id = (int)session.get("masterId");
+		MyAccountDTO myAccountDTO = myAccountDAO.getMyAccountInfo(id);
+		session.put("bookcoin", myAccountDTO.getBookcoin());
+		session.put("giveBook", myAccountDTO.getGiveBook());
+		session.put("takeBook", myAccountDTO.getTakeBook());
+
+
+	/**
+	 * ツイート履歴取得メソッド
+	 *
+	 * @author internous
+	 */
+	// 商品履歴を削除しない場合
+		if(deleteTweet == null) {
+			int tweet_master_id = (int)session.get("masterId");
+			tweetList = myTweetDAO.getTweetInfo(tweet_master_id);
+
+			Iterator<TweetDTO> iterator = tweetList.iterator();
+			if (!(iterator.hasNext())) {
+				tweetList = null;
+				}
+
+		// 商品履歴を削除する場合
+		} else if(deleteTweet.equals("1")) {
+			 remove2();
+		}
+
+
+		/**
+		 * Book履歴取得メソッド
+		 *
+		 * @author internous
+		 */
+		// Book履歴を削除しない場合
+			if(deleteBook == null) {
+				int book_master_id = (int)session.get("masterId");
+				bookList = myBookDAO.getBookInfo(book_master_id);
+
+				Iterator<BookDTO> iterator3 = bookList.iterator();
+				if (!(iterator3.hasNext())) {
+					bookList = null;
+					}
+
+			// Book履歴を削除する場合
+			} else if(deleteBook.equals("1")) {
+				 remove4();
+			}
+
+
+		return result;
+	}
+
+
+
+	/**
+	 * ツイート履歴削除
+	 *
+	 * @throws SQLException
+	 */
+	public void remove2() throws SQLException {
+
+		//int tweet_id = (int)session.get("tweet_id");
+		System.out.println(tweetId);
+
+		int res2 = myPageDAO.removeTweet(Integer.parseInt(tweetId));
+
+		if(res2 > 0) {
+			tweetList = null;
+			setMessage2("ツイート情報を削除しました。");
+		} else if(res2 == 0) {
+			setMessage2("ツイート情報の削除に失敗しました。");
+		}
+
+		int tweet_master_id = (int)session.get("masterId");
+		tweetList = myTweetDAO.getTweetInfo(tweet_master_id);
+
+		Iterator<TweetDTO> iterator = tweetList.iterator();
+		if (!(iterator.hasNext())) {
+			tweetList = null;
+			}
+	}
+
+
+	/**
+	 * Book履歴削除
+	 *
+	 * @throws SQLException
+	 */
+	public void remove4() throws SQLException {
+
+
+		//int book_id = (int)session.get("book_id");
+		System.out.println(bookId);
+
+		int res4 = myPageDAO.removeBook(Integer.parseInt(bookId));
+
+		if(res4 > 0) {
+			bookList = null;
+			setMessage4("Book情報を削除しました。");
+		} else if(res4 == 0) {
+			setMessage4("Book情報の削除に失敗しました。");
+		}
+
+		int book_master_id = (int)session.get("masterId");
+		bookList = myBookDAO.getBookInfo(book_master_id);
+
+		Iterator<BookDTO> iterator3 = bookList.iterator();
+		if (!(iterator3.hasNext())) {
+			bookList = null;
+			}
+	}
+
+
+
+
+	public String getLoginUserId() {
+		return loginUserId;
+	}
+
+	public void setLoginUserId(String loginUserId) {
+		this.loginUserId = loginUserId;
+	}
+
+
+	public String getLoginPassword() {
+		return loginPassword;
+	}
+
+	public void setLoginPassword(String loginPassword) {
+		this.loginPassword = loginPassword;
+	}
+
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
+	public LoginDTO getLoginDTO(){
+		return loginDTO;
+	}
+
+	public LoginDAO getLoginDAO() {
+		return loginDAO;
+	}
+
+	public void setLoginDAO(LoginDAO loginDAO) {
+		this.loginDAO = loginDAO;
+	}
+
+	public int getBookcoin() {
+		return bookcoin;
+	}
+
+	public void setBookcoin(int bookcoin) {
+		this.bookcoin = bookcoin;
+	}
+
+	public MyPageDAO getMyPageDAO() {
+		return myPageDAO;
+	}
+
+	public void setMyPageDAO(MyPageDAO myPageDAO) {
+		this.myPageDAO = myPageDAO;
+	}
+
+	public ArrayList<MyPageDTO> getMyPageList() {
+		return myPageList;
+	}
+
+	public void setMyPageList(ArrayList<MyPageDTO> myPageList) {
+		this.myPageList = myPageList;
+	}
+
+	public MyPageDAO getMyAccountDAO() {
+		return myAccountDAO;
+	}
+
+	public void setMyAccountDAO(MyPageDAO myAccountDAO) {
+		this.myAccountDAO = myAccountDAO;
+	}
+
+	public MyPageDAO getMyTweetDAO() {
+		return myTweetDAO;
+	}
+
+	public void setMyTweetDAO(MyPageDAO myTweetDAO) {
+		this.myTweetDAO = myTweetDAO;
+	}
+
+	public ArrayList<TweetDTO> getTweetList() {
+		return tweetList;
+	}
+
+	public void setTweetList(ArrayList<TweetDTO> tweetList) {
+		this.tweetList = tweetList;
+	}
+
+	public MyPageDAO getMyBookDAO() {
+		return myBookDAO;
+	}
+
+	public void setMyBookDAO(MyPageDAO myBookDAO) {
+		this.myBookDAO = myBookDAO;
+	}
+
+	public ArrayList<BookDTO> getBookList() {
+		return bookList;
+	}
+
+	public void setBookList(ArrayList<BookDTO> bookList) {
+		this.bookList = bookList;
+	}
+
+	public String getDeleteFlg() {
+		return deleteFlg;
+	}
+
+	public void setDeleteFlg(String deleteFlg) {
+		this.deleteFlg = deleteFlg;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public String getDeleteTweet() {
+		return deleteTweet;
+	}
+
+	public void setDeleteTweet(String deleteTweet) {
+		this.deleteTweet = deleteTweet;
+	}
+
+	public String getMessage2() {
+		return message2;
+	}
+
+	public void setMessage2(String message2) {
+		this.message2 = message2;
+	}
+
+	public String getDeleteBook() {
+		return deleteBook;
+	}
+
+	public void setDeleteBook(String deleteBook) {
+		this.deleteBook = deleteBook;
+	}
+
+	public String getMessage4() {
+		return message4;
+	}
+
+	public void setMessage4(String message4) {
+		this.message4 = message4;
+	}
+
+	public String getTweetId() {
+		return tweetId;
+	}
+
+	public void setTweetId(String tweetId) {
+		this.tweetId = tweetId;
+	}
+
+	public String getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(String bookId) {
+		this.bookId = bookId;
+	}
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+	public void setLoginDTO(LoginDTO loginDTO) {
+		this.loginDTO = loginDTO;
+	}
+
+
+
+}

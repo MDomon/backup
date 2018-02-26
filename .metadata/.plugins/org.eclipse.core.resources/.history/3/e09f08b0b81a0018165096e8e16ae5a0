@@ -1,0 +1,65 @@
+package com.bookshare.action;
+
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class BookShareConfirmAction extends ActionSupport implements SessionAware{
+
+	public Map<String, Object> session;
+
+	private int book_id;
+
+	private int my_id;
+
+	private int you_id;
+
+	public String execute(){
+		book_id = Integer.parseInt(session.get("book_id").toString());
+		my_id = Integer.parseInt(session.get("user_id").toString());
+		you_id= Integer.parseInt(session.get("book_master_id").toString());
+		session.put("my_id", my_id);
+		session.put("you_id", you_id);
+
+		String result = SUCCESS;
+		return result;
+
+	}
+
+	public int getBook_id(){
+		return book_id;
+	}
+	public void setBook_id(int book_id){
+		this.book_id = book_id;
+	}
+
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+	public int getMy_id() {
+		return my_id;
+	}
+
+	public void setMy_id(int my_id) {
+		this.my_id = my_id;
+	}
+
+	public int getYou_id() {
+		return you_id;
+	}
+
+	public void setYou_id(int you_id) {
+		this.you_id = you_id;
+	}
+
+}
+
+

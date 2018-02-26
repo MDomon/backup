@@ -1,0 +1,132 @@
+drop database if exists bookshare;
+
+create database if not exists bookshare;
+use bookshare;
+
+
+
+drop table if exists user_transaction;
+
+create table user_transaction(
+id int not null primary key auto_increment,
+user_id varchar(16) unique,
+user_pass varchar(16),
+user_name varchar(50),
+user_bookcoin int default 5,
+user_give_book int default 0,
+user_take_book int default 0,
+insert_date datetime,
+updated_date datetime
+);
+
+
+drop table if exists book_transaction;
+
+create table book_transaction(
+id int not null primary key auto_increment,
+book_user_name varchar(50),
+book_name varchar(50),
+book_author_name varchar(50),
+book_infomation varchar(255),
+book_master_id int,
+book_date datetime,
+updated_date datetime
+);
+
+drop table if exists take_book_transaction;
+
+create table take_book_transaction(
+id int not null primary key auto_increment,
+book_user_name varchar(50),
+book_name varchar(50),
+book_author_name varchar(50),
+book_infomation varchar(255),
+book_master_id int,
+book_date datetime,
+updated_date datetime
+);
+
+drop table if exists give_book_transaction;
+
+create table give_book_transaction(
+id int not null primary key auto_increment,
+book_user_name varchar(50),
+book_name varchar(50),
+book_author_name varchar(50),
+book_infomation varchar(255),
+book_master_id int,
+book_date datetime,
+updated_date datetime
+);
+
+
+drop table if exists tweet_transaction;
+
+create table tweet_transaction(
+id int not null primary key auto_increment,
+tweet_user_name varchar(50),
+tweet_message varchar(255),
+tweet_master_id int,
+tweet_date datetime,
+delete_date datetime
+);
+
+
+
+
+drop table if exists item_info_transaction;
+
+create table item_info_transaction(
+id int not null primary key auto_increment,
+item_name varchar(30),
+item_price int,
+item_stock int,
+insert_date datetime,
+update_date datetime
+);
+
+drop table if exists user_buy_item_transaction;
+
+create table user_buy_item_transaction(
+id int not null primary key auto_increment,
+item_transaction_id int,
+total_price int,
+total_count int,
+user_master_id varchar(16),
+pay varchar(30),
+insert_date datetime,
+delete_date datetime
+);
+
+
+
+
+INSERT INTO user_transaction(user_id, user_pass, user_name)
+VALUES("t", "t", "太郎"),("m", "m", "masa"),("h", "h", "花子"),("j", "j", "Jon"),("y", "y", "よーちゃん"),("a", "a", "a");
+
+
+INSERT INTO book_transaction(book_user_name,book_name,book_author_name,book_infomation,book_master_id)
+VALUES("太郎","こころ","夏目漱石","夏目漱石の著書、こころです。",1),
+("太郎","こころ","夏目漱石","夏目漱石の著書、こころです。",1),
+("太郎","こころ","夏目漱石","夏目漱石の著書、こころです。",1),
+("太郎","こころ","夏目漱石","夏目漱石の著書、こころです。",1),
+("太郎","こころ","夏目漱石","夏目漱石の著書、こころです。",1),
+("太郎","こころ","夏目漱石","夏目漱石の著書、こころです。",1),
+("masa","お金2.0","佐藤航陽","新しい経済について書かれた本です。",2),
+("masa","未来に先回りする思考法","佐藤航陽","テクノロジーと人類について書かれた本です。",2),
+("masa","学問のすすめ","福沢諭吉","福沢諭吉の学問のすすめです。",2),
+("花子","指輪物語","JRRトールキン","ロードオブザリングの原作です。",3),
+("花子","ハリーポッター","JKローリング","一部汚れています。",3),
+("花子","不思議の国のアリス","ルイスキャロル","ほぼ新品の美品です。",3),
+("Jon","洞窟の女王","ヘンリーライダーハガード","先週買ったばかりです。",4),
+("よーちゃん","国家","プラトン","",5),
+("よーちゃん","ソクラテスの弁明","プラトン","",5),
+("a","ソクラテスの弁明","プラトン","",6),
+("a","指輪物語","JRRトールキン","面白いのでお勧めです！",6),
+("a","学問のすすめ","福沢諭吉","勉強する気になりました。",6),
+
+
+
+
+INSERT INTO tweet_transaction(user_id, user_pass, user_name)
+VALUES

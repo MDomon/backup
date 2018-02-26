@@ -1,0 +1,220 @@
+package com.bookshare.action;
+
+import java.sql.SQLException;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.bookshare.dao.BookShareDAO;
+import com.bookshare.dto.BookDTO;
+import com.bookshare.dto.MyAccountDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class BookShareCompleteAction extends ActionSupport implements SessionAware {
+
+	public Map<String, Object> session;
+
+	private int book_id;
+	private int my_id;
+	private int you_id;
+
+
+	private String book_user_name;
+	private String book_name;
+	private String book_author_name;
+	private String book_infomation;
+
+	private BookDTO bookDTO = new BookDTO();
+
+	private BookShareDAO bookShareDAO = new BookShareDAO();
+
+	private MyAccountDTO my = new MyAccountDTO();
+	private MyAccountDTO you = new MyAccountDTO();
+	private int my_bookcoin;
+	private int you_bookcoin;
+	private int takeBook;
+	private int giveBook;
+
+
+	public String execute()throws SQLException{
+
+		//売買対象Book情報取得
+		bookDTO = bookShareDAO.getBookInfo(book_id);
+		book_user_name = bookDTO.getBook_user_name();
+		book_name = bookDTO.getBook_name();
+		book_author_name = bookDTO.getBook_author_name();
+		book_infomation = bookDTO.getBook_infomation();
+
+		//Book譲り渡し情報挿入
+		bookShareDAO.insertGiveBookInfo(you_id,book_user_name,book_name,book_author_name,book_infomation);
+
+		//book譲り受け情報挿入
+		bookShareDAO.insertTakeBookInfo(my_id,book_user_name,book_name,book_author_name,book_infomation);
+
+		//Book情報削除
+		bookShareDAO.deleteBookInfo(book_id);
+
+		//自分ユーザー情報取得
+		my = bookShareDAO.getMyInfo(my_id);
+		my_bookcoin = my.getBookcoin();
+		takeBook = my.getTakeBook();
+
+		//相手ユーザー情報取得
+		you = bookShareDAO.getYouInfo(you_id);
+		you_bookcoin = you.getBookcoin();
+		giveBook = you.getGiveBook();
+
+		//自分ユーザー情報更新
+		bookShareDAO.updateMyInfo(my_id,my_bookcoin,takeBook);
+
+		//相手ユーザー情報更新
+		bookShareDAO.updateYouInfo(you_id,you_bookcoin,giveBook);
+
+
+		return SUCCESS;
+	}
+
+
+
+	public int getBook_id(){
+		return book_id;
+	}
+	public void setBook_id(int book_id){
+		this.book_id = book_id;
+	}
+
+	public String getBook_name(){
+		return book_name;
+	}
+	public void setBook_name(String book_name){
+		this.book_name = book_name;
+	}
+
+	public String getBook_user_name(){
+		return book_user_name;
+	}
+	public void setBook_user_name(String book_user_name){
+		this.book_user_name = book_user_name;
+	}
+
+	public String getBook_author_name(){
+		return book_author_name;
+	}
+	public void setBook_author_name(String book_author_name){
+		this.book_author_name = book_author_name;
+	}
+
+	public String getBook_infomation(){
+		return book_infomation;
+	}
+	public void setBook_infomation(String book_infomation){
+		this.book_infomation = book_infomation;
+	}
+
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+
+
+	public MyAccountDTO getMy() {
+		return my;
+	}
+
+
+
+	public void setMy(MyAccountDTO my) {
+		this.my = my;
+	}
+
+
+
+	public MyAccountDTO getYou() {
+		return you;
+	}
+
+
+
+	public void setYou(MyAccountDTO you) {
+		this.you = you;
+	}
+
+
+
+
+	public int getTakeBook() {
+		return takeBook;
+	}
+
+
+
+	public void setTakeBook(int takeBook) {
+		this.takeBook = takeBook;
+	}
+
+
+
+	public int getGiveBook() {
+		return giveBook;
+	}
+
+
+
+	public void setGiveBook(int giveBook) {
+		this.giveBook = giveBook;
+	}
+
+
+
+	public BookShareDAO getBookShareDAO() {
+		return bookShareDAO;
+	}
+
+
+
+	public void setBookShareDAO(BookShareDAO bookShareDAO) {
+		this.bookShareDAO = bookShareDAO;
+	}
+
+
+
+	public int getYou_bookcoin() {
+		return you_bookcoin;
+	}
+
+
+
+	public void setYou_bookcoin(int you_bookcoin) {
+		this.you_bookcoin = you_bookcoin;
+	}
+
+
+
+	public int getMy_bookcoin() {
+		return my_bookcoin;
+	}
+
+
+
+	public void setMy_bookcoin(int my_bookcoin) {
+		this.my_bookcoin = my_bookcoin;
+	}
+
+
+
+	public BookDTO getBookDTO() {
+		return bookDTO;
+	}
+
+
+
+	public void setBookDTO(BookDTO bookDTO) {
+		this.bookDTO = bookDTO;
+	}
+
+}

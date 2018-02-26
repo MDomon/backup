@@ -1,0 +1,299 @@
+body{
+    color:#333333;
+    font-family:sans-serif;
+}
+
+/*リンク*/
+a:link{
+    color:#999966;
+}
+
+a:visited{
+    color:#666666;
+}
+
+a:hover{
+    color: #996600;
+}
+
+a:active {
+    color: #ff8000;
+}
+
+/*パンくずリスト*/
+.topicPath{
+    font-size:12px;
+}
+
+/*ページの先頭へ戻る*/
+.pageTop{
+    font-size:12px;
+    text-align:right;
+    margin-top:30px;
+}
+.pageTop a{
+    background-image:url("../images/ico_pagetop.png");
+    background-repeat:no-repeat;
+    background-position:0 50%;
+    padding-left:10px;
+}
+
+/*ページ*/
+#page{
+    width:980px;
+    margin:0 auto;
+}
+
+/*ページヘッダー*/
+#pageHead #siteTitle{
+    font-size:80px;
+    line-height:1.333;
+    margin-bottom:0;
+    font-family: 'Barlow', sans-serif;
+
+}
+
+#pageHead #catchcopy{
+    font-size:12px;
+    line-height:1.5;
+    margin-top:5px;
+    float:left;
+}
+.searchContainer{
+    float:right;
+}
+
+
+
+/* グローバルナビ */
+#pageHead .globalNavi{
+    border:solid #cccccc;
+    border-width:1px 0;
+    padding:10px 0;
+    clear:both;
+}
+
+#pageHead .globalNavi ul{
+    margin:0;
+    padding:0;
+}
+
+#pageHead .globalNavi ul:after{
+    content:"";
+    clear:both;
+    display:block;
+}
+
+#pageHead .globalNavi ul li{
+    list-style:none;
+    width:245px;
+    float:left;
+    border-left:solid 1px #cccccc;
+    padding:0 10px;
+    box-sizing:border-box;
+    text-align:center;
+    font-size:14px;
+    line-height:1.429;
+}
+
+#pageHead .globalNavi ul li:first-child{
+    border-left:none;
+}
+
+
+#pageHead .globalNavi ul li a{
+    color:inherit;
+    text-decoration:none;
+    display:block;
+    padding:5px 0;
+}
+
+#pageHead .globalNavi ul li a:hover,
+#pageHead .globalNavi ul li.current a{
+    background-color:#f2f2e5;
+}
+
+
+
+/*ページフッター*/
+#pageFoot{
+    border-top:solid 1px #cccccc;
+    margin-top:15px;
+}
+
+#pageFoot #copyright small{
+    font-size:12px;
+    line-height:1.5;
+}
+
+/*ページボディ*/
+#pageBody{
+    margin-top:30px;
+}
+
+#pageBody:after{
+    content:"";
+    clear:both;
+    display:block;
+}
+
+#pageBodyMain{
+	clear:both;
+    width:80%;
+    text-align:center;
+    margin-right:auto;
+    margin-left:auto;
+    border:solid 10px #f2f2e5;
+}
+
+.bookInfo{
+	float:left;
+}
+
+.bookImg{
+	float:left;
+}
+
+.bookButton{
+	float:left;
+}
+
+
+
+
+/* ----- サブカラム内の装飾 ----- */
+
+/*見出し*/
+#pageBodySub h2{
+   font-size:26px;
+    background-color:#F2F2E5;
+    padding:5px 15px;
+    line-height:1.231;
+    margin-top:0;
+}
+
+/*おしらせ*/
+#pageBodySub .newList ul{
+    list-style:none;
+    padding:0;
+}
+
+#pageBodySub .newsList ul li{
+    font-size:12px;
+    line-height:1.5;
+    margin:10px 5px;
+}
+
+#pageBodySub .newsList ul li time{
+    font-weight: bold;
+    display:block;
+}
+
+/* ローカルナビ */
+#pageBodySub .localNavi ul{
+    margin:0 0 30px;
+    padding-left:0;
+}
+#pageBodySub .localNavi ul li{
+    font-size:14px;
+    line-height:1.429;
+    margin-bottom:12px;
+    list-style-type:none;
+    background-image:url("../images/ico_arrow.png");
+    background-repeat:no-repeat;
+    background-position:0 8px;
+    padding-left:10px;
+}
+
+
+/* ----- メインカラム内の装飾 ----- */
+
+#pageBodyMain p{
+    font-size:14px;
+    line-height:1.429;
+}
+
+/*リスト*/
+#pageBodyMain ul li{
+    font-size:14px;
+    list-style-type:square;
+    line-height:1.429;
+}
+
+
+/*図版*/
+#pageBodyMain figure{
+    margin:0;
+}
+
+/*画像キャプション*/
+#pageBodyMain figcaption{
+    font-size:12px;
+}
+
+/*見出し*/
+#pageBodyMain .pageTitle{
+    font-size:26px;
+    background-color:#F2F2E5;
+    padding:5px 15px;
+    line-height:1.231;
+    margin-top:0;
+}
+
+#main .heading-typeA{
+    font-size:28px;
+    color:#349FA6;
+    border-bottom:solid 1px #349FA6;
+    padding:5px;
+    line-height:1.333;
+}
+
+#pageBodyMain .heading-typeB{
+    font-size:16px;
+    border-left:solid 5px #E3E4D9;
+    padding-left:10px;
+    line-height:1.375;
+}
+
+#pageBodyMain .heading-typeC{
+    font-size:14px;
+    line-height:1.429;
+}
+
+/*区切り線・余白*/
+#pageBodyMain .articleDetailHead{
+    border-bottom:solid 1px #cccccc;
+    margin-bottom:30px;
+    padding-bottom:15px;
+}
+
+#pageBodyMain .articleDetailFoot{
+    border-top:solid 1px #cccccc;
+    margin-top:30px;
+    padding-top:15px;
+}
+
+#pageBodyMain .articleDetailBody section{
+    margin:30px 0;
+}
+
+/
+#bookList{
+	border:solid 1px #cccccc;
+	padding:5px 10px;
+}
+
+table{
+	text-align:center;
+	border: solid 2px #cccccc;
+	border-collapse:collapse;
+}
+
+table th{
+	padding:10px;
+	background-color:#f2f2e5;
+}
+
+table td{
+	padding:5px 10px;
+}

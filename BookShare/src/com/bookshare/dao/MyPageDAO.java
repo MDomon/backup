@@ -150,6 +150,75 @@ public class MyPageDAO {
 		return myAccountDTO;
 	}
 
+	//GiveBook情報の取得
+		public ArrayList<BookDTO> getGiveBookInfo(int book_master_id) throws SQLException{
+			ArrayList<BookDTO> giveBookList = new ArrayList<BookDTO>();
+
+			String sql3 = "SELECT * FROM give_book_transaction WHERE book_master_id =? ORDER BY book_date DESC";
+
+		try {
+			PreparedStatement statement3 = connection.prepareStatement(sql3);
+			statement3.setInt(1, book_master_id);
+
+			ResultSet resultSet3 = statement3.executeQuery();
+
+			while(resultSet3.next()){
+				BookDTO dto = new BookDTO();
+				dto.setBook_id(resultSet3.getInt("id"));
+				dto.setBook_master_id(resultSet3.getInt("book_master_id"));
+				dto.setBook_user_name(resultSet3.getString("book_user_name"));
+				dto.setBook_name(resultSet3.getString("book_name"));
+				dto.setBook_author_name(resultSet3.getString("book_author_name"));
+				dto.setBook_infomation(resultSet3.getString("book_infomation"));
+				dto.setBook_date(resultSet3.getDate("book_date"));
+
+				giveBookList.add(dto);
+			}
+
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			connection.close();
+		}
+
+			return giveBookList;
+		}
+
+		//TakeBook情報の取得
+				public ArrayList<BookDTO> getTakeBookInfo(int book_master_id) throws SQLException{
+					ArrayList<BookDTO> takeBookList = new ArrayList<BookDTO>();
+
+					String sql3 = "SELECT * FROM take_book_transaction WHERE book_master_id =? ORDER BY book_date DESC";
+
+				try {
+					PreparedStatement statement3 = connection.prepareStatement(sql3);
+					statement3.setInt(1, book_master_id);
+
+					ResultSet resultSet3 = statement3.executeQuery();
+
+					while(resultSet3.next()){
+						BookDTO dto = new BookDTO();
+						dto.setBook_id(resultSet3.getInt("id"));
+						dto.setBook_master_id(resultSet3.getInt("book_master_id"));
+						dto.setBook_user_name(resultSet3.getString("book_user_name"));
+						dto.setBook_name(resultSet3.getString("book_name"));
+						dto.setBook_author_name(resultSet3.getString("book_author_name"));
+						dto.setBook_infomation(resultSet3.getString("book_infomation"));
+						dto.setBook_date(resultSet3.getDate("book_date"));
+
+						takeBookList.add(dto);
+					}
+
+				} catch(Exception e) {
+					e.printStackTrace();
+				} finally {
+					connection.close();
+				}
+
+					return takeBookList;
+				}
+
+
 	public MyAccountDTO getMyAccountDTO() {
 		return myAccountDTO;
 	}
