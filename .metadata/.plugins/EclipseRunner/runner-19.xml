@@ -3,7 +3,8 @@
 <category name="カテゴリーなし">
 <launchConfiguration bookmark="false" name="Account"/>
 <launchConfiguration bookmark="false" name="Android"/>
-<launchConfiguration bookmark="false" name="solare-master"/>
+<launchConfiguration bookmark="false" name="BookShare"/>
+<launchConfiguration bookmark="false" name="BookShare (1)"/>
 <launchConfiguration bookmark="false" name="ChkLoadJdbc"/>
 <launchConfiguration bookmark="false" name="ChkLoadJdbc (1)"/>
 <launchConfiguration bookmark="false" name="Copsule"/>
@@ -17,7 +18,6 @@
 <launchConfiguration bookmark="false" name="iPhone"/>
 <launchConfiguration bookmark="false" name="iPhone (1)"/>
 <launchConfiguration bookmark="false" name="sample1"/>
-<launchConfiguration bookmark="false" name="テンプレート"/>
 <launchConfiguration bookmark="false" name="ローカル・ホスト の Tomcat8 (Java8)"/>
 </category>
 </runner>

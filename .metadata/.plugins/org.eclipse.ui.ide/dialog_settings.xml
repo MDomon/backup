@@ -14,7 +14,12 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+<<<<<<< HEAD
+			<item value="C:\Users\internousdev\Desktop\workspace\workspace-domon\backup\test01"/>
+			<item value="C:\Users\internousdev\Desktop\workspace\workspace-domon\backup\sagaone"/>
+=======
 			<item value="C:\Users\Owner\Desktop\WorkPlace\backup\sagaone"/>
+>>>>>>> 217f34bd3fe61bcf94638193e013c3767045873d
 			<item value="C:\Users\internousdev\Desktop\workspace\workspace-oohara\kokotown"/>
 			<item value="C:\Users\internousdev\Desktop\workspace\sukesyunshop"/>
 			<item value="C:\Users\Owner\Desktop\WorkPlace\backup\test01"/>
