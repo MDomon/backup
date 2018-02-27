@@ -62,7 +62,7 @@
 												<p>コメント:<s:property value="#session.book_infomation" /></p>
 												<p>登録日:<s:property value="#session.book_date" /></p>
 											</div>
-											<s:if test="#session.masterId != #session.book_master_id">
+											<s:if test="#session.masterId != #session.book_master_id && #session.masterId != null">
 											<div class="bookButton">
 												<s:form action="BookShareConfirmAction">
 													<s:token/>

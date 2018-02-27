@@ -62,7 +62,7 @@
 								<s:if test= "bookSearchList.size() > 0">
 		                        	<s:iterator value="bookSearchList">
 											<div id="bookSearchList">
-												<a href='<s:url action="BookDetailAciton"><s:param value="%{book_id}" name="book_id" /></s:url>'>
+												<a class="a" href='<s:url action="BookDetailAciton"><s:param value="%{book_id}" name="book_id" /></s:url>'>
 											<div id="bookList">
 												<p><img src="images/iconBook.png" alt="" width="90" height="90"></p>
 												<p>ユーザー名:<s:property value="book_user_name" /></p>

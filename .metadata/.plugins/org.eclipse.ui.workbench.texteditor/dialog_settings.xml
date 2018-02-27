@@ -2,20 +2,26 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="TweetCreateCompleteDAO" key="selection"/>
+		<item value=".bookList" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="bookList"/>
+			<item value=".thumbnail"/>
+			<item value=".thumnail"/>
+			<item value="ul"/>
 			<item value="TweetDAO"/>
 			<item value="Commodity"/>
 			<item value="internousdev.Warasibe"/>
 			<item value="internousdev.ecsite"/>
-			<item value="setWeight"/>
-			<item value="internousdev"/>
 		</list>
 		<list key="replacehistory">
+			<item value=".bookList"/>
+			<item value="bookList"/>
+			<item value="book"/>
+			<item value="h1"/>
 			<item value="TweetCreateCompleteDAO"/>
 			<item value="Tweet"/>
 			<item value="bookshare"/>
