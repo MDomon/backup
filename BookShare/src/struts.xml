@@ -62,7 +62,7 @@
 		<!-- TweetCreateConfirmAction -->
 		<action name="TweetCreateConfirmAction" class="com.bookshare.action.TweetCreateConfirmAction" method="execute">
 			<result name="success">tweetCreateConfirm.jsp</result>
-			<result name="error">myPage.jsp</result>
+			<result name="error">error4.jsp</result>
 		</action>
 
 		<!-- BookCreateAction -->

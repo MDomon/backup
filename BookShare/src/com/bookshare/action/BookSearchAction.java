@@ -46,6 +46,8 @@ public class BookSearchAction extends ActionSupport implements SessionAware {
 	 */
 	public ArrayList<TweetDTO> tweetList = new ArrayList<TweetDTO>();
 
+
+
 	/**
 	 * 実行メソッド
 	 *
@@ -55,6 +57,18 @@ public class BookSearchAction extends ActionSupport implements SessionAware {
 	@SuppressWarnings("unchecked")
 	public String execute() throws SQLException {
 
+		/**
+		 * ツイート履歴取得メソッド
+		 *
+		 * @author internous
+		 */
+		tweetList = homePageDAO.getTweetInfo();
+
+		Iterator<TweetDTO> iterator = tweetList.iterator();
+		if (!(iterator.hasNext())) {
+			tweetList = null;
+		}
+
 		String result = ERROR;
 
 		// ワードを入力した時のみ実行
@@ -63,6 +77,7 @@ public class BookSearchAction extends ActionSupport implements SessionAware {
 			result = ERROR;
 			bookList = (List<BookDTO>) session.get("bookList");
 			setMessage("該当する商品が見つかりませんでした。");
+			return result;
 
 		} else {
 
@@ -80,20 +95,8 @@ public class BookSearchAction extends ActionSupport implements SessionAware {
 				bookList = (List<BookDTO>) session.get("bookList");
 				setMessage("該当する商品が見つかりませんでした。");
 			}
+
 		}
-
-		/**
-		 * ツイート履歴取得メソッド
-		 *
-		 * @author internous
-		 */
-		tweetList = homePageDAO.getTweetInfo();
-
-		Iterator<TweetDTO> iterator = tweetList.iterator();
-		if (!(iterator.hasNext())) {
-			tweetList = null;
-		}
-
 		return result;
 	}
 

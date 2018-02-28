@@ -1,0 +1,93 @@
+package com.bookshare.action;
+
+import java.util.Date;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class TweetCreateConfirmAction extends ActionSupport implements SessionAware {
+
+	public Map<String, Object> session;
+	private String errorMessage;
+
+	private int tweet_id;
+	private int tweet_master_id;
+	private String tweet_user_name;
+	private String tweet_message;
+	private Date tweet_date;
+
+	public String execute() {
+
+		String result = SUCCESS;
+
+		if (!(tweet_message == null) || !(tweet_message.isEmpty())) {
+			session.put("tweet_message", tweet_message);
+		} else {
+			setErrorMessage("未入力の項目があります。");
+			result = ERROR;
+		}
+
+		return result;
+
+	}
+
+	public int getTweet_id() {
+		return tweet_id;
+	}
+
+	public void setTweet_id(int tweet_id) {
+		this.tweet_id = tweet_id;
+	}
+
+	public int getTweet_master_id() {
+		return tweet_master_id;
+	}
+
+	public void setTweet_master_id(int tweet_master_id) {
+		this.tweet_master_id = tweet_master_id;
+	}
+
+	public String getTweet_user_name() {
+		return tweet_user_name;
+	}
+
+	public void setTweet_user_name(String tweet_user_name) {
+		this.tweet_user_name = tweet_user_name;
+	}
+
+	public String getTweet_message() {
+		return tweet_message;
+	}
+
+	public void setTweet_message(String tweet_message) {
+		this.tweet_message = tweet_message;
+	}
+
+	public Date getTweet_date() {
+		return tweet_date;
+	}
+
+	public void setTweet_date(Date tweet_date) {
+		this.tweet_date = tweet_date;
+	}
+
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
+
+}

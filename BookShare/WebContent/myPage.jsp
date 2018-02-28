@@ -113,8 +113,8 @@
                     <section class="newList">
                         <h1><s:property value="#session.userName"/>さんのつぶやき</h1>
                         <s:form action="TweetCreateConfirmAction" theme="simple">
-							<input type="text" name="tweet_message" value="">
-							<s:submit value="つぶやく"/>
+                        	<s:textarea class="textarea" key="tweet_message"/>
+							<s:submit class="button" value="つぶやく"/>
 						</s:form>
 						<br>
 							<s:if test="message2 != null">

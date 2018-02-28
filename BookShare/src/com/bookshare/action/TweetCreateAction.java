@@ -31,10 +31,6 @@ public class TweetCreateAction extends ActionSupport implements SessionAware {
 		dto.setTweet_message(session.get("tweet_message").toString());
 		dto.setTweet_date(new Date());
 
-		session.put("tweet_id", dto.getTweet_id());
-		session.put("tweet_user_name", dto.getTweet_user_name());
-		session.put("tweet_date", dto.getTweet_date());
-
 		try {
 			dao.createTweet(dto);
 			return SUCCESS;
