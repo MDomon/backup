@@ -25,7 +25,7 @@
             </header>
 
 	<div id="main">
-		<h1>エラーが発生しました。</h1>
+		<h1>ログインが完了していません。</h1>
 		<p>恐れ入りますが、<a href='<s:url action="GoLoginAction" />'>ログイン</a>からやり直してください。</p>
 
 	</div>

@@ -11,29 +11,26 @@ import com.bookshare.util.DBConnector;
 
 public class BookSearchDAO {
 
-
 	private DBConnector dbConnector = new DBConnector();
 
 	private Connection connection = dbConnector.getConnection();
 
 	private List<BookDTO> searchList = new ArrayList<BookDTO>();
 
-
-
-
-	public List<BookDTO> getBookInfo(String searchWord){
+	//検索ワードからBookリスト情報を取得
+	public List<BookDTO> getBookInfo(String searchWord) {
 
 		String sql = "SELECT * FROM book_transaction JOIN user_transaction ON book_transaction.book_master_id = user_transaction.id ORDER BY book_date DESC";
 
-		try{
+		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			ResultSet resultSet = preparedStatement.executeQuery();
 
-			while(resultSet.next()){
+			while (resultSet.next()) {
 				String book_name = resultSet.getString("book_name");
 				String book_author_name = resultSet.getString("book_author_name");
 
-				if(book_name.matches(".*" + searchWord + ".*")|| book_author_name.matches(".*" + searchWord + ".*")){
+				if (book_name.matches(".*" + searchWord + ".*") || book_author_name.matches(".*" + searchWord + ".*")) {
 					BookDTO dto = new BookDTO();
 
 					dto.setBook_id(resultSet.getInt("id"));
@@ -45,19 +42,18 @@ public class BookSearchDAO {
 					dto.setBook_author_name(book_author_name);
 
 					searchList.add(dto);
-					System.out.println(searchList);
 
 				}
 			}
 
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		return searchList;
 	}
 
-	public List<BookDTO> getBookDTO(){
+	public List<BookDTO> getBookDTO() {
 		return searchList;
 	}
 

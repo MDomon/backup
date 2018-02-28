@@ -20,7 +20,7 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 
 	private String userName;
 
-	public Map<String,Object> session;
+	public Map<String, Object> session;
 
 	private String errorMassage;
 
@@ -28,20 +28,20 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 
 		String result = SUCCESS;
 
-		if(!(loginUserId.equals("")) && !(loginPassword.equals("")) && !(userName.equals(""))) {
+		if (!(loginUserId.equals("")) && !(loginPassword.equals("")) && !(userName.equals(""))) {
 
 			UserCreateConfirmDAO userCreateConfirmDAO = new UserCreateConfirmDAO();
 			boolean checkId = userCreateConfirmDAO.getUserInfo(loginUserId);
 
-			if(checkId){
+			//既に登録されているIDかの場合分け
+			if (checkId) {
 				session.put("loginUserId", loginUserId);
 				session.put("loginPassword", loginPassword);
 				session.put("userName", userName);
-			}else{
+			} else {
 				setErrorMassage("このIDは既に登録されています。");
 				result = ERROR;
 			}
-
 
 		} else {
 

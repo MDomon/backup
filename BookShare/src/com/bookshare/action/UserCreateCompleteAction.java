@@ -8,7 +8,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.bookshare.dao.UserCreateCompleteDAO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class UserCreateCompleteAction extends ActionSupport implements SessionAware{
+public class UserCreateCompleteAction extends ActionSupport implements SessionAware {
 
 	private String loginUserId;
 
@@ -18,19 +18,18 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 
 	private int bookcoin;
 
-	public Map<String,Object> session;
+	public Map<String, Object> session;
 
 	private UserCreateCompleteDAO userCreateCompleteDAO = new UserCreateCompleteDAO();
 
 	public String execute() throws SQLException {
 
-		userCreateCompleteDAO.createUser(session.get("loginUserId").toString(),
-				session.get("loginPassword").toString(),
+		userCreateCompleteDAO.createUser(session.get("loginUserId").toString(), session.get("loginPassword").toString(),
 				session.get("userName").toString());
 
 		String result = SUCCESS;
 
-		return result ;
+		return result;
 	}
 
 	public String getLoginUserId() {
@@ -57,11 +56,11 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 		this.userName = userName;
 	}
 
-	public int getBookcoin(){
+	public int getBookcoin() {
 		return bookcoin;
 	}
 
-	public void setBookcoin(int bookcoin){
+	public void setBookcoin(int bookcoin) {
 		this.bookcoin = bookcoin;
 	}
 

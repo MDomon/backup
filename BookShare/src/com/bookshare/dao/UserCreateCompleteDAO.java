@@ -17,6 +17,7 @@ public class UserCreateCompleteDAO {
 
 	private String sql = "INSERT INTO user_transaction (user_id, user_pass, user_name, insert_date) VALUES(?, ? ,?, ?)";
 
+	//ユーザー情報の新規登録
 	public void createUser(String loginUserId, String loginUserPassword, String userName) throws SQLException {
 
 		try {
@@ -28,7 +29,7 @@ public class UserCreateCompleteDAO {
 
 			preparedStatement.execute();
 
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			connection.close();

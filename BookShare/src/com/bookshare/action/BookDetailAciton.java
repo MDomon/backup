@@ -9,7 +9,7 @@ import com.bookshare.dao.BookDetailDAO;
 import com.bookshare.dto.BookDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class BookDetailAciton extends ActionSupport implements SessionAware{
+public class BookDetailAciton extends ActionSupport implements SessionAware {
 
 	/**
 	 * ログイン情報を格納
@@ -28,30 +28,27 @@ public class BookDetailAciton extends ActionSupport implements SessionAware{
 	private int book_id;
 	private int book_master_id;
 
-
-
 	public String execute() throws SQLException {
 
-	//Book情報取得メソッド
-System.out.println(book_id);
-	session.put("book_id", book_id);
+		// Book情報取得メソッド
+		session.put("book_id", book_id);
+		BookDTO bookDTO = bookDetailDAO.getBookInfo(book_id);
 
-	BookDTO bookDTO = bookDetailDAO.getBookInfo(book_id);
+		session.put("book_user_name", bookDTO.getBook_user_name());
+		session.put("book_name", bookDTO.getBook_name());
+		session.put("book_author_name", bookDTO.getBook_author_name());
+		session.put("book_infomation", bookDTO.getBook_infomation());
+		session.put("book_date", bookDTO.getBook_date());
+		session.put("book_master_id", bookDTO.getBook_master_id());
 
-	session.put("book_user_name", bookDTO.getBook_user_name());
-	session.put("book_name", bookDTO.getBook_name());
-	session.put("book_author_name", bookDTO.getBook_author_name());
-	session.put("book_infomation",  bookDTO.getBook_infomation());
-	session.put("book_date",  bookDTO.getBook_date());
-	session.put("book_master_id", bookDTO.getBook_master_id());
+		String result = SUCCESS;
+		return result;
+	}
 
-	String result = SUCCESS;
-	return result;
-}
-
-	public Map<String, Object> getSession(){
+	public Map<String, Object> getSession() {
 		return session;
 	}
+
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}

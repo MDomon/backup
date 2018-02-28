@@ -1,5 +1,6 @@
 package com.bookshare.dto;
 
+//ログイン情報のインスタンス
 public class LoginDTO {
 
 	private int id;

@@ -6,7 +6,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class BookShareConfirmAction extends ActionSupport implements SessionAware{
+public class BookShareConfirmAction extends ActionSupport implements SessionAware {
 
 	public Map<String, Object> session;
 
@@ -16,27 +16,28 @@ public class BookShareConfirmAction extends ActionSupport implements SessionAwar
 
 	private int you_id;
 
-	public String execute(){
-		System.out.println((Integer.parseInt(session.get("bookcoin").toString()) + "--i"));
+	public String execute() {
 
-	if(Integer.parseInt(session.get("bookcoin").toString()) > 0){
+		//Bookcoinが1枚以上あるかで場合分け
+		if (Integer.parseInt(session.get("bookcoin").toString()) > 0) {
 
-		book_id = Integer.parseInt(session.get("book_id").toString());
-		my_id= Integer.parseInt(session.get("masterId").toString());
-		you_id= Integer.parseInt(session.get("book_master_id").toString());
+			book_id = Integer.parseInt(session.get("book_id").toString());
+			my_id = Integer.parseInt(session.get("masterId").toString());
+			you_id = Integer.parseInt(session.get("book_master_id").toString());
 
-		return SUCCESS;
+			return SUCCESS;
 
-	}else{
+		} else {
 
-		return ERROR;
+			return ERROR;
 		}
 	}
 
-	public int getBook_id(){
+	public int getBook_id() {
 		return book_id;
 	}
-	public void setBook_id(int book_id){
+
+	public void setBook_id(int book_id) {
 		this.book_id = book_id;
 	}
 
@@ -66,5 +67,3 @@ public class BookShareConfirmAction extends ActionSupport implements SessionAwar
 	}
 
 }
-
-

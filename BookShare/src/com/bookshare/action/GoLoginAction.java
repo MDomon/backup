@@ -11,8 +11,7 @@ public class GoLoginAction extends ActionSupport implements SessionAware {
 	public Map<String, Object> session;
 
 	/**
-	 * ログインボタン押下時に実行
-	 * ログイン画面へ遷移します。
+	 * ログインボタン押下時に実行 ログイン画面へ遷移します。
 	 *
 	 * @return SUCCSESS
 	 */
@@ -24,9 +23,8 @@ public class GoLoginAction extends ActionSupport implements SessionAware {
 		return result;
 	}
 
-
 	@Override
-	public void setSession(Map<String, Object> session){
+	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
 

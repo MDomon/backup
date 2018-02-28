@@ -13,25 +13,26 @@ public class UserCreateConfirmDAO {
 
 	private boolean result = false;
 
-	public boolean getUserInfo(String loginUserId){
-		String sql="SELECT * FROM user_transaction";
+	//既に登録済みのIDかどうかの確認
+	public boolean getUserInfo(String loginUserId) {
+		String sql = "SELECT * FROM user_transaction";
 
-		try{
+		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			ResultSet resultSet = preparedStatement.executeQuery();
 
-			while(resultSet.next()){
+			while (resultSet.next()) {
 				String userId = resultSet.getString("user_id");
 
-				if(userId.equals(loginUserId)){
+				if (userId.equals(loginUserId)) {
 					result = false;
 					return result;
-				}else{
-				result = true;
+				} else {
+					result = true;
 				}
 			}
 
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 

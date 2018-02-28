@@ -1,6 +1,5 @@
 package com.bookshare.dao;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -18,6 +17,7 @@ public class TweetCreateCompleteDAO {
 
 	private String sql = "INSERT INTO tweet_transaction(tweet_master_id,tweet_user_name,tweet_message,tweet_date,id) VALUES(?, ?, ?, ?, ?)";
 
+	//つぶやき情報の新規登録
 	public void createTweet(TweetDTO dto) throws SQLException {
 
 		try {
@@ -28,10 +28,9 @@ public class TweetCreateCompleteDAO {
 			preparedStatement.setString(4, dateUtil.getDate());
 			preparedStatement.setInt(5, dto.getTweet_id());
 
-
 			preparedStatement.execute();
 
-		} catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			connection.close();

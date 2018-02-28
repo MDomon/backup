@@ -16,8 +16,6 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class BookSearchAction extends ActionSupport implements SessionAware {
 
-
-
 	/**
 	 * 検索ワード
 	 */
@@ -38,7 +36,6 @@ public class BookSearchAction extends ActionSupport implements SessionAware {
 	 */
 	private BookSearchDAO bookSearchDAO = new BookSearchDAO();
 
-
 	/**
 	 * ツイート情報取得DAO
 	 */
@@ -49,175 +46,120 @@ public class BookSearchAction extends ActionSupport implements SessionAware {
 	 */
 	public ArrayList<TweetDTO> tweetList = new ArrayList<TweetDTO>();
 
-
-
-
 	/**
 	 * 実行メソッド
+	 *
 	 * @throws SQLException
 	 *
 	 */
 	@SuppressWarnings("unchecked")
-	public String execute () throws SQLException{
+	public String execute() throws SQLException {
 
 		String result = ERROR;
 
-
-		 //ワードを入力した時のみ実行
-		if(searchWord.equals("")){
+		// ワードを入力した時のみ実行
+		if (searchWord.equals("")) {
 
 			result = ERROR;
-			bookList =(List<BookDTO>) session.get("bookList");
+			bookList = (List<BookDTO>) session.get("bookList");
 			setMessage("該当する商品が見つかりませんでした。");
 
-		}else{
+		} else {
 
 			bookSearchList = bookSearchDAO.getBookInfo(searchWord);
 
-
-			if(bookSearchList.size() > 0){
+			if (bookSearchList.size() > 0) {
 				session.put("bookSearchList", bookSearchList);
 				int bookCount = bookSearchList.size();
 				String count = Integer.toString(bookCount);
 				setMessage(count + "件の商品が見つかりました。");
 
 				result = SUCCESS;
-			}else{
+			} else {
 				result = ERROR;
-				bookList =(List<BookDTO>) session.get("bookList");
+				bookList = (List<BookDTO>) session.get("bookList");
 				setMessage("該当する商品が見つかりませんでした。");
 			}
 		}
-
 
 		/**
 		 * ツイート履歴取得メソッド
 		 *
 		 * @author internous
 		 */
-			tweetList = homePageDAO.getTweetInfo();
+		tweetList = homePageDAO.getTweetInfo();
 
-			Iterator<TweetDTO> iterator = tweetList.iterator();
-			if (!(iterator.hasNext())) {
-				tweetList = null;
-				}
+		Iterator<TweetDTO> iterator = tweetList.iterator();
+		if (!(iterator.hasNext())) {
+			tweetList = null;
+		}
 
 		return result;
 	}
-
-
-
 
 	public String getSearchWord() {
 		return searchWord;
 	}
 
-
-
-
 	public void setSearchWord(String searchWord) {
 		this.searchWord = searchWord;
 	}
-
-
-
 
 	public String getMessage() {
 		return message;
 	}
 
-
-
-
 	public void setMessage(String message) {
 		this.message = message;
 	}
-
-
-
 
 	public List<BookDTO> getBookList() {
 		return bookList;
 	}
 
-
-
-
 	public void setBookList(List<BookDTO> bookList) {
 		this.bookList = bookList;
 	}
-
-
-
 
 	public BookSearchDAO getBookSearchDAO() {
 		return bookSearchDAO;
 	}
 
-
-
-
 	public void setBookSearchDAO(BookSearchDAO bookSearchDAO) {
 		this.bookSearchDAO = bookSearchDAO;
 	}
-
-
-
 
 	public Map<String, Object> getSession() {
 		return session;
 	}
 
-
-
-
 	@Override
-	public void setSession(Map<String, Object> session){
-		this.session=session;
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
 	}
-
-
-
 
 	public List<BookDTO> getBookSearchList() {
 		return bookSearchList;
 	}
 
-
-
-
 	public void setBookSearchList(List<BookDTO> bookSearchList) {
 		this.bookSearchList = bookSearchList;
 	}
-
-
-
 
 	public HomePageDAO getHomePageDAO() {
 		return homePageDAO;
 	}
 
-
-
-
 	public void setHomePageDAO(HomePageDAO homePageDAO) {
 		this.homePageDAO = homePageDAO;
 	}
-
-
-
 
 	public ArrayList<TweetDTO> getTweetList() {
 		return tweetList;
 	}
 
-
-
-
 	public void setTweetList(ArrayList<TweetDTO> tweetList) {
 		this.tweetList = tweetList;
 	}
-
-
 
 }

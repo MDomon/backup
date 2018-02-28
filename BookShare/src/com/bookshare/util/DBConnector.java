@@ -14,12 +14,12 @@ public class DBConnector {
 		Connection con = null;
 		try {
 			Class.forName(driverName);
-			con = (Connection) DriverManager.getConnection(url,user,password);
-		} catch(ClassNotFoundException e) {
+			con = (Connection) DriverManager.getConnection(url, user, password);
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return con;
-		}
+	}
 }

@@ -1,8 +1,8 @@
 package com.bookshare.dto;
 
-
 import java.util.Date;
 
+//つぶやき情報のインスタンス
 public class TweetDTO {
 
 	private int tweet_id;
@@ -11,11 +11,11 @@ public class TweetDTO {
 	private String tweet_message;
 	private Date tweet_date;
 
-	public int getTweet_id(){
+	public int getTweet_id() {
 		return tweet_id;
 	}
 
-	public void setTweet_id(int tweet_id){
+	public void setTweet_id(int tweet_id) {
 		this.tweet_id = tweet_id;
 	}
 

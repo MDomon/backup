@@ -1,6 +1,5 @@
 package com.bookshare.action;
 
-
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.Map;
@@ -23,9 +22,7 @@ public class TweetCreateAction extends ActionSupport implements SessionAware {
 	private String tweet_message;
 	private Date tweet_date;
 
-
-	public String execute(){
-
+	public String execute() {
 
 		TweetDTO dto = new TweetDTO();
 		dto.setTweet_id(tweet_id);
@@ -36,8 +33,7 @@ public class TweetCreateAction extends ActionSupport implements SessionAware {
 
 		session.put("tweet_id", dto.getTweet_id());
 		session.put("tweet_user_name", dto.getTweet_user_name());
-		session.put("tweet_date",dto.getTweet_date());
-
+		session.put("tweet_date", dto.getTweet_date());
 
 		try {
 			dao.createTweet(dto);
@@ -49,13 +45,11 @@ public class TweetCreateAction extends ActionSupport implements SessionAware {
 		return ERROR;
 	}
 
-
-
-	public int getTweet_id(){
+	public int getTweet_id() {
 		return tweet_id;
 	}
 
-	public void setTweet_id(int tweet_id){
+	public void setTweet_id(int tweet_id) {
 		this.tweet_id = tweet_id;
 	}
 
@@ -100,6 +94,4 @@ public class TweetCreateAction extends ActionSupport implements SessionAware {
 		return session;
 	}
 
-
 }
-

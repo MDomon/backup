@@ -24,8 +24,7 @@ public class BookCreateCompleteAction extends ActionSupport implements SessionAw
 	private String book_infomation;
 	private Date book_date;
 
-
-	public String execute(){
+	public String execute() {
 
 		BookDTO dto = new BookDTO();
 		dto.setBook_id(book_id);
@@ -37,8 +36,7 @@ public class BookCreateCompleteAction extends ActionSupport implements SessionAw
 		dto.setBook_date(new Date());
 
 		session.put("book_id", dto.getBook_id());
-		session.put("book_date",dto.getBook_date());
-
+		session.put("book_date", dto.getBook_date());
 
 		try {
 			dao.createBook(dto);
@@ -50,54 +48,59 @@ public class BookCreateCompleteAction extends ActionSupport implements SessionAw
 		return ERROR;
 	}
 
-
-
-	public int getBook_id(){
+	public int getBook_id() {
 		return book_id;
 	}
-	public void setBook_id(int book_id){
+
+	public void setBook_id(int book_id) {
 		this.book_id = book_id;
 	}
 
-	public int getBook_master_id(){
+	public int getBook_master_id() {
 		return book_master_id;
 	}
-	public void setBook_master_id(int book_master_id){
+
+	public void setBook_master_id(int book_master_id) {
 		this.book_master_id = book_master_id;
 	}
 
-	public String getBook_name(){
+	public String getBook_name() {
 		return book_name;
 	}
-	public void setBook_name(String book_name){
+
+	public void setBook_name(String book_name) {
 		this.book_name = book_name;
 	}
 
-	public String getBook_user_name(){
+	public String getBook_user_name() {
 		return book_user_name;
 	}
-	public void setBook_user_name(String book_user_name){
+
+	public void setBook_user_name(String book_user_name) {
 		this.book_user_name = book_user_name;
 	}
 
-	public String getBook_author_name(){
+	public String getBook_author_name() {
 		return book_author_name;
 	}
-	public void setBook_author_name(String book_author_name){
+
+	public void setBook_author_name(String book_author_name) {
 		this.book_author_name = book_author_name;
 	}
 
-	public String getBook_infomation(){
+	public String getBook_infomation() {
 		return book_infomation;
 	}
-	public void setBook_infomation(String book_infomation){
+
+	public void setBook_infomation(String book_infomation) {
 		this.book_infomation = book_infomation;
 	}
 
-	public Date getBook_date(){
+	public Date getBook_date() {
 		return book_date;
 	}
-	public void setBook_date(Date book_date){
+
+	public void setBook_date(Date book_date) {
 		this.book_date = book_date;
 	}
 

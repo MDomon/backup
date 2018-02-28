@@ -7,7 +7,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class TweetCreateConfirmAction extends ActionSupport implements SessionAware{
+public class TweetCreateConfirmAction extends ActionSupport implements SessionAware {
 
 	public Map<String, Object> session;
 	private String errorMessage;
@@ -18,14 +18,13 @@ public class TweetCreateConfirmAction extends ActionSupport implements SessionAw
 	private String tweet_message;
 	private Date tweet_date;
 
-
-	public String execute(){
+	public String execute() {
 
 		String result = SUCCESS;
 
-		if(!(tweet_message.equals(""))){
-			session.put("tweet_message",tweet_message);
-		}else{
+		if (!(tweet_message.equals(""))) {
+			session.put("tweet_message", tweet_message);
+		} else {
 			setErrorMessage("未入力の項目があります。");
 			result = ERROR;
 		}
@@ -34,12 +33,11 @@ public class TweetCreateConfirmAction extends ActionSupport implements SessionAw
 
 	}
 
-
-	public int getTweet_id(){
+	public int getTweet_id() {
 		return tweet_id;
 	}
 
-	public void setTweet_id(int tweet_id){
+	public void setTweet_id(int tweet_id) {
 		this.tweet_id = tweet_id;
 	}
 
@@ -75,7 +73,6 @@ public class TweetCreateConfirmAction extends ActionSupport implements SessionAw
 		this.tweet_date = tweet_date;
 	}
 
-
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
@@ -85,10 +82,11 @@ public class TweetCreateConfirmAction extends ActionSupport implements SessionAw
 		return session;
 	}
 
-	public String getErrorMessage(){
+	public String getErrorMessage() {
 		return errorMessage;
 	}
-	public void setErrorMessage(String  errorMessage){
+
+	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
 

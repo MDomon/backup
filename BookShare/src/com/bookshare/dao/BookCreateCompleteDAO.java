@@ -17,6 +17,7 @@ public class BookCreateCompleteDAO {
 
 	private String sql = "INSERT INTO book_transaction(book_master_id,book_user_name,book_name,book_author_name,book_infomation,book_date,id) VALUES(?, ?, ?, ?, ?, ?, ?)";
 
+	//Book情報の新規登録
 	public void createBook(BookDTO dto) throws SQLException {
 
 		try {
@@ -30,10 +31,9 @@ public class BookCreateCompleteDAO {
 			preparedStatement.setString(6, dateUtil.getDate());
 			preparedStatement.setInt(7, dto.getBook_id());
 
-
 			preparedStatement.execute();
 
-		} catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			connection.close();

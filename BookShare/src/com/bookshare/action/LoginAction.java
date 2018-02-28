@@ -9,9 +9,7 @@ import com.bookshare.dto.LoginDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * ログイン認証処理
- * Login.jspからログインID、ログインパスワードを受け取り
- * DBへ問い合わせを行います。
+ * ログイン認証処理 Login.jspからログインID、ログインパスワードを受け取り、DBへ問い合わせを行います。
  *
  * @author internous
  * @param loginUserId
@@ -19,7 +17,7 @@ import com.opensymphony.xwork2.ActionSupport;
  *
  * @return result
  */
-public class LoginAction extends ActionSupport implements SessionAware{
+public class LoginAction extends ActionSupport implements SessionAware {
 
 	/**
 	 * ログインID
@@ -31,9 +29,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	 */
 	private String loginPassword;
 
-
 	private String userName;
-
 
 	/**
 	 * ログイン情報を格納
@@ -50,7 +46,6 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	 */
 	private LoginDTO loginDTO = new LoginDTO();
 
-
 	/**
 	 * 実行メソッド
 	 */
@@ -63,12 +58,12 @@ public class LoginAction extends ActionSupport implements SessionAware{
 
 		session.put("loginUser", loginDTO);
 		session.put("userName", loginDTO.getUserName());
-		session.put("masterId",loginDTO.getId());
+		session.put("masterId", loginDTO.getId());
 
 		// ログイン情報を比較
-		if(((LoginDTO) session.get("loginUser")).getLoginFlg()) {
+		if (((LoginDTO) session.get("loginUser")).getLoginFlg()) {
 			result = SUCCESS;
-			session.put("user_id",	loginDTO.getLoginId());
+			session.put("user_id", loginDTO.getLoginId());
 			return result;
 		}
 
@@ -83,7 +78,6 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		this.loginUserId = loginUserId;
 	}
 
-
 	public String getLoginPassword() {
 		return loginPassword;
 	}
@@ -91,7 +85,6 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	public void setLoginPassword(String loginPassword) {
 		this.loginPassword = loginPassword;
 	}
-
 
 	public String getUserName() {
 		return userName;
@@ -101,13 +94,12 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		this.userName = userName;
 	}
 
-
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
 
-	public LoginDTO getLoginDTO(){
+	public LoginDTO getLoginDTO() {
 		return loginDTO;
 	}
 }
