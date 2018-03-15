@@ -145,12 +145,7 @@ a:active {
 	border: solid 10px #f2f2e5;
 }
 
-#pageBodyMain .bookButton {
-	width: 10%;
-	text-align: center;
-	margin-right: auto;
-	margin-left: auto;
-}
+
 
 /* ----- サブカラム内の装飾 ----- */
 
@@ -285,4 +280,22 @@ table th {
 
 table td {
 	padding: 5px 10px;
+}
+
+.button{
+	text-align:center;
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #f2f2e5;/*ボタン色*/
+    color: black;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+}
+.button:active {/*ボタンを押したとき*/
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+    border-bottom: none;
 }

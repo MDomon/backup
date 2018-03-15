@@ -66,7 +66,7 @@
 											<div class="bookButton">
 												<s:form action="BookShareConfirmAction">
 													<s:token/>
-													<s:submit value="購入する" />
+													<s:submit class="button" value="購入する" />
 												</s:form>
 											</div>
 											</s:if>

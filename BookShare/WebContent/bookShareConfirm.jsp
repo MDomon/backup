@@ -36,11 +36,11 @@
 												<p>コメント:<s:property value="#session.book_infomation" /></p>
 												<p>登録日:<s:property value="#session.book_date" /></p>
 											</div>
-											<div class="bookButton">
+											<div id="button">
 												<s:form action="BookShareCompleteAction">
 													<input type="hidden" value="<s:property value='book_id' />" name="book_id" />
 													<s:token/>
-													<s:submit value="購入する"/>
+													<s:submit class="button" value="購入する"/>
 												</s:form>
 											</div>
 									</div>

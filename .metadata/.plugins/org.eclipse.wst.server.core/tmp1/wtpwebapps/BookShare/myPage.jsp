@@ -74,7 +74,7 @@
 													<p><s:form action="MyPageAction">
 														<input type="hidden" name="deleteBook" value="1"/>
 														<input type="hidden" value="<s:property value='book_id' />" name="bookId" />
-														<s:submit value="削除" method="remove4" />
+														<s:submit class="button" value="削除" method="remove4" />
 														</s:form></p>
 												</div>
 											</div>
@@ -99,11 +99,13 @@
                         	<section class="bookList">
 		                         <h1 class="pageTitle">譲った本リスト</h1>
 										<s:iterator value="giveBookList">
+										<div class="box">
 												<div class="bList">
 													<p><img src="images/iconBook.png" alt="" width="90" height="90"></p>
 													<p>著書名:<s:property value="book_name" /></p>
 													<p>著者名:<s:property value="book_author_name" /></p>
 												</div>
+										</div>
 										</s:iterator>
 		                    </section>
                         </header>
@@ -132,7 +134,7 @@
 										<td><s:form action="MyPageAction">
 											<input type="hidden" name="deleteTweet" value="1">
 											<input type="hidden" value="<s:property value='tweet_id' />" name="tweetId" />
-											<s:submit value="削除" method="remove2" />
+											<s:submit class="button" value="削除" method="remove2" />
 											</s:form></td>
 									</tr>
 								</s:iterator>

@@ -59,7 +59,7 @@
 							</tr>
 							<tr>
 
-									<s:submit value="完了" />
+									<s:submit class="button" value="完了" />
 
 							</tr>
 						</s:form>

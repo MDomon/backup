@@ -48,7 +48,7 @@
                                 <input type="text" name="loginPassword" value="" />
                             </td>
                         </tr>
-                        <s:submit value="ログイン"/>
+                        <s:submit class="button" value="ログイン"/>
                     </s:form>
                     </table>
 			<div id="com">
